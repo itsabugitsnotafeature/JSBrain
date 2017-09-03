@@ -97,6 +97,17 @@ while (itinerary.length != tripMap.size) {
     tripMap.forEach(function(eachStop){
         if(eachStop.dep.length === 0) {
             fDeparture = eachStop
+        } else if ( eachStop.arr.length === 0) {
+            fArrival = eachStop;
         }
+
+        if(fDeparture){
+            let startingObj = getStopById(fDeparture.dep[0]);
+            itinerary[0] = startingObj;
+
+            
+
+        }
+        
     });
 }
