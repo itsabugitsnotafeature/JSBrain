@@ -38,7 +38,9 @@ Solution:
     The above expression is actually the 
         expression for Fibonacci numbers, 
     but there is one thing to notice, 
-    the value of ways(n) is equal to fibonacci(n+1).
+    the value of ways(n) is equal to Fibonacci(n+1):
+    Where, 
+        Fibonacci(n+1): Means the (n+1)th Fibonacci number
     ways(1) = fib(2) = 1 [1,2]
     ways(2) = fib(3) = 2 [0, 1, 1, 2]
     ways(3) = fib(4) = 3 [0, 1, 1, 2, 3]
