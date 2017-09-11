@@ -1,0 +1,49 @@
+<dom-module id="todo-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+
+
+    <!-- <paper-material class="todo" elevation="1">
+      <paper-checkbox checked="{{completed}}"></paper-checkbox>
+      <paper-fab hidden={{editing}} icon="icons:create" on-tap="doEdit" mini></paper-fab>
+      <paper-fab hidden={{!editing}} icon="icons:done" on-tap="doEdit" mini></paper-fab>
+      <paper-item hidden="{{editing}}" id="task">{{task}}</paper-item>
+      <paper-input id="edit" hidden="{{!editing}}" value="{{task}}"></paper-input>
+      <paper-item>Created by: <span>{{user}}</span></paper-item>
+      <paper-item>{{time}}</paper-item>
+    </paper-material>  -->
+    
+    <!-- data bindings in local DOM -->
+
+
+  </template>
+
+  <script>
+    /**
+     * `todo-app`
+     * Obligatory extra curriculur take at your conventional ToDo App
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class TodoApp extends Polymer.Element {
+      static get is() { return 'todo-app'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'todo-app'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(TodoApp.is, TodoApp);
+  </script>
+</dom-module>
