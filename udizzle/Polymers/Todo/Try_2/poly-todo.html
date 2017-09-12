@@ -1,0 +1,61 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href='../bower_components/paper-input/paper-input.html' />
+
+<dom-module id="poly-todo">
+  <template>
+    <style>
+       :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+    <paper-input label="text input" value="{{prop1}}"></paper-input>
+
+  </template>
+
+  <script>
+    /**
+     * `poly-todo`
+     * polymer todo list element
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class PolyTodo extends Polymer.Element {
+      static get is() { return 'poly-todo'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'poly-todo'
+          }
+        };
+      }
+
+
+      static get observers() {
+        return [
+          // Observer method name, followed by a list of dependencies, in parenthesis
+          '_valuesChanged(prop1)'
+        ]
+      }
+
+      _valuesChanged() {
+
+        console.log("called valuesChanged");
+
+        this._debouncer = Polymer.Debouncer.debounce(this._debouncer, 
+        Polymer.Async.timeOut.after(2000), () => {
+          console.log("called valuesChanged: Debounce !")
+        });
+
+      }
+
+
+    }
+
+    window.customElements.define(PolyTodo.is, PolyTodo);
+  </script>
+</dom-module>
