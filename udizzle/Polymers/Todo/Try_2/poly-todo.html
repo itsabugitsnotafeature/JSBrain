@@ -11,6 +11,11 @@
     </style>
     <h2>Hello [[prop1]]!</h2>
     <paper-input label="text input" value="{{prop1}}"></paper-input>
+    
+    <template is="dom-repeat" items="{{allTodos}}">
+      <paper-input label="text input" value="{{item.value}}" ></paper-input>
+    </template>
+
 
   </template>
 
@@ -30,6 +35,13 @@
           prop1: {
             type: String,
             value: 'poly-todo'
+          },
+          allTodos: {
+            type: Array,
+            value: [
+              {isCompleted: false, value: "First Todo"},
+              {isCompleted: false, value: "Second Todo"}
+            ]
           }
         };
       }
@@ -38,21 +50,26 @@
       static get observers() {
         return [
           // Observer method name, followed by a list of dependencies, in parenthesis
-          '_valuesChanged(prop1)'
+          '_valuesChanged(prop1)',
+          '_todosChanged(allTodos.splices)'
         ]
       }
 
       _valuesChanged() {
-
-        console.log("called valuesChanged");
-
+        console.log("called _valuesChanged");
         this._debouncer = Polymer.Debouncer.debounce(this._debouncer, 
         Polymer.Async.timeOut.after(2000), () => {
-          console.log("called valuesChanged: Debounce !")
+          console.log("called _valuesChanged: Debounce !")
         });
-
       }
 
+      _todosChanged() {
+        console.log("called _todosChanged");
+        this._debouncer = Polymer.Debouncer.debounce(this._debouncer, 
+        Polymer.Async.timeOut.after(2000), () => {
+          console.log("called _todosChanged: Debounce !")
+        });
+      }
 
     }
 
