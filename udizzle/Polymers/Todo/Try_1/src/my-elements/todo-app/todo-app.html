@@ -15,21 +15,27 @@
       <div slot="top" class="title">My ToDo Items</div>
     </paper-toolbar>
 
-    <paper-listbox>
+    <paper-listbox id="todoContainer1">
       <template is="dom-repeat" items="{{allTodos}}">
+        <div>
         <paper-item id="todoContainer">
           <paper-checkbox 
-            checked='{{ item.isComplete }}' 
+            checked='{{item.isComplete}}' 
             class='flex-11 taskBox' 
             on-change='toggleTask'>
-          {{ item.taskName }}
           </paper-checkbox>
+          <input style="height: 25px;width: 200px;" type="text" id="thisTodo" name="todo" value="{{item.taskName}}">
+          <!-- <paper-input label="text input" value="{{item.taskName}}">{{item.taskName}}</paper-input> -->
+          
+          <button on-click="updateTasks">Update</button>
           <paper-button raised class='flex-1' style='color: gray' on-click='deleteTask'>Delete</paper-button>
         </paper-item>
+      </div>
       </template>
 
     </paper-listbox>
-    <paper-button raised onclick="dialog.open()">Add ToDo</paper-button>
+    <!-- <paper-button  on-click=="addTask">Add ToDo</paper-button> -->
+    <paper-button raised class='flex-1' style='color: gray' on-click='addTask'>Add ToDo</paper-button>
   </template>
 
   <script>
@@ -62,8 +68,13 @@
         };
       }
 
+      static get observers() {
+        return [
+          // Observer method name, followed by a list of dependencies, in parenthesis
+          '_valuesChanged(allTodos.splices)'
+        ]
+      }
 
-      // Old Code
       compChanged(event) {
         if (event) {
           this.dispatchEvent(new CustomEvent('complete', this));
@@ -79,52 +90,56 @@
 
         // When possible, use afterNextRender to defer non-critical
         // work until after first paint.
-        // Polymer.RenderStatus.afterNextRender(this, function () {
-        //   console.log("This works after render");
-        //   this.allTodos = [];
-        //   this.latestTaskName = "";
-        //   this.updateTasks();
-        // });
+        Polymer.RenderStatus.afterNextRender(this, function () {
+          console.log("This works after render");
+        });
       }
 
+      _valuesChanged(){
+        console.log("called valuesChanged")
+      }
 
-      updateTasks() {
-        this.splice('allTodos', 0);
-        for (var taskName in localStorage) {
-          var task = {
-            taskName: taskName,
-            isComplete: localStorage.getItem(taskName) == 'yes'
-          };
-          this.push('allTodos', task);
-        }
+      updateTasks(e) {
+        console.log("called update1")
+        // this.splice('allTodos', 0);
+        // for (var taskName in localStorage) {
+        //   var task = {
+        //     taskName: taskName,
+        //     isComplete: localStorage.getItem(taskName) == 'yes'
+        //   };
+        //   this.push('allTodos', task);
+        // }
+
       }
       showAddTaskDialog() {
-        this.$.addTaskDialog.open();
+        // this.$.addTaskDialog.open();
       }
 
       addTask() {
-        localStorage.setItem(this.latestTaskName, 'no');
-        this.updateTasks();
-        this.latestTaskName = "";
-        this.$.addTaskDialog.close();
+        self = this;
+        let newTask = { taskName: "", isComplete: false };
+
+        self.allTodos.push(newTask);
+        
+        return;
       }
 
       toggleTask(e) {
         console.log("Called toggleTask");
         return;
-        var taskName = e.model.item.taskName;
-        if (e.model.item.isComplete)
-          localStorage.setItem(taskName, 'yes');
-        else
-          localStorage.setItem(taskName, 'no');
+        // var taskName = e.model.item.taskName;
+        // if (e.model.item.isComplete)
+        //   localStorage.setItem(taskName, 'yes');
+        // else
+        //   localStorage.setItem(taskName, 'no');
       }
 
       deleteTask(e) {
         console.log("Called deleteTask");
         return;
-        var taskName = e.model.item.taskName;
-        localStorage.removeItem(taskName);
-        this.updateTasks();
+        // var taskName = e.model.item.taskName;
+        // localStorage.removeItem(taskName);
+        // this.updateTasks();
       }
 
     }

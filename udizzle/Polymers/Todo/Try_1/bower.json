@@ -15,7 +15,7 @@
     "polymer": "Polymer/polymer#^2.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
     "iron-input": "polymerelements/iron-input#^1.0.0",
-    "paper-input": "polymerelements/paper-input#^2.0.2",
+    "paper-input": "polymerelements/paper-input#^2.0.1",
     "paper-drawer-panel": "polymerelements/paper-drawer-panel#^2.0.0",
     "paper-button": "https://github.com/PolymerElements/paper-button.git#^2.0.0",
     "paper-fab": "polymerelements/paper-fab#^2.0.0",
