@@ -31,7 +31,7 @@
 
       <paper-item>
         <div>
-          <paper-checkbox checked='{{item.isComplete}}' class='flex-11 taskBox' on-change='_toggleTask'>
+          <paper-checkbox checked='{{item.isCompleted}}' class='flex-11 taskBox' on-change='_toggleTask'>
           </paper-checkbox>
           <paper-input label="ToDo" value="{{item.value}}" on-change='_todosChanged'></paper-input>
         </div>
@@ -69,7 +69,6 @@
         };
       }
 
-
       static get observers() {
         return [
           // Observer method name, followed by a list of dependencies, in parenthesis
@@ -78,34 +77,41 @@
       }
 
       _toggleTask(event) {
-        // TODO: Implement if user unchecks before debounce time then not to delete note.
-        console.log("called _toggleTask");
-        if (event.target.checked) {
-
-        }
-        this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
-          Polymer.Async.timeOut.after(2000), () => {
+        self = this;
+        console.log("Received _toggleTask for: " + event.model.__data.item.value);
+        
+        if(self._debouncer.isActive()) {
+          // Throttle Subsequent requests if one is already active;
+          setTimeout(() =>{ 
+            console.log("Debounce logic Busy, Throttling request for: " + event.model.__data.item.value);
+            self._toggleTask(event);
+          },1000)
+        } else {
+          self._debouncer = Polymer.Debouncer.debounce(self._debouncer, Polymer.Async.timeOut.after(2000), () => {
             console.log("called _toggleTask: Debounce !")
-            this._removeTodoById(event.model.__data.item);
-            // console.log("User you sexy thang, thank god you unchecked it before this note got deleted");
+            self._removeTodoByTodoItem(event.model.__data.item);
           });
-
+        }
       }
 
       _keyPressed(e) {
-        if( 13 === e.charCode) {
+        if (13 === e.charCode) {
           this._addTask(e);
         }
       }
 
-      _removeTodoById(item) {
-        let self = this;
-        let index = self._findIndexById(item.id);
-        if (index >= 0) {
-          console.log("Deleting Item:" + item.value);
-          this.splice('allTodos', index, 1);
+      _removeTodoByTodoItem(item) {
+        if (item.isCompleted) {
+          let self = this;
+          let index = self._findIndexById(item.id);
+          if (index >= 0) {
+            console.log("Deleting Item:" + item.value);
+            this.splice('allTodos', index, 1);
+          } else {
+            console.log("CRAP! Item Not Found Bro...");
+          }
         } else {
-          console.log("CRAP! Item Not Found Bro...");
+          console.log("This ToDo Got Saved: " + item.value);
         }
       }
 
