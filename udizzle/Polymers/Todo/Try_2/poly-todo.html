@@ -67,7 +67,6 @@
       static get observers() {
         return [
           // Observer method name, followed by a list of dependencies, in parenthesis
-          // '_valuesChanged(prop1)',
           '_todosChanged(allTodos.splices)'
         ]
       }
@@ -82,14 +81,6 @@
             this.splice('allTodos', index, 1);
           
 
-          });
-      }
-
-      _valuesChanged() {
-        console.log("called _valuesChanged");
-        this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
-          Polymer.Async.timeOut.after(2000), () => {
-            console.log("called _valuesChanged: Debounce !")
           });
       }
 
