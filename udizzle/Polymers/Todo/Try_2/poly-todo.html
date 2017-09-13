@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href='../bower_components/paper-input/paper-input.html' />
+<link rel="import" href='../bower_components/paper-checkbox/paper-checkbox.html' />
+<link rel="import" href='../bower_components/paper-item/paper-item.html' />
 
 <dom-module id="poly-todo">
   <template>
@@ -8,13 +9,28 @@
        :host {
         display: block;
       }
+
+      .taskBox {
+        --paper-checkbox-label-spacing: 38px;
+        --paper-checkbox-checked-color: green;
+      }
     </style>
-    
-    <paper-input label="text input" placeholder="Add a Todo Task.." value="{{prop1}}" ></paper-input>
+
+    <paper-input label="text input" placeholder="Add a Todo Task.." value="{{prop1}}"></paper-input>
     <paper-button toggles raised on-click="_addTask">Add Todo</paper-button>
-    
-    <template is="dom-repeat" items="{{allTodos}}" >
-      <paper-input label="ToDo" value="{{item.value}}" disabled ></paper-input>
+    <br>
+    <br>
+
+    <template is="dom-repeat" items="{{allTodos}}">
+
+      <paper-item>
+        <div>
+          <paper-checkbox checked='{{item.isComplete}}' class='flex-11 taskBox' on-change='_toggleTask'>
+          </paper-checkbox>
+          <paper-input label="ToDo" value="{{item.value}}" disabled></paper-input>
+        </div>
+      </paper-item>
+
     </template>
 
 
@@ -40,8 +56,8 @@
           allTodos: {
             type: Array,
             value: [
-              {isCompleted: false, value: "First Todo"},
-              {isCompleted: false, value: "Second Todo"}
+              { isCompleted: false, value: "First Todo" },
+              { isCompleted: false, value: "Second Todo" }
             ]
           }
         };
@@ -56,12 +72,25 @@
         ]
       }
 
+      _toggleTask(event) {
+        console.log("called _toggleTask");
+        this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
+          Polymer.Async.timeOut.after(2000), () => {
+            console.log("called _toggleTask: Debounce !")
+
+            var index = this.allTodos.indexOf(event.model.__data.item);
+            this.splice('allTodos', index, 1);
+          
+
+          });
+      }
+
       _valuesChanged() {
         console.log("called _valuesChanged");
-        this._debouncer = Polymer.Debouncer.debounce(this._debouncer, 
-        Polymer.Async.timeOut.after(2000), () => {
-          console.log("called _valuesChanged: Debounce !")
-        });
+        this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
+          Polymer.Async.timeOut.after(2000), () => {
+            console.log("called _valuesChanged: Debounce !")
+          });
       }
 
       _addTask() {

@@ -4,7 +4,9 @@
   "main": "poly-todo.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
-    "paper-input": "https://github.com/PolymerElements/paper-input.git#^2.0.2"
+    "paper-input": "https://github.com/PolymerElements/paper-input.git#^2.0.2",
+    "paper-checkbox": "https://github.com/PolymerElements/paper-checkbox.git#^2.0.1",
+    "paper-item": "https://github.com/PolymerElements/paper-item.git#^2.0.0"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
