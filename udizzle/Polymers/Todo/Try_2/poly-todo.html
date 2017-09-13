@@ -16,8 +16,14 @@
       }
     </style>
 
-    <paper-input label="text input" placeholder="Add a Todo Task.." value="{{prop1}}"></paper-input>
-    <paper-button toggles raised on-click="_addTask">Add Todo</paper-button>
+    <paper-input 
+      label="Enter Todo" 
+      placeholder="Add a Todo Task.." 
+      value="{{prop1}}" 
+      on-keypress="_keyPressed">
+    </paper-input>
+    <paper-button toggles raised type="submit" on-click="_addTask">Add Todo</paper-button>
+
     <br>
     <br>
 
@@ -74,7 +80,7 @@
       _toggleTask(event) {
         // TODO: Implement if user unchecks before debounce time then not to delete note.
         console.log("called _toggleTask");
-        if(event.target.checked) {
+        if (event.target.checked) {
 
         }
         this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
@@ -86,10 +92,16 @@
 
       }
 
-      _removeTodoById(item){
+      _keyPressed(e) {
+        if( 13 === e.charCode) {
+          this._addTask(e);
+        }
+      }
+
+      _removeTodoById(item) {
         let self = this;
         let index = self._findIndexById(item.id);
-        if(index >= 0) {
+        if (index >= 0) {
           console.log("Deleting Item:" + item.value);
           this.splice('allTodos', index, 1);
         } else {
@@ -97,11 +109,11 @@
         }
       }
 
-      _findIndexById(id){
+      _findIndexById(id) {
         let self = this;
         let objIndex = -1;
-        self.allTodos.forEach(function(item,index){
-          if(item.id === id) {
+        self.allTodos.forEach(function (item, index) {
+          if (item.id === id) {
             console.log("Found Item to Delete with ID:" + item.id);
             objIndex = index;
           }
