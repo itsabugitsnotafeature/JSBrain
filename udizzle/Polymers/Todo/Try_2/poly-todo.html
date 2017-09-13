@@ -9,11 +9,12 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
-    <paper-input label="text input" value="{{prop1}}"></paper-input>
     
-    <template is="dom-repeat" items="{{allTodos}}">
-      <paper-input label="text input" value="{{item.value}}" ></paper-input>
+    <paper-input label="text input" placeholder="Add a Todo Task.." value="{{prop1}}" ></paper-input>
+    <paper-button toggles raised on-click="_addTask">Add Todo</paper-button>
+    
+    <template is="dom-repeat" items="{{allTodos}}" >
+      <paper-input label="ToDo" value="{{item.value}}" disabled ></paper-input>
     </template>
 
 
@@ -34,7 +35,7 @@
         return {
           prop1: {
             type: String,
-            value: 'poly-todo'
+            value: ''
           },
           allTodos: {
             type: Array,
@@ -50,7 +51,7 @@
       static get observers() {
         return [
           // Observer method name, followed by a list of dependencies, in parenthesis
-          '_valuesChanged(prop1)',
+          // '_valuesChanged(prop1)',
           '_todosChanged(allTodos.splices)'
         ]
       }
@@ -63,12 +64,21 @@
         });
       }
 
+      _addTask() {
+        console.log("called _addTask");
+        let newTask = {
+          isCompleted: false,
+          value: this.prop1
+        }
+        this.push('allTodos', newTask);
+      }
+
       _todosChanged() {
         console.log("called _todosChanged");
-        this._debouncer = Polymer.Debouncer.debounce(this._debouncer, 
-        Polymer.Async.timeOut.after(2000), () => {
-          console.log("called _todosChanged: Debounce !")
-        });
+        // this._debouncer = Polymer.Debouncer.debounce(this._debouncer, 
+        // Polymer.Async.timeOut.after(2000), () => {
+        //   console.log("called _todosChanged: Debounce !")
+        // });
       }
 
     }
