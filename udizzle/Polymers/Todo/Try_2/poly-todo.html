@@ -122,9 +122,11 @@
       }
 
       _todosChanged() {
+        let self = this;
         console.log("called _todosChanged");
-        this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
+        self._debouncer = Polymer.Debouncer.debounce(this._debouncer,
           Polymer.Async.timeOut.after(2000), () => {
+            // self.notifySplices(self.allTodos);
             console.log("called _todosChanged: Debounce !")
           });
       }
