@@ -72,12 +72,18 @@
       }
 
       _toggleTask(event) {
+        // TODO: Implement if user unchecks before debounce time then not to delete note.
         console.log("called _toggleTask");
+        if(event.target.checked) {
+
+        }
         this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
           Polymer.Async.timeOut.after(2000), () => {
             console.log("called _toggleTask: Debounce !")
             this._removeTodoById(event.model.__data.item);
+            // console.log("User you sexy thang, thank god you unchecked it before this note got deleted");
           });
+
       }
 
       _removeTodoById(item){
