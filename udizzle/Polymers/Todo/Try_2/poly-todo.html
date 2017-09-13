@@ -27,7 +27,7 @@
         <div>
           <paper-checkbox checked='{{item.isComplete}}' class='flex-11 taskBox' on-change='_toggleTask'>
           </paper-checkbox>
-          <paper-input label="ToDo" value="{{item.value}}" disabled></paper-input>
+          <paper-input label="ToDo" value="{{item.value}}" on-change='_todosChanged'></paper-input>
         </div>
       </paper-item>
 
@@ -56,8 +56,8 @@
           allTodos: {
             type: Array,
             value: [
-              { isCompleted: false, value: "First Todo" },
-              { isCompleted: false, value: "Second Todo" }
+              { isCompleted: false, id: "f35ef260-fe12-4b50-be88-533bd4831a17", value: "First Todo" },
+              { isCompleted: false, id: "c3409fdd-3337-4c1b-a335-0c7c7b166a3f", value: "Second Todo" }
             ]
           }
         };
@@ -76,33 +76,66 @@
         this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
           Polymer.Async.timeOut.after(2000), () => {
             console.log("called _toggleTask: Debounce !")
-
-            var index = this.allTodos.indexOf(event.model.__data.item);
-            this.splice('allTodos', index, 1);
-          
-
+            // let index = this.allTodos.indexOf(event.model.__data.item);
+            // this.splice('allTodos', index, 1);
+            this._removeTodoById(event.model.__data.item);
           });
       }
 
+      _removeTodoById(item){
+        let self = this;
+        let index = self._findIndexById(item.id);
+        if(index >= 0) {
+          console.log("Deleting Item:" + item.value);
+          this.splice('allTodos', index, 1);
+        } else {
+          console.log("CRAP! Item Not Found Bro...");
+        }
+      }
+
+      _findIndexById(id){
+        let self = this;
+        let objIndex = -1;
+        self.allTodos.forEach(function(item,index){
+          if(item.id === id) {
+            console.log("Found Item to Delete with ID:" + item.id);
+            objIndex = index;
+          }
+        });
+        return objIndex;
+      }
+
       _addTask() {
+        let self = this;
         console.log("called _addTask");
         let newTask = {
           isCompleted: false,
-          value: this.prop1
+          value: self.prop1,
+          id: self.generateUUID()
         }
-        this.push('allTodos', newTask);
+        self.push('allTodos', newTask);
+        self.prop1 = '';
       }
 
       _todosChanged() {
         console.log("called _todosChanged");
-        // this._debouncer = Polymer.Debouncer.debounce(this._debouncer, 
-        // Polymer.Async.timeOut.after(2000), () => {
-        //   console.log("called _todosChanged: Debounce !")
-        // });
+        this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
+          Polymer.Async.timeOut.after(2000), () => {
+            console.log("called _todosChanged: Debounce !")
+          });
+      }
+
+      generateUUID() {
+        let d = new Date().getTime();
+        let uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+          let r = (d + Math.random() * 16) % 16 | 0;
+          d = Math.floor(d / 16);
+          return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        });
+        return uuid;
       }
 
     }
-
     window.customElements.define(PolyTodo.is, PolyTodo);
   </script>
 </dom-module>
