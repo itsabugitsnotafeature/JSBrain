@@ -56,8 +56,8 @@
           allTodos: {
             type: Array,
             value: [
-              { isCompleted: false, id: "f35ef260-fe12-4b50-be88-533bd4831a17", value: "First Todo" },
-              { isCompleted: false, id: "c3409fdd-3337-4c1b-a335-0c7c7b166a3f", value: "Second Todo" }
+              { isCompleted: false, id: "f35ef260-fe12-4b50-be88-533bd4831a17", value: "First Dummy Todo" },
+              { isCompleted: false, id: "c3409fdd-3337-4c1b-a335-0c7c7b166a3f", value: "Second Dummy Todo" }
             ]
           }
         };
@@ -76,8 +76,6 @@
         this._debouncer = Polymer.Debouncer.debounce(this._debouncer,
           Polymer.Async.timeOut.after(2000), () => {
             console.log("called _toggleTask: Debounce !")
-            // let index = this.allTodos.indexOf(event.model.__data.item);
-            // this.splice('allTodos', index, 1);
             this._removeTodoById(event.model.__data.item);
           });
       }
