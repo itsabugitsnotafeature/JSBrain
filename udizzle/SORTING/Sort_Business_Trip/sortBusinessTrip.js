@@ -61,53 +61,36 @@ let passes = [
     }
 ];
 
-let fDeparture,
-    fArrival,
-    tripList,
-    itinerary = [];
-let tripMap = new Map();
+let flightsMap,
+    destMap,
+    startCity,
+    tripItinerary;
 
-passes.forEach(function (stop) {
-    if (tripMap.has(stop.depart)) {
-        let payload = tripMap.get(stop.depart)
-        payload.dep.push(stop.id)
+flightsMap = new Map();
+destMap = new Map();
+tripItinerary = new Array();
 
-    } else {
-        let payload = {
-            dep: [stop.id],
-            arr: []
-        }
-        tripMap.set(stop.depart, payload)
-    }
-    if (tripMap.has(stop.arrival)) {
-        let payload = tripMap.get(stop.arrival)
-        payload.arr.push(stop.id)
-    } else {
-        let payload = {
-            dep: [],
-            arr: [stop.id]
-        }
-        tripMap.set(stop.arrival, payload)
-    }
+// STORE THE FLIGHTS IN A DICT AND THE LIST OF DST
+passes.forEach((stop,index) => {
+    flightsMap.set(stop.depart, stop.arrival);
+    destMap.set(stop.arrival, 'true');
 });
 
+// FIND FIRST FLIGHT
+flightsMap.forEach((destCity,arrCity) => {
+   if(!destMap.has(destCity)){
+        startCity = destCity;
+   } else if (!destMap.has(arrCity)){
+        startCity = arrCity;
+   }
+});
 
-while (itinerary.length != tripMap.size) {
-    debugger;
-    tripMap.forEach(function(eachStop){
-        if(eachStop.dep.length === 0) {
-            fDeparture = eachStop
-        } else if ( eachStop.arr.length === 0) {
-            fArrival = eachStop;
-        }
+let curCity = startCity;
 
-        if(fDeparture){
-            let startingObj = getStopById(fDeparture.dep[0]);
-            itinerary[0] = startingObj;
-
-            
-
-        }
-        
-    });
+tripItinerary.push(startCity);
+for(let i=1 ; i<(passes.length+1) ; i++  ){
+    curCity = flightsMap.get(curCity);
+    tripItinerary.push(curCity);
 }
+
+console.log( JSON.stringify (tripItinerary))
