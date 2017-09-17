@@ -61,10 +61,6 @@ let testData1 = [7,5,2,4,3,9],
     testData2 = [9,7,5,4,3,1],
     testData3 = [1,2,3,4,5,6];
 
- console.log(JSON.stringify(bubbleSort(testData1)));
- console.log(JSON.stringify(bubbleSort(testData2)));
- console.log(JSON.stringify(bubbleSort(testData3)));
- 
 function bubbleDizzle(arr2Sort){
     for(let i = (arr2Sort.length-1) ; i > 0 ; i-- ) {
         for( let j=1 ; j<i ; j++){
