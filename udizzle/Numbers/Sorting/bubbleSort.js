@@ -63,7 +63,7 @@ let testData1 = [7,5,2,4,3,9],
 
 function bubbleDizzle(arr2Sort){
     for(let i = (arr2Sort.length-1) ; i > 0 ; i-- ) {
-        for( let j=1 ; j<i ; j++){
+        for( let j=1 ; j<=i ; j++){
             if(arr2Sort[j-1] > arr2Sort[j]) {
                 arr2Sort[j] = [arr2Sort[j-1], (arr2Sort[j-1] = arr2Sort[j]) ][0];
             }
