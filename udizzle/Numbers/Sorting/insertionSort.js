@@ -65,7 +65,6 @@ function insertionSort(arr) {
 }
 
 function dizzleInsertionSort(arrToSort){
-    let startTime = Date.now();
     for(let i=0 ; i<arrToSort.length ; i++){
         debugger;
         let val = arrToSort[i];
@@ -76,7 +75,6 @@ function dizzleInsertionSort(arrToSort){
         }
         arrToSort[j] = val;
     }
-    console.log("Total Runtime: " + (Date.now() - startTime) );
     return arrToSort;
 }
 
@@ -91,4 +89,6 @@ console.log(JSON.stringify(dizzleInsertionSort(testData3)));
 let randomArray = (length, max) => [...new Array(length)]
 .map(() => Math.round(Math.random() * max));
 
+let startTime = Date.now();
 dizzleInsertionSort(randomArray(9999, 1000));
+console.log("Total Runtime: " + (Date.now() - startTime) );
