@@ -66,7 +66,6 @@ let testData1 = [7,5,2,4,3,9],
  console.log(JSON.stringify(bubbleSort(testData3)));
  
 function bubbleDizzle(arr2Sort){
-    debugger
     for(let i = (arr2Sort.length-1) ; i > 0 ; i-- ) {
         for( let j=1 ; j<i ; j++){
             if(arr2Sort[j-1] > arr2Sort[j]) {
@@ -77,6 +76,24 @@ function bubbleDizzle(arr2Sort){
     return arr2Sort;
 }
 
+function bubbleDizzleWithTime(arr2Sort){
+    let startTime = Date.now();
+    for(let i = (arr2Sort.length-1) ; i > 0 ; i-- ) {
+        for( let j=1 ; j<i ; j++){
+            if(arr2Sort[j-1] > arr2Sort[j]) {
+                arr2Sort[j] = [arr2Sort[j-1], (arr2Sort[j-1] = arr2Sort[j]) ][0];
+            }
+        }
+    }
+    console.log("Total Runtime: " + (Date.now() - startTime) );
+    return arr2Sort;
+}
+
 console.log(JSON.stringify(bubbleDizzle(testData1)));
 console.log(JSON.stringify(bubbleDizzle(testData2)));
 console.log(JSON.stringify(bubbleDizzle(testData3)));
+
+let randomArray = (length, max) => [...new Array(length)]
+    .map(() => Math.round(Math.random() * max));
+
+bubbleDizzleWithTime(randomArray(9999, 1000));
