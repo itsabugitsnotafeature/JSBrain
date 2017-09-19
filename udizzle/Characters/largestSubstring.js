@@ -10,30 +10,16 @@
 
     Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 */
-
-let lengthOfLongestSubstring = (str) => {
-    let patternSet = new Set;
-    str = [...str];
+var lengthOfLongestSubstring = (s) => {
+    var patternSet = new Set;
+    str = [...s];
     res = '';
-    debugger
-    for (let i = 0; i < str.length; i++) {
+    for (var i = 0; i < str.length; i++) {
         if (res.indexOf(str[i]) > -1) {
-            if (res.length > (str.length - i)) {
-                return res;
-
-            } else {
-                if( res.indexOf(str[i]) === 0 ) {
-                    res = res.slice(1,res.length) + str[i];
-                } else if (res) {
-                    patternSet.add(res);
-                    res = str[i];
-                } else {
-                    res += str[i];
-                }
-            }
+            res = res.slice((res.indexOf(str[i])+1), res.length) + str[i];
         } else {
-            res += str[i];            
-            patternSet.add(str[i])
+            res += str[i];
+            patternSet.add(res)
         }
     }
     res = '';
@@ -42,9 +28,12 @@ let lengthOfLongestSubstring = (str) => {
             res = val;
         }
     })
-    return res;
+    return res.length;
 }
 
+console.log(lengthOfLongestSubstring("ohvhjdml"));		
 console.log(lengthOfLongestSubstring('aaaabcbcbcbcbcabcdefcc'));	// abcdef
 console.log(lengthOfLongestSubstring('abcdaaaaaabbbbbcccdddd')); // abcd
 console.log(lengthOfLongestSubstring('aaaabcbcbcbcbc'));		// abc
+console.log(lengthOfLongestSubstring('abcabcbb'));		// abc
+
