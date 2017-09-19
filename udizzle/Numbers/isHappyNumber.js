@@ -22,7 +22,7 @@
     and creating all test cases.
 */
 
-let isHappyWithFailsafe = function(n, attempt, MAX_ATTEMPT) {
+let isHappyWithFailsafe = function(n, attempt, MAX_ATTEMPT) { 
     if(attempt > MAX_ATTEMPT){
         return false;
     }
@@ -40,7 +40,12 @@ let isHappyWithFailsafe = function(n, attempt, MAX_ATTEMPT) {
     }
 };
 
-let isHappy = function(n) {
+let isHappy = function(n, attempt) {
+    if(!attempt){
+        attempt = 0;
+    } else if(attempt > 4030){
+        return false;
+    }
     n = n.toString();
     let components = [...n];
     let sum = 0;
@@ -50,9 +55,10 @@ let isHappy = function(n) {
     if(sum === 1) {
         return true;
     } else {
-        return isHappy(sum);
+        return isHappy(sum, ++attempt);
     }
 };
 console.log("IsHappy: "+ isHappy(19));
-
-console.log("\n\nIsHappyWithFailsafe: "+ isHappyWithFailsafe(19,0,9999));
+console.log("IsHappy: "+ isHappy(2));
+console.log("\n\nIsHappyWithFailsafe 19: "+ isHappyWithFailsafe(19,0,9999));
+console.log("\n\nIsHappyWithFailsafe 2: "+ isHappyWithFailsafe(2,0,4030));
