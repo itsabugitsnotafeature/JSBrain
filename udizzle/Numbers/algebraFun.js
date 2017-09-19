@@ -136,3 +136,23 @@ let countZero = (n) => {
     return count;
 }
 console.log(countZero(2014));
+
+let mySqrt = (num, guess) => {
+    if(!num || num===0){
+        return 0;
+    }
+    if(!guess){
+        guess = num / 2.0;
+    }
+    let div = num / guess;
+    let newGuess = (div + guess)/2.0;
+    if(guess === newGuess){
+        return newGuess;
+    } else {
+        return mySqrt(num, newGuess);
+    }
+}
+
+console.log("Squsre Root of 49 is:" + mySqrt(3));
+// console.log("Squsre Root of 49 is:" + mySqrt(49));
+// console.log("Squsre Root of 169 is:" + mySqrt(169));
