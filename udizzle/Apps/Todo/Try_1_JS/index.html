@@ -3,14 +3,21 @@
     <head>
         <title>Vanilla ToDo</title>
 
-        <link rel="import" href="/scripts/todo.js">
-        <link rel="import" href="/styles/style.css">
+        <script src="/scripts/todo.js"></script>
+        <link rel="stylesheet" href="/styles/style.css">
         
     </head>
     <body>
 
         <h2>Vanilla JS ToDo App</h2>
+        Enter ToDo  
+        <div>
+            <input type="text" id="todo-item">
+            <input type='button' onclick='addTodo()' value='Submit' />
+        </div>
         
+        <p>Todo Items Added</p>
+        <ol id="todo-list"></ol>
 
     </body>
 </html>
