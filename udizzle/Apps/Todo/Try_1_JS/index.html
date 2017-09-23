@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Vanilla ToDo</title>
-        <script src="/scripts/todo.js"></script>
-        <link rel="stylesheet" href="/styles/style.css">
-    </head>
-    <body>
-        <h2>Vanilla JS ToDo App</h2>
-        <div class="header">
-            <h2 style="margin:5px">My To Do List</h2>
-            <input type="text" id="todoItem" placeholder="Title...">
-            <span onclick="newElement()" class="addBtn">Add</span>
-        </div>
-        <ul id="myTodoList">
-            <li>Dummy Todo
-                <span onclick="deleteTodo()" class="close"> [x] </span>
-            </li>
-            <li class="checked">Dummy Todo COMPLETED
-                <span onclick="deleteTodo()" class="close"> [x] </span>
-            </li>
-        </ul>
-    </body>
+
+<head>
+    <title>Vanilla ToDo</title>
+    <script src="/scripts/todo.js"></script>
+
+</head>
+
+<body>
+    <link rel="stylesheet" href="styles/style.css">
+    <h2>Vanilla JS ToDo App</h2>
+    <div class="header">
+        <h2 style="margin:5px">My To Do List</h2>
+        <input type="text" id="todoItem" placeholder="Title...">
+        <span type="button" onclick="newElement()" class="addBtn">Add</span>
+        <!-- <input type="submit" style="position: absolute; left: -9999px"/> -->
+
+    </div>
+    <ul id="myTodoList">
+        <!-- <li>Dummy Todo
+            <span onclick="deleteTodo()" class="close"> [x] </span>
+        </li>
+        <li class="checked">Dummy Todo COMPLETED
+            <span onclick="deleteTodo()" class="close"> [x] </span>
+        </li> -->
+    </ul>
+</body>
+
 </html>
