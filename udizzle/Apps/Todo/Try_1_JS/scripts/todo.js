@@ -1,56 +1,57 @@
 'use strict'
 
-function createCloseButton() {
-    // Create a "close" button and append it to each list item
-    let myNodelist = document.getElementsByTagName("li");
-
-    for (let i = 0; i < myNodelist.length; i++) {
-        let span = document.createElement("span");
-        let txt = document.createTextNode("\u00D7");
-        span.className = "close";
-        span.appendChild(txt);
-        myNodelist[i].appendChild(span);
-    }
-}
-
 function deleteTodo(elem) {
     elem.style.display = "none";
 }
 
-// Create a new list item when clicking on the "Add" button
-function newElement() {
-
-    // Add a "DELETE" symbol on the RHS
-    let li = document.createElement("li");
-    let inputValue = document.getElementById("todoItem").value;
-    let t = document.createTextNode(inputValue);
-
-    // Add a "checked" symbol when clicking on a list item
+function initializeList() {
+    // Add listener to mark as checked todo item
+    // Added one listener to parent DOM 
+    // EVENT DELIGATION
     let list = document.querySelector('ul');
     list.addEventListener('click', function(ev) {
         if (ev.target.tagName.toLowerCase() === 'li') {
             ev.target.classList.toggle('checked');
         }
     }, false);
+}
 
-    li.appendChild(t);
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+    // Get Todo Item entered by user
+    let inputValue = document.getElementById("todoItem").value;
+
     if (inputValue === '') {
+        // Return if empty
         alert("You must write something!");
-        console.error("You must write something!");
-    } else {
-        document.getElementById("myTodoList").appendChild(li);
+        return;
     }
 
-    document.getElementById("todoItem").value = "";
-
+    // Create Text Node From user input
+    let textNode = document.createTextNode(inputValue);
+    // Create Delete Todo element to
     let span = document.createElement("span");
     let txt = document.createTextNode("\u00A0\u00A0 \u00D7 \u00A0\u00A0");
 
-    span.className = "close";
     span.appendChild(txt);
+    span.className = "close";
     span.onclick = function() {
         deleteTodo(this.parentElement);
     }
 
+    // Create List Element 'li'
+    let li = document.createElement("li");
+    li.appendChild(textNode);
     li.appendChild(span);
+
+    document.getElementById("myTodoList").appendChild(li);
+
+    // Reset Text inbox
+    document.getElementById("todoItem").value = "";
 }
+
+// Initialize Page once PAGE LOAD Completes.
+document.addEventListener('DOMContentLoaded', function() {
+    // your code here
+    initializeList();
+}, false);
