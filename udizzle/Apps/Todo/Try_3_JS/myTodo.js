@@ -5,14 +5,20 @@ let AUTO_SAVE_DELAY = 2000;
 
 
 let addTodo = () => {
-    let itemToAdd = document.getElementById('todo-item').value;
-    if (itemToAdd === '') {
+    let todoItem = document.getElementById('todo-item').value;
+    if (todoItem === '') {
         alert("Enter Valid Value Please !");
         return;
     }
+    console.log('Adding Value: ' + todoItem);
 
-    console.log('Adding Value: ' + itemToAdd);
+    let itemToAdd = {
+        todo: todoItem,
+        isCompleted: false
+    }
+
     let allCurrentTodos = _getAllCurrentTodos() || [];
+
     allCurrentTodos.push(itemToAdd);
     _setAllCurrentTodos(allCurrentTodos);
     document.getElementById('todo-item').value = '';
@@ -36,10 +42,28 @@ let debounce = (func, wait, immediate) => {
 
 let _updateView = () => {
     let allCurrentTodos = _getAllCurrentTodos();
+    if (!allCurrentTodos) {
+        console.log("Nothing to update in view!");
+        return;
+    }
 
     let todosMarkup = '<ul>'
     for (let i = 0; i < allCurrentTodos.length; i++) {
-        let listElement = "<li name='editable' contenteditable='true' > " + allCurrentTodos[i] + " <button id=" + i + " name='remove-item'> [ X ] </button></li>"
+        let listElement;
+        if (allCurrentTodos[i].isCompleted) {
+            listElement =
+                " <li name='editable' contenteditable='true' id=" + i + "> " +
+                "<input type='checkbox' name='todo-checkbox' checked >" +
+                allCurrentTodos[i].todo + " <button id=" + i +
+                " name='remove-item'> [ X ] </button></li>";
+
+        } else {
+            listElement =
+                " <li name='editable' contenteditable='true' id=" + i + "> " +
+                "<input type='checkbox' name='todo-checkbox'>" +
+                allCurrentTodos[i].todo + " <button name='remove-item'> [ X ] </button></li>";
+        }
+
         todosMarkup += listElement;
     }
     todosMarkup += '</ul>'
@@ -47,35 +71,56 @@ let _updateView = () => {
 
     let allRemoveButtons = document.getElementsByName('remove-item');
     allRemoveButtons.forEach((removeButton) => {
-        removeButton.addEventListener('click', removeTodoItem);
+        removeButton.addEventListener('click', _removeTodoItem);
     });
 
     let allListItems = document.getElementsByName("editable");
     allListItems.forEach((todoItem) => {
         todoItem.addEventListener("input", _saveUpdatedTodo, false);
     });
+
+    let allCheckBoxes = document.getElementsByName("todo-checkbox");
+    allCheckBoxes.forEach((checkbox) => {
+        checkbox.addEventListener("click", _markedTodoCheckbox, false);
+    });
+}
+
+let _markedTodoCheckbox = debounce((event) => {
+    console.log("called _saveUpdatedTodo ");
+    _updateCheckedList(event.target.parentElement.id, event.target.checked);
+}, AUTO_SAVE_DELAY);
+
+let _updateCheckedList = (id, isChecked) => {
+    console.log("called _updateCheckedList ");
+
+    console.log("Updateing \nitem number: " + id + "\nwith checked value set to " + isChecked + ".\n");
+
+    let allCurrentTodos = _getAllCurrentTodos();
+    allCurrentTodos[id].isCompleted = isChecked;
+    _setAllCurrentTodos(allCurrentTodos);
+    console.log("_updateCheckedList: SAVE COMPLETE !");
 }
 
 let _saveUpdatedTodo = debounce((event) => {
     console.log("called _saveUpdatedTodo ");
-    _updateList(event.target.children[0].id, event.target.innerText);
+    _updateTodoList(event.target.id, event.target.innerText);
 }, AUTO_SAVE_DELAY);
 
-let _updateList = (id, todoValue) => {
+let _updateTodoList = (id, todoValue) => {
     console.log("called _saveUpdatedTodo ");
-    let closeButtonIndex = todoValue.indexOf(' [ X ]');
-    todoValue = todoValue.substring(0, closeButtonIndex);
+    let closeButtonIndex = todoValue.indexOf('[ X ]');
+    todoValue = todoValue.substring(0, (closeButtonIndex - 1));
 
     console.log("Updateing \nitem number: " + id + "\nwith value " + todoValue + "\n");
 
     let allCurrentTodos = _getAllCurrentTodos();
-    allCurrentTodos[id] = todoValue;
+    allCurrentTodos[id].todo = todoValue;
     _setAllCurrentTodos(allCurrentTodos);
-    console.log("SAVE COMPLETE !");
+    console.log("_updateTodoList: SAVE COMPLETE !");
 }
 
-let removeTodoItem = () => {
-    let id = event.target.getAttribute('id');
+let _removeTodoItem = () => {
+    let id = event.target.parentElement.id;
     let allTodos = _getAllCurrentTodos();
     allTodos.splice(id, 1);
     _setAllCurrentTodos(allTodos);
