@@ -9,9 +9,9 @@ Available List of Abilities:
     - Edit Todo Item
     - Save Todo item in local browser storage / cache.
     - Mark as complete Todo item 
+    - Filter COMPLETED Todo item 
 
 Upcoming List of Abilities: 
-    - Filter COMPLETED Todo item 
     - Filter UN-completed Todo item 
     - Clear completed Todo Item 
     - Hit Enter to add Todo Item 
