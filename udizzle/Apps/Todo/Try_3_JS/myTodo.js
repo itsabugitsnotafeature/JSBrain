@@ -140,7 +140,23 @@ let clerAllTodos = () => {
     _setAllCurrentTodos([]);
 }
 
+let clerAllCompletedTodos = () => {
+    let allCurrentTodos = _getAllCurrentTodos();
+    let allFilteredTodos = [];
+
+    for (let i = 0; i < allCurrentTodos.length; i++) {
+        let listElement;
+        if (allCurrentTodos[i].isCompleted) {
+            continue;
+        } else {
+            allFilteredTodos.push(allCurrentTodos[i]);
+        }
+    }
+    _setAllCurrentTodos(allFilteredTodos);
+    _updateView();
+}
 
 document.getElementById('add-todo').addEventListener('click', addTodo);
 document.getElementById('clear-all-todos').addEventListener('click', clerAllTodos);
+document.getElementById('clear-completed').addEventListener('click', clerAllCompletedTodos);
 _updateView();
