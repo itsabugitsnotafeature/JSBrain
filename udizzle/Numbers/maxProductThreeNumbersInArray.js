@@ -29,8 +29,6 @@ let maximumProduct_consecutiveNumbers = (arr) => {
         max_ending_here_3 = 1,
         elements_ending_here = 0;
 
-
-
     for (let i = 0; i < arr.length; i++) {
         if (elements_ending_here < 3) {
 
