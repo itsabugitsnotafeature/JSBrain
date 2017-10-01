@@ -57,7 +57,7 @@ let maximumProduct_consecutiveNumbers = (arr) => {
     return max_so_far;
 };
 
-let maxProduct = (arr) => {
+let maxProduct_prototype = (arr) => {
     // if size is less than 3, no triplet exists
     if (arr.length < 3) {
         return -1;
@@ -75,52 +75,52 @@ let maxProduct = (arr) => {
     let max_product = -Infinity;
 
     // to store maximum element on left of array
-    let max_sum = arr[0];
+    let max_num = arr[0];
 
     // to store minimum element on left of array
-    let min_sum = arr[0];
+    let min_num = arr[0];
 
     // leftMax[i] will contain max element
     // on left of arr[i] excluding arr[i].
     // leftMin[i] will contain min element
     // on left of arr[i] excluding arr[i].
     for (let i = 1; i < arr.length; i++) {
-        leftMax[i] = max_sum;
+        leftMax[i] = max_num;
 
-        if (arr[i] > max_sum) {
-            max_sum = arr[i];
+        if (arr[i] > max_num) {
+            max_num = arr[i];
         }
 
-        leftMin[i] = min_sum;
+        leftMin[i] = min_num;
 
-        if (arr[i] < min_sum) {
-            min_sum = arr[i];
+        if (arr[i] < min_num) {
+            min_num = arr[i];
         }
     }
 
-    // reset max_sum to store maximum element on
+    // reset max_num to store maximum element on
     // right of array
-    max_sum = arr[arr.length - 1];
+    max_num = arr[arr.length - 1];
 
-    // reset min_sum to store minimum element on
+    // reset min_num to store minimum element on
     // right of array
-    min_sum = arr[arr.length - 1];
+    min_num = arr[arr.length - 1];
 
     // rightMax[i] will contain max element
     // on right of arr[i] excluding arr[i].
     // rightMin[i] will contain min element
     // on right of arr[i] excluding arr[i].
     for (let j = arr.length - 2; j >= 0; j--) {
-        rightMax[j] = max_sum;
+        rightMax[j] = max_num;
 
-        if (arr[j] > max_sum) {
-            max_sum = arr[j];
+        if (arr[j] > max_num) {
+            max_num = arr[j];
         }
 
-        rightMin[j] = min_sum;
+        rightMin[j] = min_num;
 
-        if (arr[j] < min_sum) {
-            min_sum = arr[j];
+        if (arr[j] < min_num) {
+            min_num = arr[j];
         }
     }
 
@@ -141,7 +141,67 @@ let maxProduct = (arr) => {
     return max_product;
 }
 
-console.log(maxProduct(TC.four));
-// console.log(maximumProduct(TC.three));
-// console.log(maximumProduct(TC.two));
-// console.log(maximumProduct(TC.one));
+let myMaxProduct = (arr) => {
+    if(arr.length < 3) {
+        return -1;
+    } else if(arr.length === 3) {
+        return arr.reduce((prev,next)=>{
+            return prev * next;
+        },1)
+    }
+
+
+    let maxProd = -Infinity;
+    debugger
+    let leftMax = (new Array(arr.length)).fill(-1),
+        leftMin = (new Array(arr.length)).fill(-1),
+        rightMax = (new Array(arr.length)).fill(-1),
+        rightMin = (new Array(arr.length)).fill(-1);
+    
+    let max_num = arr[0],
+        min_num = arr[0];
+
+    for(let i=1 ; i <arr.length ; i++ ) {
+        leftMax[i] = max_num;
+        if(arr[i] > max_num){
+            max_num = arr[i];
+        }
+
+        leftMin[i] = min_num;
+        if(arr[i] < min_num){
+            min_num = arr[i];
+        }
+    }
+
+    max_num = arr[arr.length - 1];
+    min_num = arr[arr.length - 1];
+
+    for(let i=arr.length-2 ; i>=0 ; i--){
+        rightMax[i] = max_num;
+        if(arr[i] > max_num){
+            max_num = arr[i];
+        }
+
+        rightMin[i] = min_num;
+        if(arr[i] < min_num){
+            min_num = arr[i];
+        }
+    }
+
+    for(let i=0 ; i<arr.length ; i++){
+        let max1 = Math.max( arr[i] * leftMax[i] * rightMax[i],
+                             arr[i] * leftMin[i] * rightMin[i] );
+
+        let max2 = Math.max( arr[i] * leftMax[i] * rightMin[i],
+                                arr[i] * leftMin[i] * rightMax[i] );
+
+        maxProd = Math.max(maxProd, max1, max2)
+    }
+    return maxProd;
+}
+
+console.log(myMaxProduct([-1,-2,-3]));
+console.log(myMaxProduct(TC.four));
+console.log(maximumProduct(TC.three));
+console.log(maximumProduct(TC.two));
+console.log(maximumProduct(TC.one));
