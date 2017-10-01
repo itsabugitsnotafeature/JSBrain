@@ -1,6 +1,7 @@
 /* 
-    Find the contiguous subarray within an array 
-        (containing at least one number) 
+    Find the contiguous subarray 
+        CONTAINING AT LEAST ONE NUMBER/ELEMENT
+        within an array 
         which has the largest product.
 
     For example, given the array [2,3,-2,4],
@@ -26,7 +27,7 @@ let CORNER_INPUT_1 = [0, 2];
 // 24
 let CORNER_INPUT_2 = [2, -5, -2, -4, 3]
 
-// 24
+// 0
 let CORNER_INPUT_3 = [-2, 0, -1];
 
 // 3
@@ -36,35 +37,31 @@ let my_maxSubArrayProduct = (arr) => {
     if (arr.length === 1) {
         return arr[0];
     }
-    let max_ending_here = 1,
-        min_ending_here = 1,
+    let max_product = 1,
+        min_product = 1,
         max_so_far = -Infinity;
     let hadOnePositive = false,
         hadOneZero = false;
 
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] == 0) {
-            max_ending_here = 1;
-            min_ending_here = 1;
+            // Number is ZERO - Reset Variables
+            max_product = 1;
+            min_product = 1;
             hadOneZero = true;
         } else if (arr[i] > 0) {
-            max_ending_here *= arr[i];
-            min_ending_here = Math.min(min_ending_here * arr[i], min_ending_here);
+            // Number is POSITIVE
+            max_product *= arr[i];
+            min_product = Math.min(min_product * arr[i], min_product);
             hadOnePositive = true;
         } else {
-            temp = max_ending_here;
-            max_ending_here = Math.max(1, min_ending_here * arr[i]);
-            min_ending_here = temp * arr[i];
+            // Number is NEGATIVE
+            temp = max_product;
+            max_product = Math.max(1, min_product * arr[i]);
+            min_product = temp * arr[i];
         }
 
-        if (max_ending_here > max_so_far) {
-            max_so_far = max_ending_here;
-        }
-
-        // console.log("\n\narr[i]: " + arr[i]);
-        // console.log("max_ending_here: " + max_ending_here);
-        // console.log("min_ending_here: " + min_ending_here);
-        // console.log("max_ending_here: " + max_ending_here);
+        max_so_far = (max_product > max_so_far)? max_product : max_so_far;
     }
 
     if (hadOneZero && !hadOnePositive && (max_so_far === 1)) {
@@ -74,7 +71,7 @@ let my_maxSubArrayProduct = (arr) => {
     }
 }
 
-console.log(JSON.stringify(my_maxSubArrayProduct(CORNER_INPUT_4)));
+console.log(JSON.stringify(my_maxSubArrayProduct(CORNER_INPUT_2)));
 
 
 
@@ -82,10 +79,10 @@ console.log(JSON.stringify(my_maxSubArrayProduct(CORNER_INPUT_4)));
 
 function maxSubarrayProduct(arr) {
     // max positive product ending at the current position
-    let max_ending_here = 1;
+    let max_product = 1;
 
     // min negative product ending at the current position
-    let min_ending_here = 1;
+    let min_product = 1;
 
     // Initialize overall max product
     let max_so_far = 1;
@@ -93,61 +90,61 @@ function maxSubarrayProduct(arr) {
     /* 
         Traverse through the array. 
             - Following values are maintained after the i'th iteration:
-                max_ending_here: Always 1 or some positive product ending with arr[i]
-                min_ending_here: Always 1 or some negative product ending with arr[i] 
+                max_product: Always 1 or some positive product ending with arr[i]
+                min_product: Always 1 or some negative product ending with arr[i] 
     */
     for (let i = 0; i < arr.length; i++) {
         /* 
             If this element is positive, 
-                update max_ending_here.
+                update max_product.
                 
-            Update min_ending_here 
-                only if min_ending_here is negative 
+            Update min_product 
+                only if min_product is negative 
         */
         if (arr[i] > 0) {
-            max_ending_here = max_ending_here * arr[i];
-            min_ending_here = Math.min(min_ending_here * arr[i], 1);
+            max_product = max_product * arr[i];
+            min_product = Math.min(min_product * arr[i], 1);
         }
 
         /* 
             
             If this element is 0, 
                 (then the maximum product cannot end here)
-                Reset max_ending_here to 1
-                Reset min_ending_here to 1
+                Reset max_product to 1
+                Reset min_product to 1
         */
         else if (arr[i] == 0) {
-            max_ending_here = 1;
-            min_ending_here = 1;
+            max_product = 1;
+            min_product = 1;
         }
 
         /* 
             If element is negative. 
             
-                max_ending_here can either be 1 or positive. 
-                min_ending_here can either be 1 or negative.
+                max_product can either be 1 or positive. 
+                min_product can either be 1 or negative.
 
                 Next, 
-                    min_ending_here will always be prev. 
+                    min_product will always be prev. 
                 
-                    max_ending_here * arr[i] 
+                    max_product * arr[i] 
                 Next 
-                    If prev min_ending_here === 1
-                        max_ending_here = 1 , 
+                    If prev min_product === 1
+                        max_product = 1 , 
                     Else
-                        max_ending_here = prev min_ending_here * arr[i] 
+                        max_product = prev min_product * arr[i] 
         */
         else {
-            let temp = max_ending_here;
+            let temp = max_product;
 
-            max_ending_here = Math.max(min_ending_here * arr[i], 1);
+            max_product = Math.max(min_product * arr[i], 1);
 
-            min_ending_here = temp * arr[i];
+            min_product = temp * arr[i];
         }
 
         // update max_so_far, if needed
-        if (max_so_far < max_ending_here)
-            max_so_far = max_ending_here;
+        if (max_so_far < max_product)
+            max_so_far = max_product;
     }
 
     return max_so_far;
