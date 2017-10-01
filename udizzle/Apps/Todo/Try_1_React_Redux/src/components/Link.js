@@ -22,7 +22,7 @@ const Link = ({active, children, onClick}) => {
 }
 
 
-List.propTypes = {
+Link.propTypes = {
     active: PropTypes.bool.isRequired,
     children: PropTypes.node.isRequired,
     onClick: PropTypes.func.isRequired

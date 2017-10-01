@@ -11,11 +11,11 @@ let AddTodo = ({dispatch}) => {
             <form
                 onSubmit={e => {
                     e.preventDefault()
-                    if (!imput.value.trim()){
+                    if (!input.value.trim()){
                         return
                     }
-                    dispatch(addTodo(imput.value))
-                    imput.value = ''
+                    dispatch(addTodo(input.value))
+                    input.value = ''
                 }}
             >
                 <input
