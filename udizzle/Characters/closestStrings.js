@@ -32,7 +32,7 @@ let findClosest = (arr, one, two) => {
 }
 let arr = [0,1,2,3,4,5,6,7,8,9];
 let arr1 = [0,1,2,3,4,5,6,7,8,9];
-let one = 0;
+let one = 11;
 let two = 8;
 console.log(findClosest(arr, one, two));
 
