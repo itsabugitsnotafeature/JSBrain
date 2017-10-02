@@ -1,3 +1,29 @@
+let longestPalindrome = (str) =>{
+    if(str.length<=0){
+        return false;
+    }
+
+    if(checkPalen(str)){
+        return true;
+    }
+
+    let length = str.length;
+    
+    
+}
+function checkPalen(str){
+    return ( str.split('').reverse().join('') === str );
+}
+
+
+
+
+
+
+
+
+
+
 let maxProduct = (arr) => {
     debugger
     let max_product = 1,
@@ -24,5 +50,4 @@ let maxProduct = (arr) => {
     }
     return max_so_far;
 }
-
-console.log(maxProduct([2, -5, -2, -4, 3]))
+// console.log(maxProduct([2, -5, -2, -4, 3]))
