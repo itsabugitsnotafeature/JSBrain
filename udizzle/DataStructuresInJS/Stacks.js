@@ -12,6 +12,10 @@ class Stack {
     };
 
     pop() {
+        if (this._size === 0) {
+            console.log('NO STACK DEFINED DUMBASS !');
+            return;
+        }
         let size = this._size;
         let poppedNode = null;
 
@@ -29,7 +33,7 @@ class Stack {
             return;
         }
         let size = this._size;
-        for (let i = 1; i <= size; i++) {
+        for (let i = size; i >= 1 ; i--) {
             console.log('\nNode #' + i + " => " + JSON.stringify(this._storage[i]));
         }
     }
