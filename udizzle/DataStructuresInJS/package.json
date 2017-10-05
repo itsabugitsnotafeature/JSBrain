@@ -1,0 +1,16 @@
+{
+  "name": "datastructuresinjs",
+  "version": "1.0.0",
+  "description": "Source of Truth:      https://github.com/tutsplus/data-structures/tree/master/src",
+  "main": "DoublyLinkedList.js",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-node6": "^11.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start-tree": "./node_modules/babel-cli/bin/babel-node.js  --presets node6 Tree.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

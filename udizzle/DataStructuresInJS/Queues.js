@@ -1,6 +1,6 @@
 'use strict'
 
-class Queue {
+export default class Queues {
     constructor(){
         this._size = 0;
         this._storage = new Object();
@@ -42,4 +42,3 @@ class Queue {
     }
 }
 
-export default Queue;
