@@ -25,7 +25,7 @@ class LinkedList {
             currentNode.next = node;
         }
         ++this._length;
-        return node;
+        return this.head;
     }
 
     removeByPosition(position){
@@ -33,7 +33,7 @@ class LinkedList {
             console.log("DEFINE A LINKED-LIST FISTT DUMBASS !");
             return;
         }
-        if(position <= 0){
+        if(position <= 0 || position > this._length){
             console.log("DEFINE A VALID POSITION INDEX FISTT DUMBASS !");
             return;
         }
@@ -46,10 +46,11 @@ class LinkedList {
         
         let currentNode = this.head;
         let previousNode = null;
-        let currentPosition = 0;
-        while(currentPosition === currentPosition){
+        let currentPosition = 1;
+        while(currentPosition !== position){
             previousNode = currentNode;
             currentNode = currentNode.next;
+            currentPosition++;
         }
         let nodeToDelete = currentNode;
         previousNode.next = currentNode.next;
@@ -65,7 +66,7 @@ class LinkedList {
             return;
         }
         let currentNode = this.head;
-        while(currentNode.next !== null){
+        while(currentNode !== null){
             console.log(JSON.stringify(currentNode));
             currentNode = currentNode.next;
         }
@@ -74,3 +75,12 @@ class LinkedList {
 
 
 
+let ll = new LinkedList();
+ll.add(5);
+ll.add(4);
+ll.add(3);
+ll.add(2);
+ll.add(1);
+ll.show();
+ll.removeByPosition(2);
+ll.show();
