@@ -84,3 +84,6 @@ ll.add(1);
 ll.show();
 ll.removeByPosition(2);
 ll.show();
+
+
+export default LinkedList;
