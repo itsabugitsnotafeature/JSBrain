@@ -30,6 +30,27 @@ let arr1,
     index2;
 
 
+let sortByIndev_v4 = (arrChar, arrIndex)=>{
+    var arr1 = ['C', 'D', 'E', 'F', 'G'];
+    var arr2 = [3, 0, 4, 1, 2];
+    
+    arrChar = arrChar? arrChar: arr1;
+    arrIndex = arrIndex? arrIndex: arr2;
+
+    let map = new Map();
+    for(let i = 0 ; i< arr1.length ; i++){
+        map.set(arr2[i],arr1[i]);
+    }
+    
+    let sorted = new Array(arr1.length);
+    map.forEach((value,key)=>{
+        sorted[key] = value;
+    })
+  
+    console.log(sorted);
+    return sorted;
+};
+
 // THIRD Implementation
 function sortByIndex_v3(array, index) {
     for (let i = 0; i < index.length; ++i) {
