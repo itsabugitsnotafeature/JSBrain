@@ -70,13 +70,24 @@ flightsMap = new Map();
 destMap = new Map();
 tripItinerary = new Array();
 
-// STORE THE FLIGHTS IN A DICT AND THE LIST OF DST
+/*
+    1. Create a MAP storing (flightsMap)
+        SRC --> setTo --> DEST
+    2. Create a MAP storing (destMap)
+        DEST --> setTo --> 'true'
+*/ 
 passes.forEach((stop,index) => {
     flightsMap.set(stop.depart, stop.arrival);
     destMap.set(stop.arrival, 'true');
 });
 
-// FIND FIRST FLIGHT
+/*  Now, Only the START location of the Itinerary,
+    will NOT have an entry in destMap, 
+    Because user never arrived there !
+        (Because it was the start point)
+    
+    Threrefore, figure out the START CITY
+*/
 flightsMap.forEach((destCity,arrCity) => {
    if(!destMap.has(destCity)){
         startCity = destCity;
@@ -85,9 +96,17 @@ flightsMap.forEach((destCity,arrCity) => {
    }
 });
 
+// Assing Start City to Local Var
 let curCity = startCity;
 
+// Push First City in the Itinerary array as start Location
 tripItinerary.push(startCity);
+
+/*
+    For Each PASS in PASSES
+        SET 'curCity' to its DEST from 'flightsMap'
+        Push 'curCity' to  Itinerary array 
+*/
 for(let i=1 ; i<(passes.length+1) ; i++  ){
     curCity = flightsMap.get(curCity);
     tripItinerary.push(curCity);
