@@ -109,5 +109,5 @@ function longestPalindrome_efficient(str) {
 let testIp1 = 'aaaaafvewvrewgfdcrwgfrewff';
 let testIp2 = 'babcbabcbaccba';
 let startTime1 = Date.now();
-console.log(longestPalindrome_efficient(testIp1));
+console.log(longestPalindrome_efficient(testIp));
 console.log("RUNTIME: " + (Date.now() - startTime1) / 1000);

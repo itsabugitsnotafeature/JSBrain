@@ -29,7 +29,7 @@ let arr1,
     arr2,
     index2;
 
-
+// FOURTH Implementation
 let sortByIndev_v4 = (arrChar, arrIndex)=>{
     var arr1 = ['C', 'D', 'E', 'F', 'G'];
     var arr2 = [3, 0, 4, 1, 2];
@@ -61,7 +61,6 @@ function sortByIndex_v3(array, index) {
             tmp = index[tmp];
         }
     }
-    debugger
     return array;
 }
 function swap(arr, i, j) {
@@ -78,10 +77,9 @@ function swapIndex(arr, i, j) {
 
 // SECOND Implementation
 function sortByIndex_v1(arr, index) {
-    debugger
-    // if (!arr || !index || (arr.length < 1) || (index.length < 1)) {
-    //     return null;
-    // }
+    if (!arr || !index || (arr.length < 1) || (index.length < 1)) {
+        return null;
+    }
     let indexMap = new Map();
 
     for (let i = 0; i < index.length; i++) {

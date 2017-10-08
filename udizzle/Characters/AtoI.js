@@ -13,8 +13,12 @@ function aToI(str) {
     let last = str[str.length-1].charCodeAt(0) - 48;
     last = (str[0] == "-" && last * -1) || last
     let new_str = str.slice(0,str.length-1);
-    debugger;
-    return (new_str != "" && new_str != "-") && (10 * aToI(new_str) + last) || last; 
+
+    if( new_str === "" || new_str === "-") {
+      return last;
+    } else {
+      return (10 * aToI(new_str) + last);
+    }
 }
 
 console.log(aToI("1"));
