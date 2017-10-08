@@ -8,8 +8,8 @@
 
     Input Format
         The first line contains two space-separated integers 
-            denoting the respective values of  (the number of integers) and  
-            (the number of left rotations you must perform). 
+            denoting the respective values of (the number of integers) and  
+            the number of left rotations you must perform. 
         The second line contains  space-separated integers describing 
             the respective elements of the array's initial state.
 
@@ -46,7 +46,7 @@ let rotateArrVanilla = (arr, times, reverse) => {
     return arr.slice(times).concat(arr.slice(0,times))
 }
 
-let ip = [1, 2, 3, 4, 5, 6, 7, 8];
+// let ip = [1, 2, 3, 4, 5, 6, 7, 8];
 console.log(JSON.stringify(rotateArr(ip, 5)));
 ip = [1, 2, 3, 4, 5, 6, 7, 8];
 console.log(JSON.stringify(rotateArrVanilla(ip, 5)));

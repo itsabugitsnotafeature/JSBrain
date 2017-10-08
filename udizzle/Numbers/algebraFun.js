@@ -153,6 +153,6 @@ let mySqrt = (num, guess) => {
     }
 }
 
-console.log("Squsre Root of 49 is:" + mySqrt(3));
+console.log("Squsre Root of 3 is:" + mySqrt(3));
 // console.log("Squsre Root of 49 is:" + mySqrt(49));
 // console.log("Squsre Root of 169 is:" + mySqrt(169));

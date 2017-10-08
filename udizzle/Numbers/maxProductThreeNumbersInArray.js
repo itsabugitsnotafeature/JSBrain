@@ -150,9 +150,8 @@ let myMaxProduct = (arr) => {
         },1)
     }
 
-
     let maxProd = -Infinity;
-    debugger
+    
     let leftMax = (new Array(arr.length)).fill(-1),
         leftMin = (new Array(arr.length)).fill(-1),
         rightMax = (new Array(arr.length)).fill(-1),
@@ -200,8 +199,8 @@ let myMaxProduct = (arr) => {
     return maxProd;
 }
 
-console.log(myMaxProduct([-1,-2,-3]));
-console.log(myMaxProduct(TC.four));
-console.log(maximumProduct(TC.three));
-console.log(maximumProduct(TC.two));
-console.log(maximumProduct(TC.one));
+console.log(maxProduct_prototype([-1,-2,-3]));
+console.log(maxProduct_prototype(TC.four));
+console.log(maxProduct_prototype(TC.three));
+console.log(maxProduct_prototype(TC.two));
+console.log(maxProduct_prototype(TC.one));

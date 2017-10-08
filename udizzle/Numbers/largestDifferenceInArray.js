@@ -16,13 +16,13 @@
 
 let greatestDiff = (arr) => {
     let maxDiff = -Infinity,
-        currMinNum = arr[0];
+        currMinValue = arr[0];
 
     for(let i=1 ; i< arr.length ; i++){
-        if( arr[i] > currMinNum && (arr[i] - currMinNum > maxDiff) ){
-            maxDiff = arr[i] - currMinNum;
-        } else if ( arr[i] <= currMinNum ) {
-            currMinNum = arr[i];
+        if( arr[i] > currMinValue && (arr[i] - currMinValue > maxDiff) ){
+            maxDiff = arr[i] - currMinValue;
+        } else if ( arr[i] <= currMinValue ) {
+            currMinValue = arr[i];
         }
     }
     return maxDiff;

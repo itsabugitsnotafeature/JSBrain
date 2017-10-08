@@ -30,4 +30,6 @@ let my_maxSubArraySum = (arr) => {
     return max_so_far;
 }
 
-console.log(JSON.stringify(my_maxSubArraySum(IDEAL_NEG_INPUT)));
+console.log(JSON.stringify(my_maxSubArraySum(IDEAL_INPUT)) === 6 );
+console.log(JSON.stringify(my_maxSubArraySum(IDEAL_NEG_INPUT)) === -1 );
+console.log(JSON.stringify(my_maxSubArraySum(LONGEST_INPUT)) === 3452 );

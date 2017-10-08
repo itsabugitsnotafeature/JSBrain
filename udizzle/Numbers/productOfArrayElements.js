@@ -38,7 +38,6 @@ let prodArrayWoDivision = (arr) => {
         prodArr.push(mul);
         mul *= arr[i];
     }
-    return prodArr;
 
     mul = 1;
     for(let i=arr.length-1 ; i >= 0 ; i--){
