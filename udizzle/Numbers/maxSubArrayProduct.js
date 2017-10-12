@@ -56,7 +56,7 @@ let my_maxSubArrayProduct = (arr) => {
             hadOnePositive = true;
         } else {
             // Number is NEGATIVE
-            temp = max_product;
+            let temp = max_product;
             max_product = Math.max(1, min_product * arr[i]);
             min_product = temp * arr[i];
         }

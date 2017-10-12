@@ -10,9 +10,11 @@
         }
     }
     console.log(getFibomacci(8) === 34);
- */
+*/
 
-/* 
+
+
+ /* 
 
     let convertToBinary = (decNum) => {
         let binNum = '';
@@ -75,7 +77,7 @@
     // Max Sub Array Sum
     let max_sum = (arr) => {
         let max_so_far = -Infinity;
-        let max_ending_here = 0;
+        let max_ending_here = arr[0];
         for(let i=1 ; i<arr.length ; i++ ){
             max_ending_here += arr[i];
             if (max_ending_here > max_so_far){

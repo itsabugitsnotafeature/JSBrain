@@ -1,6 +1,6 @@
 /* 
 
-    Given an integer array, find three numbers 
+    Given an integer array, find ANY three numbers 
     whose product is MAXIMUM and 
     OUTPUT the maximum product.
         Example 1:
@@ -9,6 +9,10 @@
         Example 2:
             Input: [1,2,3,4]
             Output: 24
+        Example 3:
+            Input: [1,2,1,3,1,4,1]
+            Output: 24
+
     Note:
         The length of the given array will be in range [3,104] 
         All elements are in the range [-1000, 1000].
@@ -198,7 +202,7 @@ let myMaxProduct = (arr) => {
     }
     return maxProd;
 }
-
+console.log(maxProduct_prototype([1,2,1,3,1,4,1]));
 console.log(maxProduct_prototype([-1,-2,-3]));
 console.log(maxProduct_prototype(TC.four));
 console.log(maxProduct_prototype(TC.three));
