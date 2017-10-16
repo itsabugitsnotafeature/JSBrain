@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+    <meta name="" content=""></meta>
+    <header>
+        <title>JSON-P Example</title>
+    </header>
+    <body>
+        <p>
+            Source: https://stackoverflow.com/questions/5943630/basic-example-of-using-ajax-with-jsonp
+        </p>
+        <h1>Hello JSON-P World</h1>
+        <div id="demo">
+            <div></div>
+        </div>
+
+        <div id='monkeys'></div>
+
+        <script type="text/javascript">
+            function myCallback(json){
+                // console.log("Called myCallback");
+                // console.log("Payload: " + JSON.stringify(payload) );
+                // document.getElementById('demo').innerHTML = JSON.stringify(payload);
+                var monkey_photos = document.getElementById('monkeys');
+                var container = document.createElement('div');
+
+                // Initialize a var for new elements
+                var div;
+
+                // Build a list of images
+                for (var item in json.items) {
+
+                    // Create an element to hold an image. It's easier to append
+                    // stuff to the page this way.
+                    div = document.createElement('div');
+
+                    // Stick html into the new div, append to the container.
+                    div.innerHTML = json.items[item].description;
+                    container.appendChild(div);
+                }
+
+                // Add the images to the DOM all at once (rather than one at a time, 
+                // which can cause multiple reflows.
+                monkey_photos.appendChild(container);
+            }
+        </script>
+        <script type="text/javascript" src='http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=myCallback&tags=monkey&tagmode=any&format=json' ></script>
+        <!-- <script type="text/javascript" src='http://api.myjson.com/bins/oxdix?jsoncallback=myCallback&tags=monkey&tagmode=any&format=json' ></script> -->
+        
+
+    </body>
+
+</html>
