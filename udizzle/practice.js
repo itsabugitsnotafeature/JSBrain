@@ -1,5 +1,32 @@
 
 
+
+/* 
+    // Remove words from 's' that are in 't'
+    // Return array will be in order of words placement in original string 's'
+
+    let s = "I am using a HackerRank to improve programming";
+    let t = "am HackerRank to improve";
+
+    function missingWords(s, t) {
+        s = s.split(' ');
+        t = t.split(' ');
+
+        if (t.length === s.length) {
+            return [];
+        }
+        t.forEach((word) => {
+            let index = s.indexOf(word);
+            if (index > -1) {
+                s.splice(index, 1);
+            }
+        });
+        return s;
+    }
+    missingWords(s, t);
+*/
+
+
 /* 
     let getFibomacci = (num) => {
         if(num <= 1){
