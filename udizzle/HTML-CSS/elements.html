@@ -16,8 +16,301 @@
         }
     </style> -->
 
+    <!-- Practice 11 : Increase counter by step-->
+    <!-- SRC: https://www.w3resource.com/html-css-exercise/set-counter-and-insert-before-answer.php -->
+    <div id="increment-by-step">
+        <ol>
+            <li>item</li>
+            <!-- 1     -->
+            <li>item
+                <!-- 2     -->
+                <ol>
+                    <li>item</li>
+                    <!-- 2.1   -->
+                    <li>item</li>
+                    <!-- 2.2   -->
+                    <li>item
+                        <!-- 2.3   -->
+                        <ol>
+                            <li>item</li>
+                            <!-- 2.3.1 -->
+                            <li>item</li>
+                            <!-- 2.3.2 -->
+                        </ol>
+                        <ol>
+                            <li>item</li>
+                            <!-- 2.3.1 -->
+                            <li>item</li>
+                            <!-- 2.3.2 -->
+                            <li>item</li>
+                            <!-- 2.3.3 -->
+                        </ol>
+                    </li>
+                    <li>item</li>
+                    <!-- 2.4   -->
+                </ol>
+            </li>
+            <li>item</li>
+            <!-- 3     -->
+            <li>item</li>
+            <!-- 4     -->
+        </ol>
+        <ol>
+            <li>item</li>
+            <!-- 1     -->
+            <li>item</li>
+            <!-- 2     -->
+        </ol>
+    </div>
+    <style>
+        /* When Target attribute begins with a certain value */
+        #increment-by-step .container[data-name^=w3r]{
+            color:#5ac4ed;
+        }
+        #increment-by-step {
+            padding: 1rem;
+        }
 
-    <!-- Practice X : Adaptible Grid-->
+        increment-by-step ol {
+            counter-reset: Step;
+            /* Creates a new instance of the Step counter with each ol element */
+            list-style-type: none;
+        }
+
+        increment-by-step li:before {
+            counter-increment: Step;
+            /* Increments only this instance of the Step counter */
+            content: counters(Step, ".") " ";
+            /* Adds the value of all instances of the Step counter separated by a ".". */
+        }
+    </style>
+
+
+
+
+
+    <!-- Practice 10 : Top corner ribbon-->
+    <!-- SRC: https://www.w3resource.com/html-css-exercise/corner-ribbon-answer.php -->
+    <div id="corner-ribbon">
+        <div class="ribbon">
+            <a href="#">
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Best Value Pack &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            </a>
+        </div>
+
+    </div>
+    <style>
+        #corner-ribbon .ribbon {
+            background-color: red;
+            /* Placing in top left corner */
+            position: absolute;
+            left: -94px;
+            top: 40px;
+            width: calc(500px - 15%);
+            /* Adding 45degree sotation */
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            /* for creating shadow */
+            -webkit-box-shadow: 0 0 10px #888;
+            -moz-box-shadow: 0 0 10px #888;
+            box-shadow: 0 0 10px #888;
+        }
+
+        #corner-ribbon p::first-letter {
+            font-weight: bold;
+        }
+
+        #corner-ribbon p::first-line {
+            color: blue;
+        }
+
+        #corner-ribbon .container {
+            background: #5ac4ed;
+            height: 150px;
+            width: 200px;
+            margin: 10px
+        }
+
+        #corner-ribbon .container:empty {
+            background: #ec8007;
+            height: 150px;
+            width: 200px;
+            margin: 10px
+        }
+
+        .linear {
+            background: linear-gradient(to bottom, #4b6c9c, #5ac4ed);
+        }
+
+        .radial {
+            background: radial-gradient(#4b6c9c, #5ac4ed);
+        }
+
+        .repeating-linear {
+            background: repeating-linear-gradient(-45deg, #4b6c9c, #5ac4ed 5px, #fff 5px, #fff 10px);
+        }
+
+        .repeating-radial {
+            background: repeating-radial-gradient(#4b6c9c, #5ac4ed 5px, #fff 5px, #fff 10px);
+        }
+
+        /* Adjcent sibling selesctor */
+
+        h2+h3+p {
+            border-bottom: 8px solid silver
+        }
+
+        #corner-ribbon .ribbon a {
+            border: 1px solid #faa;
+            color: #fff;
+            display: block;
+            font: bold 100% 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 1px 0;
+            padding: 10px 50px;
+            text-align: center;
+            text-decoration: none;
+            /* for creating shadow */
+            text-shadow: 0 0 5px #444;
+        }
+
+        #corner-ribbon {
+            padding: 1rem;
+        }
+    </style>
+
+
+
+
+    <!-- Practice 9 : Huge button-->
+    <!-- SRC: https://www.w3resource.com/html-css-exercise/button-answer.php -->
+    <div id="huge-button">
+        <button>
+            Subscribe Now
+        </button>
+
+    </div>
+    <style>
+        #huge-button button {
+            width: 200px;
+            padding: 8px;
+            background-color: #428bca;
+            border-color: #357ebd;
+            border: 2px dashed greenyellow;
+            color: #fff;
+
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            /* future proofing */
+            -khtml-border-radius: 10px;
+            /* for old Konqueror browsers */
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid transparent;
+
+            font-weight: 900;
+            font-size: 125%
+        }
+
+        #huge-button {
+            padding: 1rem;
+        }
+    </style>
+
+
+
+
+
+
+    <!-- Practice 8 : Zebra Striped Table-->
+    <!-- SRC: https://www.w3resource.com/html-css-exercise/zebra-table-answer.php -->
+    <div id="zebra-table">
+        <table>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Major</td>
+            </tr>
+            <tr>
+                <td>1001</td>
+                <td>Gopal</td>
+                <td>Physics</td>
+            </tr>
+            <tr>
+                <td>1002</td>
+                <td>joy</td>
+                <td>eco</td>
+            </tr>
+            <tr>
+                <td>1003</td>
+                <td>Chandu</td>
+                <td>Math</td>
+            </tr>
+        </table>
+
+
+
+    </div>
+    <style>
+        #zebra-table table tr:nth-child(1) {
+            text-align: center;
+            font-weight: bold;
+            background-color: rgb(209, 207, 207);
+        }
+
+        #zebra-table table tr:nth-child(even) {
+            background-color: greenyellow;
+        }
+
+        #zebra-table {
+            padding: 1rem;
+        }
+
+        #zebra-table table {
+            width: 50%;
+        }
+
+        #zebra-table table tr td {
+            border: 1px solid black;
+        }
+    </style>
+
+
+
+
+
+
+
+
+    <!-- Practice 7 : Sticky Footer-->
+    <!-- SRC: https://www.w3resource.com/html-css-exercise/footer-answer.php -->
+    <div id="sticky-footer">
+        <footer>
+            Here is my Footer
+        </footer>
+    </div>
+    <style>
+        #sticky-footer {
+            padding: 1rem;
+        }
+
+        #sticky-footer footer {
+            margin: 1rem;
+            bottom: 0;
+            position: fixed;
+            background-color: turquoise;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+
+
+
+
+    <!-- Practice 6 : Adaptible Grid-->
     <!-- SRC: XXX -->
     <div id="responsive_4x4_grid">
         <div id="grid_section">
@@ -37,7 +330,6 @@
 
     </div>
     <style>
-        
         #grid_section .elem {
             display: block;
             width: 24%;
@@ -70,6 +362,8 @@
 
 
 
+
+
     <!-- Practice 5 : Navigation Bar-->
     <!-- SRC: https://www.w3resource.com/html-css-exercise/navigation-answer.php -->
     <div id="nav_bar">
@@ -95,11 +389,16 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"> Products </a</li>
+                            <a href="#"> Products </a>
+                            <li>
+                                <a href="#"> Services </a>
                                 <li>
-                                    <a href="#"> Services </a</li>
-                                        <li>
-                                            <a href="#"> Contact </a</li>
+                                    <a href="#"> Contact </a>
+                                </li>
+                            </li>
+                        </li>
+                </li>
+                </li>
 
             </ul>
         </nav>
