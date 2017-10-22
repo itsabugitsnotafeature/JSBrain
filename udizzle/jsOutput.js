@@ -9,25 +9,25 @@
 
 
 
-
+// Q 29.
 // how to tell if an object is an array 
 let a = [1,2,3]
 typeof a    // object
-Object.prototype.toString.call(a)   // '[object Array]'
-// OR 
-Array.isArray(a)    // true
+
+/* 
+    Object.prototype.toString.call(a)   // '[object Array]'
+    // OR 
+    Array.isArray(a)    // true
+*/
 
 
-
-
-
+// Q 28.
 let a0 = () =>{
 	return true;
 };
 let a1 = [];
 let a2 = {};
 let a3 = null;
-function a4(){return true};
 
 typeof a0
 typeof a1
@@ -39,14 +39,13 @@ typeof a3
     object
     object
     object
-    function
 */
 
 
 
 
 
-
+// Q 27.
 (function(){
     var a = b = 3;
   })();
@@ -84,6 +83,7 @@ console.log(b);
 
 
 
+// Q 26.
 var myObject = {
     foo: "bar",
     func: function() {
@@ -107,7 +107,10 @@ myObject.func();
 
 
 
-// ******* IMP ********// ******* IMP ********
+
+// Q 25.
+// ******* IMP ********
+// ******* IMP ********
 typeof NaN
 NaN === NaN
 NaN == NaN
@@ -120,6 +123,8 @@ NaN == NaN
 
 
 
+
+// Q 24.
 (function() {
     console.log(1); 
     setTimeout(function(){console.log(2)}, 1000); 
@@ -139,22 +144,22 @@ NaN == NaN
 
 
 
+// Q 23.
 // ******* IMP ********// ******* IMP ********
 // Write a function that can run both statements below
-
 console.log(sum(2,3));   // Outputs 5
 console.log(sum(2)(3));  // Outputs 5
 
-function sum(a,b){
-    if(!b){
-        return (function(b){
-            return a+b;
-        })
-    } else {
-        return a+b;
-    }
-}
 /* 
+    function sum(a,b){
+        if(!b){
+            return (function(b){
+                return a+b;
+            })
+        } else {
+            return a+b;
+        }
+    }
     // sum(2,3) => 5
     // sum(2)(3) => 5
 
@@ -162,15 +167,19 @@ function sum(a,b){
 
 
 
-
+// Q 22.
+// ******* IMP ********
 for (let i = 0; i < 5; i++) {
     var btn = document.createElement('button');
     btn.appendChild(document.createTextNode('Button ' + i));
     btn.addEventListener('click', function () { console.log(i); });
-    document.body.appendChild(btn);     // ******* IMP ********// ******* IMP ********
+    document.body.appendChild(btn);     // ******* IMP ********
+    
 }
 btn.click();
-//OUTPUT: 5
+/* 
+    OUTPUT: 5
+*/
 
 // Sol1:
 for (let i = 0; i < 5; i++) {
@@ -200,11 +209,12 @@ for (var i = 0; i < 5; i++) {
 
 
 
+// Q 21.
 var d = {};
 ['zebra', 'horse'].forEach(function (k) {
     d[k] = undefined;
 });
-d.d.hasOwnProperty()
+d.hasOwnProperty()
 d.horse
 d.xyz
 d.hasOwnProperty('zebra')
@@ -221,6 +231,8 @@ d.hasOwnProperty('xyz')
 
 
 
+
+// Q 20.
 // ******* IMP ********
 // ******* IMP ********
 // ******* IMP ********
@@ -234,10 +246,30 @@ console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
 /* 
     "array 1: length=5 last=j,o,n,e,s"
     "array 2: length=5 last=j,o,n,e,s"
+    Becasue, 
+        var arr1 = "john".split('');
+        var arr2 = arr1.reverse();
+        var arr3 = "jones".split('');
+        arr2.push(arr3);
+    This can be broken down to, 
+        var arr1 = "john".split('');
+        
+        arr1.reverse();
+        var arr2 = arr1;
+
+        var arr3 = "jones".split('');
+        
+        arr2.push(arr3); [ also meaning arr1.push ]
+        Becasue arr2 == arr1 => true
+
 */
 
 
 
+
+
+
+// Q 19.
 (1 + "2" + "2");    // ******* IMP ********
 (1 + +"2" + "2");
 (1 + -"1" + "2");
@@ -248,15 +280,21 @@ console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
     "122"
     32
     "2"
-    "122"
+    "112"
     "NaN2"
     Nan
 */
 
-+"1"    // ******* IMP ********
-    - "1"
-    - "+1"
-    - "-1"
+
+
+
+
+// Q 18.
++  "1"    // ******* IMP ********
+-  "1"
+- "+1"
+- "-1"
+
 /* 
     1
     -1
@@ -265,6 +303,9 @@ console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
 */
 
 
+
+
+// Q 17.
 var globalVar = "xyz";
 (function outerFunc(outerArg) {
     var outerVar = 'a';
@@ -289,7 +330,7 @@ var globalVar = "xyz";
 
 
 
-
+// Q 16.
 for (var i = 0; i < 5; i++) { // ******* IMP ********
     setTimeout(function () {
         console.log(i);
@@ -313,6 +354,11 @@ for (var i = 0; i < 5; i++) {
     //  0 1 2 3 4
 */
 
+
+
+
+ 
+// Q 15. 
 console.log("0 || 1 = " + (0 || 1));
 console.log("1 || 2 = " + (1 || 2));
 console.log("0 && 1 = " + (0 && 1));
@@ -326,6 +372,11 @@ console.log("1 && 2 = " + (1 && 2)); // ******* IMP ********
 
 */
 
+
+
+
+
+// Q 14. 
 false == 0
 false == '0'    // ******* IMP ********
 false == +'0'
@@ -341,8 +392,10 @@ false === 0
 */
 
 
+
+
+// Q 13. 
 true == 1
-true == '1'
 true == '1'
 true == 0 + '1'
 true == '0' + '1'
@@ -353,18 +406,19 @@ true === 1
     // true
     // true
     // true
-    // true
     // false
 */
 
 
+
+
+// Q 12. 
 var a = {},
     b = { key: 'b' },
     c = { key: 'c' };
 
 a[b] = 123;
 a[c] = 456;
-
 console.log(a[b]);
 /* 
     // 456
@@ -375,6 +429,9 @@ console.log(a[b]);
 */
 
 
+
+
+// Q 11. 
 (function f(n) {
     return (
         (n > 1) ? n * f(n - 1) : n
@@ -385,6 +442,9 @@ console.log(a[b]);
     // 3628800
 */
 
+
+
+// Q 10. 
 (function (x) {
     // 	x = 1
     return (function (y) {
@@ -394,9 +454,13 @@ console.log(a[b]);
 })(1);
 /* 
     // 1
-
 */
 
+
+
+
+
+// Q9. 
 var hero = {
     _name: 'John Doe',
     getSecretIdentity: function () {
@@ -406,18 +470,20 @@ var hero = {
 var stoleSecretIdentity = hero.getSecretIdentity;
 console.log(stoleSecretIdentity());
 console.log(hero.getSecretIdentity());
+console.log(stoleSecretIdentity.apply(hero));
+console.log(stoleSecretIdentity.call(hero));
 
 /* 
 
-    // Undefined 
+    // undefined 
     // John Doe 
+
     // Solution 1
     stoleSecretIdentity = hero.stoleSecretIdentity.bind(hero);
 
     // Solution 2
     stoleSecretIdentity.apply(hero)
     stoleSecretIdentity.call(hero)
-
 
 */
 
@@ -429,23 +495,40 @@ var length = 10;
 function fn() {
     console.log(this.length);
 }
-
-var obj = {
+var obj1 = {
     length: 5,
     method: function (fn) {
         fn();
         arguments[0]();
     }
 };
-obj.method(fn, 1);
+var obj2 = {
+    length: 5,
+    method: function (fn) {
+        fn.apply(this);
+        arguments[0]();
+    }
+};
+// Scenario 1
+obj1.method(fn, 1);
+// Scenario 2
+obj2.method(fn, 1);
 /* 
-    10
-        fron vanilla call for fn()
-    2
-        In second call , arguments[0]()
-        this refers to arguments, 
-        and total length for arguments is 2 now
-        Therefore for fn, this.length = 2;
+
+    // Scenario 1
+        10
+            fron vanilla call for fn()
+        2
+            In second call , arguments[0]()
+            this refers to arguments, 
+            and total length for arguments is 2 now
+            Therefore for fn, this.length = 2;
+
+    // Scenario 2
+        5
+        2
+
+
 */
 
 
