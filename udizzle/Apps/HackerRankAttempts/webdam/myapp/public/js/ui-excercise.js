@@ -17,16 +17,13 @@ function renderPage() {
 }
 
 function setupPage() {
-	console.log("Received JSON DATA..");
-	// console.log(this.responseText);
-
+	console.log("Received JSON DATA..");	
 	let cardData = JSON.parse(this.responseText);
 
-	
 	cardData.forEach(function(cardInfo, index) {
 		
-		let t = document.querySelector('#card-template')
-		let clone = t.content.firstElementChild;
+		let templeteNode = document.querySelector('#card-template')
+		let clone = templeteNode.content.firstElementChild;
 		
 		let tDiv = clone.cloneNode(true);
 		
@@ -37,10 +34,7 @@ function setupPage() {
 
 		let cardGrid = document.querySelector("#card-content-items");
 		cardGrid.appendChild(tDiv);
-
-		
 	}, this);
-
 
 }
 

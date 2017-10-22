@@ -71,7 +71,6 @@ body {
 }
 
 
-
 li a:hover{
     background-color: rgba(50, 51, 50, 0.842);
     color: white;
@@ -97,13 +96,12 @@ li a:hover{
 
 #app-content{
     position: absolute;
-    width: 100%;
-    height: 100%;
     background: rgb(248, 242, 242);
 }
 
 #app-content .card-content{
     margin: 10px;
+    background: rgb(248, 242, 242);
 }
 
 .card {
@@ -121,39 +119,3 @@ li a:hover{
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-
-
-
-
-/* .container {
-    padding: 2px 16px;
-} */
-
-/* 
-
-.misc {
-    border: right;
-    explore: #4e9ad3;   // side bar color on nav icon
-    folder: #f631ef;
-    upload: #ff9400;
-    font-size: 14px bold;
-    font-color: e4e4e4;
-
-}
-
-.top-banner {
-    font-color: #403f3f;
-    large-text: 60px, bold;
-    small-text: 18px, bold;
-}
-
-.boxes {
-    font-color: #403f3f;
-    title: 18px, bold,
-    filename: 14px. bold
-    description: 12px regular; 
-    line-height: 24px;
-}
-
-
- */
