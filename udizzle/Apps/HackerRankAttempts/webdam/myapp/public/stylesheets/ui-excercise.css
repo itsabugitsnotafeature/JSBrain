@@ -20,6 +20,7 @@ body {
 
 .header-text{
     padding-top: 90px;
+    padding-left: 19px;
 }
 
 .header-text h1, .header-text h4 {
@@ -57,7 +58,7 @@ body {
 
 .navigator li a {
     background-color: rgb(35, 37, 35);
-    height: 76px;
+    height: 60px;
 }
 
 .navigator li a div {
@@ -73,6 +74,21 @@ li a:hover{
 }
 
 
+.nav-explore{
+    border-style: solid;
+    border-right-color: #4e9ad3;
+}
+
+
+.nav-folder{
+    border-style: solid;
+    border-right-color: #f631ef;
+}
+
+.nav-cloud_upload{
+    border-style: solid;
+    border-right-color: #ff9400;
+}
 
 
 /* 
