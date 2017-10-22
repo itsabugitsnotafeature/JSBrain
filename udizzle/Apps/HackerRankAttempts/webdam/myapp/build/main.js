@@ -352,6 +352,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function routes(app) {
   app.use('/api/v1/examples', _router2.default);
+
+  app.get('/users', function (req, res) {
+    console.log('Im here dude');
+
+    res.send('WOOHOOOO');
+  });
 }
 
 /***/ }),
