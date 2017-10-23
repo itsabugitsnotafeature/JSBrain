@@ -9,6 +9,82 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// QQ: What value is returned from the above statement?
+~3.14
+~~3.14
+~~~3.14
+~~~~3.14
+/* 
+Answer: 
+    -4
+    3
+    -4
+    3
+
+*/
+
+
+
+
+
+// QQ: What value is returned from the above statement?
+"a lasagna hog".split("").reverse().join("")
+/* 
+    Answer: "goh angasal a"
+
+*/
+
+
+
+
+
+// QQ: What is the value of window.foo?
+( window.foo || ( window.foo = "bar" ) )
+/* 
+    Answer: "bar"
+
+*/
+
+
+
+// QQ: What is the outcome of the two console.logs above?
+var foo = "Hello"
+
+(function() { 
+  var bar = " World" 
+  console.log(foo + bar) 
+})() 
+console.log(foo + bar)
+
+/* 
+    Answer: 
+    "Hello World" 
+    ReferenceError: bar is not defined
+
+
+*/
+
+
 // Q 29.
 // how to tell if an object is an array 
 let a = [1,2,3]
