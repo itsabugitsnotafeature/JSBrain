@@ -51,6 +51,9 @@ function toCamelCase(str) {
 function arrangeByTitle() {
 	var chartData = window.jsonData;
 	console.log('Rearranging by name !')
+	
+
+
 	return true;
 }
 
