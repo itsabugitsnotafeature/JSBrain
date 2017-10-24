@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta></meta>
+    <title>Slide Show POC</title>
+
+</head>
+
+<body>
+    <style>
+        body {
+            background: slategrey;
+        }
+
+        #slide-show-wrapper {
+            /*
+            width: 100%;
+            height: 100%;
+            line-height: 9rem; 
+            */
+            position: unset;
+            display: block;
+            height: -webkit-fill-available;
+
+            /* position: relative;
+            background: white;
+            height: 200px;
+            width: 60%;
+            margin: 0 auto;
+            padding: 20px;
+            resize: both;
+            overflow: auto; */
+        }
+
+        .show-window {
+            display: inline-flex;
+            margin: 3rem;
+            padding: 1rem;
+            position: relative;
+            height: auto;
+            width: -webkit-fill-available;
+        }
+
+        .prev,.next {
+            margin: 1rem;
+            height: max-content;
+        }
+
+        .image-canvas {
+            margin: 1rem;
+            height: max-content;
+        }
+
+        .show-nav-button {
+            line-height: 32rem;
+            font-size: -webkit-xxx-large;
+        }
+
+        #active-image {
+            height: 32rem;
+            width: 44rem;
+        }
+    </style>
+
+
+    <div id="slide-show-wrapper">
+        <div class="show-window">
+            <div class="prev">
+                <button onclick="loadPrevSlide()" class="show-nav-button"> < </button>
+            </div>
+
+            <div class="image-canvas">
+                <img id="active-image" 
+                    alt="Slide Show Image" 
+                    src="" 
+                    name="0" />
+            </div>
+
+            <div class="next">
+                <button onclick="loadNextSlide()" class="show-nav-button"> > </button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        let imgStore = [];
+        let imgUrls = [
+            "https://homepages.cae.wisc.edu/~ece533/images/airplane.png",
+            "https://homepages.cae.wisc.edu/~ece533/images/arctichare.png",
+            "https://homepages.cae.wisc.edu/~ece533/images/baboon.png",
+            "https://homepages.cae.wisc.edu/~ece533/images/boat.png",
+            "https://homepages.cae.wisc.edu/~ece533/images/cat.png",
+            "https://homepages.cae.wisc.edu/~ece533/images/fruits.png",
+            "https://homepages.cae.wisc.edu/~ece533/images/frymire.png",
+            "https://homepages.cae.wisc.edu/~ece533/images/girl.png",
+            "https://homepages.cae.wisc.edu/~ece533/images/monarch.png",
+            "https://homepages.cae.wisc.edu/~ece533/images/mountain.png",
+        ];
+
+        function loadNextSlide() {
+            console.log("Hello from loadNextSlide !");
+            let elem = document.querySelector('#active-image');
+            let order = parseInt(elem.name) || 0;
+
+            if (order > imgStore.length || order < 0) {
+                alert("WTF is going on dude! ");
+            } else if (order === imgStore.length - 1) {
+                elem.src = imgStore[0].url;
+                elem.name = '0';
+            } else {
+                elem.src = imgStore[order + 1].url;
+                elem.name = (order + 1).toString();
+            }
+        }
+
+        function loadPrevSlide() {
+            console.log("Hello from loadPrevSlide !")
+            let elem = document.querySelector('#active-image');
+            let order = parseInt(elem.name) || 0;
+
+            if (order > imgStore.length || order < 0) {
+                alert("WTF is going on dude! ");
+            } else if (order === 0) {
+                elem.src = imgStore[imgStore.length - 1].url;
+                elem.name = [imgStore.length - 1].toString();
+            } else {
+                elem.src = imgStore[order - 1].url;
+                elem.name = (order - 1).toString();
+            }
+        }
+
+        let initializeImageStore = () => {
+            console.log("Hello from initializeImageStore !")
+            imgStore = imgUrls.reduce((prev, curr, index, arr) => {
+                let item = {
+                    url: curr,
+                    alt: ("Slide Number " + index + " ")
+                }
+                prev.push(item);
+                return prev
+            }, []);
+            // console.log("Output: \n " + JSON.stringify(imgStore, null, 2)  );
+            loadNextSlide();
+            console.log("Done initializeImageStore !")
+        }
+
+        window.onload = () => {
+            console.log("hello world !");
+            initializeImageStore();
+        }
+
+    </script>
+</body>
+
+</html>
