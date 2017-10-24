@@ -5,6 +5,9 @@
     
 */
 
+/* 
+
+*/
 
 
 
@@ -23,12 +26,186 @@
 
 
 
+// ******* IMP ********
+function foo(){}
+console.log(foo.length);
+console.log(delete foo.length);
+console.log(typeof foo.length);
+/* 
+    0
+    true
+    number
+*/
 
 
 
 
 
 
+// ******* IMP ********
+function foo(a) {
+    arguments[0] = 2;
+    console.log(a);
+}
+foo(1);
+/* 
+    2
+*/
+
+
+// ******* IMP ********
+var arr = [];
+arr[0]  = 'a';
+arr[1]  = 'b';
+arr[2]  = 'b';
+arr[3]  = 'b';
+arr.foo = 'c';
+console.log(arr.length);
+/* 
+    4
+*/
+
+
+
+
+
+// ******* IMP ********
+var foo = function bar() {}; 
+console.log(typeof bar);
+/* 
+    undefined
+*/
+
+
+
+
+
+
+// ******* IMP ********
+x = 1;
+function bar() {
+    this.x = 2;
+    return x;
+}
+var foo = new bar();
+console.log(foo.x);
+console.log(this.x);
+console.log(x);
+console.log(bar());
+/* 
+    2
+    2
+    undefined
+    2
+*/
+
+
+
+
+// ******* IMP ********
+var x   = 4,
+obj = {
+    x: 3,
+    bar: function() {
+        var x = 2;
+        setTimeout(function() {
+            var x = 1;
+            console.log(this.x);
+            console.log(x);
+        }, 1000);
+    }
+};
+obj.bar();
+/* 
+    4
+    1
+*/
+
+
+
+
+
+
+// ******* IMP ********
+var x = 3;
+var foo = {
+    x: 2,
+    baz: {
+        x: 1,
+        bar: function() {
+            return this.x;
+        }
+    }
+}
+
+var go = foo.baz.bar;
+
+alert(go());
+alert(foo.baz.bar());
+
+/* 
+    3
+    1
+*/
+
+
+
+
+
+
+
+
+
+// ******* IMP ********
+var outerFunction = function () {
+
+    if (true) {
+        var x = 5;
+        console.log(y);     // line 1
+        console.log(test);
+    }
+
+    var nestedFunction = function () {
+
+        if (true) {
+            var y = 7;
+            console.log(x);
+            console.log(y);
+            console.log(test); 
+        }
+
+        if (true) {
+            console.log(x);
+            console.log(y);
+            console.log(test); 
+        }
+    }
+    return nestedFunction;
+}
+var test = true
+var myFunction = outerFunction();
+myFunction();
+
+
+/* 
+    line 1, ReferenceError: y not defined
+    true
+    5
+    7
+    true
+    5
+    7
+    true
+*/
+
+
+
+
+
+
+
+
+// ******* IMP ********
 // QQ: What value is returned from the above statement?
 ~3.14
 ~~3.14
@@ -49,17 +226,17 @@ Answer:
 
 // QQ: What value is returned from the above statement?
 "a lasagna hog".split("").reverse().join("")
-/* 
-    Answer: "goh angasal a"
-
-*/
-
-
+    /* 
+        Answer: "goh angasal a"
+    
+    */
 
 
 
-// QQ: What is the value of window.foo?
-( window.foo || ( window.foo = "bar" ) )
+
+
+    // QQ: What is the value of window.foo?
+    (window.foo || (window.foo = "bar"))
 /* 
     Answer: "bar"
 
@@ -70,10 +247,10 @@ Answer:
 // QQ: What is the outcome of the two console.logs above?
 var foo = "Hello"
 
-(function() { 
-  var bar = " World" 
-  console.log(foo + bar) 
-})() 
+    (function () {
+        var bar = " World"
+        console.log(foo + bar)
+    })()
 console.log(foo + bar)
 
 /* 
@@ -87,7 +264,7 @@ console.log(foo + bar)
 
 // Q 29.
 // how to tell if an object is an array 
-let a = [1,2,3]
+let a = [1, 2, 3]
 typeof a    // object
 
 /* 
@@ -98,8 +275,8 @@ typeof a    // object
 
 
 // Q 28.
-let a0 = () =>{
-	return true;
+let a0 = () => {
+    return true;
 };
 let a1 = [];
 let a2 = {};
@@ -122,9 +299,9 @@ typeof a3
 
 
 // Q 27.
-(function(){
+(function () {
     var a = b = 3;
-  })();
+})();
 
 console.log((typeof a === 'undefined'));
 console.log((typeof b === 'undefined'));
@@ -162,11 +339,11 @@ console.log(b);
 // Q 26.
 var myObject = {
     foo: "bar",
-    func: function() {
+    func: function () {
         var self = this;
         console.log("outer func:  this.foo = " + this.foo);
         console.log("outer func:  self.foo = " + self.foo);
-        (function() {
+        (function () {
             console.log("inner func:  this.foo = " + this.foo);
             console.log("inner func:  self.foo = " + self.foo);
         }());
@@ -190,23 +367,23 @@ myObject.func();
 typeof NaN
 NaN === NaN
 NaN == NaN
-/* 
-    Number 
-    false
-    false
-*/
+    /* 
+        Number 
+        false
+        false
+    */
 
 
 
 
 
-// Q 24.
-(function() {
-    console.log(1); 
-    setTimeout(function(){console.log(2)}, 1000); 
-    setTimeout(function(){console.log(3)}, 0); 
-    console.log(4);
-})();
+    // Q 24.
+    (function () {
+        console.log(1);
+        setTimeout(function () { console.log(2) }, 1000);
+        setTimeout(function () { console.log(3) }, 0);
+        console.log(4);
+    })();
 
 /* 
     1
@@ -221,9 +398,9 @@ NaN == NaN
 
 
 // Q 23.
-// ******* IMP ********// ******* IMP ********
+// ******* IMP ******** // ******* IMP ********
 // Write a function that can run both statements below
-console.log(sum(2,3));   // Outputs 5
+console.log(sum(2, 3));   // Outputs 5
 console.log(sum(2)(3));  // Outputs 5
 
 /* 
@@ -250,7 +427,7 @@ for (let i = 0; i < 5; i++) {
     btn.appendChild(document.createTextNode('Button ' + i));
     btn.addEventListener('click', function () { console.log(i); });
     document.body.appendChild(btn);     // ******* IMP ********
-    
+
 }
 btn.click();
 /* 
@@ -261,7 +438,7 @@ btn.click();
 for (let i = 0; i < 5; i++) {
     var btn = document.createElement('button');
     btn.appendChild(document.createTextNode('Button ' + i));
-    btn.addEventListener('click', function(){ console.log(i); });
+    btn.addEventListener('click', function () { console.log(i); });
     document.body.appendChild(btn);
 }
 // Sol2:
@@ -269,7 +446,7 @@ for (var i = 0; i < 5; i++) {
     var btn = document.createElement('button');
     btn.appendChild(document.createTextNode('Button ' + i));
     (function (i) {
-        btn.addEventListener('click', function() { console.log(i); });
+        btn.addEventListener('click', function () { console.log(i); });
     })(i);
     document.body.appendChild(btn);
 }
@@ -277,7 +454,7 @@ for (var i = 0; i < 5; i++) {
 ['a', 'b', 'c', 'd', 'e'].forEach(function (value, i) {
     var btn = document.createElement('button');
     btn.appendChild(document.createTextNode('Button ' + i));
-    btn.addEventListener('click', function() { console.log(i); });
+    btn.addEventListener('click', function () { console.log(i); });
     document.body.appendChild(btn);
 });
 
@@ -367,9 +544,9 @@ console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
 
 // Q 18.
 +  "1"    // ******* IMP ********
--  "1"
-- "+1"
-- "-1"
+    - "1"
+    - "+1"
+    - "-1"
 
 /* 
     1
@@ -433,7 +610,7 @@ for (var i = 0; i < 5; i++) {
 
 
 
- 
+
 // Q 15. 
 console.log("0 || 1 = " + (0 || 1));
 console.log("1 || 2 = " + (1 || 2));
@@ -513,21 +690,21 @@ console.log(a[b]);
         (n > 1) ? n * f(n - 1) : n
     )
 })(10)
-/* 
-    // Ten factorial
-    // 3628800
-*/
+    /* 
+        // Ten factorial
+        // 3628800
+    */
 
 
 
-// Q 10. 
-(function (x) {
-    // 	x = 1
-    return (function (y) {
-        // 	y = 2
-        console.log(x);
-    })(2)
-})(1);
+    // Q 10. 
+    (function (x) {
+        // 	x = 1
+        return (function (y) {
+            // 	y = 2
+            console.log(x);
+        })(2)
+    })(1);
 /* 
     // 1
 */
@@ -669,7 +846,7 @@ for (let i = 0; i < 5; i++) {
 for (var i = 0; i < 5; i++) {
     var starttime = Date.now();
     setTimeout(function () {
-        console.log("i => " + i + " interval => " + (Date.now() - starttime) );
+        console.log("i => " + i + " interval => " + (Date.now() - starttime));
     }, i * 1000);
 }
 
