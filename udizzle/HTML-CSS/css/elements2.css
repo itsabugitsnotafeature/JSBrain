@@ -1,0 +1,39 @@
+
+body {
+    margin: 0;
+}
+
+.exercise {
+    display: block;
+    margin: 2rem;
+}
+
+.ex-header {
+
+}
+
+.playground {
+
+}
+
+.ex-footer {
+
+}
+
+#grid-wrapper {
+    
+}
+
+.resp-card {
+    width: 23%;
+    display: inline-block;
+    margin: 5px;
+}
+
+@media only screen and (max-width:720px ){
+    .resp-card {
+        width: 48% ;
+        display: inline-block;
+        margin: 5px;
+    }
+}
