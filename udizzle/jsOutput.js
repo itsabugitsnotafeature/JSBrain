@@ -18,14 +18,30 @@
 
 
 
+// Q 42.
+let a = [1,2,3];
+let b = [1,2,3];
+let c = a;
+
+a == b
+[1,2,3] == [1,2,3]
+[] === []
+[] == []
+c == a
+c === a
+/* 
+    false
+    false
+    false
+    false
+    true
+    true
+*/
 
 
 
 
-
-
-
-
+// Q 41.
 // ******* IMP ********
 function foo(){}
 console.log(foo.length);
@@ -41,7 +57,7 @@ console.log(typeof foo.length);
 
 
 
-
+// Q 40.
 // ******* IMP ********
 function foo(a) {
     arguments[0] = 2;
@@ -53,6 +69,9 @@ foo(1);
 */
 
 
+
+
+// Q 39.
 // ******* IMP ********
 var arr = [];
 arr[0]  = 'a';
@@ -68,9 +87,9 @@ console.log(arr.length);
 
 
 
-
+// Q 38.
 // ******* IMP ********
-var foo = function bar() {}; 
+var foo = function bar(){}; 
 console.log(typeof bar);
 /* 
     undefined
@@ -80,7 +99,8 @@ console.log(typeof bar);
 
 
 
-
+// Q 37.
+// ******* IMP ********
 // ******* IMP ********
 x = 1;
 function bar() {
@@ -101,7 +121,7 @@ console.log(bar());
 
 
 
-
+// Q 36.
 // ******* IMP ********
 var x   = 4,
 obj = {
@@ -125,7 +145,7 @@ obj.bar();
 
 
 
-
+// Q 35.
 // ******* IMP ********
 var x = 3;
 var foo = {
@@ -137,9 +157,7 @@ var foo = {
         }
     }
 }
-
 var go = foo.baz.bar;
-
 alert(go());
 alert(foo.baz.bar());
 
@@ -157,6 +175,7 @@ alert(foo.baz.bar());
 
 
 // ******* IMP ********
+// Q 34.
 var outerFunction = function () {
 
     if (true) {
@@ -190,12 +209,15 @@ myFunction();
 /* 
     line 1, ReferenceError: y not defined
     true
+    --
     5
     7
     true
+    --
     5
     7
     true
+    --
 */
 
 
@@ -206,17 +228,39 @@ myFunction();
 
 
 // ******* IMP ********
-// QQ: What value is returned from the above statement?
+// Q 33. What value is returned from the above statement?
 ~3.14
 ~~3.14
 ~~~3.14
 ~~~~3.14
+~~(-Infinity)
+~~(-3.41)
+~~(-3)
 /* 
-Answer: 
-    -4
-    3
-    -4
-    3
+    Answer: 
+        -4
+        3
+        -4
+        3
+        0
+        -3
+        -3
+    Meaning: 
+        ~ means =>  Remove the Decimal THEN (multiply with -1) THEN Subtract 1
+            Example: 
+                ~3 = (3 * -1 ) - 1 => -4
+                ~(-3) = ( (-3) * -1 ) - 1 => 2
+        ~~ means => Remove the Decimal THEN (multiply with +1)  
+*/
+
+
+
+
+
+// Q 32. What value is returned from the above statement?
+"a lasagna hog".split("").reverse().join("")
+/* 
+    Answer: "goh angasal a"
 
 */
 
@@ -224,19 +268,8 @@ Answer:
 
 
 
-// QQ: What value is returned from the above statement?
-"a lasagna hog".split("").reverse().join("")
-    /* 
-        Answer: "goh angasal a"
-    
-    */
-
-
-
-
-
-    // QQ: What is the value of window.foo?
-    (window.foo || (window.foo = "bar"))
+// Q 31. What is the value of window.foo?
+(window.foo || (window.foo = "bar"))
 /* 
     Answer: "bar"
 
@@ -244,15 +277,16 @@ Answer:
 
 
 
-// QQ: What is the outcome of the two console.logs above?
+
+
+
+// Q 30. What is the outcome of the two console.logs above?
 var foo = "Hello"
-
-    (function () {
-        var bar = " World"
-        console.log(foo + bar)
-    })()
+(function () {
+    var bar = " World"
+    console.log(foo + bar)
+})()
 console.log(foo + bar)
-
 /* 
     Answer: 
     "Hello World" 
@@ -262,16 +296,24 @@ console.log(foo + bar)
 */
 
 
+
+
+
+
 // Q 29.
 // how to tell if an object is an array 
 let a = [1, 2, 3]
-typeof a    // object
+typeof a // object
 
 /* 
     Object.prototype.toString.call(a)   // '[object Array]'
     // OR 
     Array.isArray(a)    // true
 */
+
+
+
+
 
 
 // Q 28.
@@ -286,7 +328,6 @@ typeof a0
 typeof a1
 typeof a2
 typeof a3
-
 /* 
     function
     object
@@ -302,9 +343,9 @@ typeof a3
 (function () {
     var a = b = 3;
 })();
-
 console.log((typeof a === 'undefined'));
 console.log((typeof b === 'undefined'));
+console.log(a);
 console.log(b);
 
 /* 
@@ -328,10 +369,13 @@ console.log(b);
         and is therefore still in scope even outside of the enclosing function.
 
     Note that, in strict mode (i.e., with use strict), the statement var a = b = 3; 
-        will generate a runtime error of ReferenceError: b is not defined, thereby avoiding 
-        any headfakes/bugs that might othewise result. (Yet another prime example of why you 
+        will generate a runtime error of 
+            ReferenceError: b is not defined, 
+        thereby avoiding any headfakes/bugs that might othewise result. 
+        (Yet another prime example of why you 
         should use use strict as a matter of course in your code!)
 */
+
 
 
 
@@ -362,28 +406,26 @@ myObject.func();
 
 
 // Q 25.
-// ******* IMP ********
-// ******* IMP ********
 typeof NaN
 NaN === NaN
-NaN == NaN
-    /* 
-        Number 
-        false
-        false
-    */
+NaN == NaN      // ******* IMP ********
+/* 
+    Number 
+    false
+    false
+*/
 
 
 
 
 
-    // Q 24.
-    (function () {
-        console.log(1);
-        setTimeout(function () { console.log(2) }, 1000);
-        setTimeout(function () { console.log(3) }, 0);
-        console.log(4);
-    })();
+// Q 24.
+(function () {
+    console.log(1);
+    setTimeout(function () { console.log(2) }, 1000);
+    setTimeout(function () { console.log(3) }, 0);
+    console.log(4);
+})();
 
 /* 
     1
@@ -420,9 +462,11 @@ console.log(sum(2)(3));  // Outputs 5
 
 
 
+
+
 // Q 22.
 // ******* IMP ********
-for (let i = 0; i < 5; i++) {
+for (var i = 0; i < 5; i++) {
     var btn = document.createElement('button');
     btn.appendChild(document.createTextNode('Button ' + i));
     btn.addEventListener('click', function () { console.log(i); });
@@ -434,29 +478,34 @@ btn.click();
     OUTPUT: 5
 */
 
-// Sol1:
-for (let i = 0; i < 5; i++) {
-    var btn = document.createElement('button');
-    btn.appendChild(document.createTextNode('Button ' + i));
-    btn.addEventListener('click', function () { console.log(i); });
-    document.body.appendChild(btn);
-}
-// Sol2:
-for (var i = 0; i < 5; i++) {
-    var btn = document.createElement('button');
-    btn.appendChild(document.createTextNode('Button ' + i));
-    (function (i) {
+/* 
+    // Sol1:
+    for (let i = 0; i < 5; i++) {
+        var btn = document.createElement('button');
+        btn.appendChild(document.createTextNode('Button ' + i));
         btn.addEventListener('click', function () { console.log(i); });
-    })(i);
-    document.body.appendChild(btn);
-}
-// Sol3:
-['a', 'b', 'c', 'd', 'e'].forEach(function (value, i) {
-    var btn = document.createElement('button');
-    btn.appendChild(document.createTextNode('Button ' + i));
-    btn.addEventListener('click', function () { console.log(i); });
-    document.body.appendChild(btn);
-});
+        document.body.appendChild(btn);
+    }
+    // Sol2:
+    for (var i = 0; i < 5; i++) {
+        var btn = document.createElement('button');
+        btn.appendChild(document.createTextNode('Button ' + i));
+        (function (i) {
+            btn.addEventListener('click', function () { console.log(i); });
+        })(i);
+        document.body.appendChild(btn);
+    }
+    // Sol3:
+    var btn;
+    ['a', 'b', 'c', 'd', 'e'].forEach(function (value, i) {
+            btn = document.createElement('button');
+            btn.appendChild(document.createTextNode('Button ' + i));
+            btn.addEventListener('click', function () { console.log(value); });
+            document.body.appendChild(btn);
+        });
+    btn.click()
+
+*/
 
 
 
@@ -467,12 +516,12 @@ var d = {};
 ['zebra', 'horse'].forEach(function (k) {
     d[k] = undefined;
 });
-d.hasOwnProperty()
+d.hasOwnProperty()          // ******* IMP ********
 d.horse
 d.xyz
 d.hasOwnProperty('zebra')
 d.hasOwnProperty('horse')
-d.hasOwnProperty('xyz')
+d.hasOwnProperty('xyz')     // ******* IMP ********
 /* 
     undefined
     undefined 
@@ -487,15 +536,13 @@ d.hasOwnProperty('xyz')
 
 // Q 20.
 // ******* IMP ********
-// ******* IMP ********
-// ******* IMP ********
-// ******* IMP ********
 var arr1 = "john".split('');
 var arr2 = arr1.reverse();
 var arr3 = "jones".split('');
 arr2.push(arr3);
 console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(-1));
 console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
+
 /* 
     "array 1: length=5 last=j,o,n,e,s"
     "array 2: length=5 last=j,o,n,e,s"
@@ -523,19 +570,19 @@ console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
 
 
 // Q 19.
-(1 + "2" + "2");    // ******* IMP ********
+(1 + "2" + "2");
 (1 + +"2" + "2");
 (1 + -"1" + "2");
-(+"1" + "1" + "2");
-("A" - "B" + "2");
+(+"1" + "1" + "2"); // ******* IMP ********
+("A" - "B" + "2");  // ******* IMP ********
 ("A" - "B" + 2);
 /* 
     "122"
-    32
+     32
     "2"
     "112"
     "NaN2"
-    Nan
+     Nan
 */
 
 
@@ -543,16 +590,16 @@ console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
 
 
 // Q 18.
-+  "1"    // ******* IMP ********
-    - "1"
-    - "+1"
-    - "-1"
++"1"    // ******* IMP ********
+-"1"
+-"+1"
+-"-1"
 
 /* 
-    1
+     1
     -1
     -1
-    1
+     1
 */
 
 
@@ -584,7 +631,8 @@ var globalVar = "xyz";
 
 
 // Q 16.
-for (var i = 0; i < 5; i++) { // ******* IMP ********
+// ******* IMP ******** //
+for (var i = 0; i < 5; i++) { 
     setTimeout(function () {
         console.log(i);
     }, (i * 1000));
@@ -602,9 +650,9 @@ for (var i = 0; i < 5; i++) {
     })(i);
 }
 /* 
-    //  5 5 5 5 5
-    //  0 1 2 3 4
-    //  0 1 2 3 4
+     5 5 5 5 5
+     0 1 2 3 4
+     0 1 2 3 4
 */
 
 
@@ -613,15 +661,15 @@ for (var i = 0; i < 5; i++) {
 
 // Q 15. 
 console.log("0 || 1 = " + (0 || 1));
-console.log("1 || 2 = " + (1 || 2));
+console.log("1 || 2 = " + (1 || 2));    // ******* IMP ********
 console.log("0 && 1 = " + (0 && 1));
-console.log("1 && 2 = " + (1 && 2)); // ******* IMP ********
+console.log("1 && 2 = " + (1 && 2));    // ******* IMP ********
 /* 
 
-    // 1
-    // 1
-    // 0
-    // 2    // ******* IMP ********
+    1
+    1
+    0
+    2
 
 */
 
@@ -637,11 +685,11 @@ false == 0 + '0' // ******* IMP ********
 false === 0
 
 /* 
-    // true
-    // true
-    // true
-    // true
-    // false
+    true
+    true
+    true
+    true
+    false
 */
 
 
@@ -651,15 +699,16 @@ false === 0
 true == 1
 true == '1'
 true == 0 + '1'
+true == '0' + '1' + '0' 
 true == '0' + '1'
 true === 1
-
 /* 
-    // true
-    // true
-    // true
-    // true
-    // false
+    true
+    true
+    true
+    false
+    true
+    false
 */
 
 
@@ -674,10 +723,10 @@ a[b] = 123;
 a[c] = 456;
 console.log(a[b]);
 /* 
-    // 456
-    // BECAUSE: 
-    // b and c get translated to 
-    // a["[object Object]"]
+    456
+    BECAUSE: 
+    b and c get translated to 
+    a["[object Object]"]
 
 */
 
@@ -690,23 +739,26 @@ console.log(a[b]);
         (n > 1) ? n * f(n - 1) : n
     )
 })(10)
-    /* 
-        // Ten factorial
-        // 3628800
-    */
-
-
-
-    // Q 10. 
-    (function (x) {
-        // 	x = 1
-        return (function (y) {
-            // 	y = 2
-            console.log(x);
-        })(2)
-    })(1);
 /* 
-    // 1
+    // Ten factorial
+    // 3628800
+*/
+
+
+
+
+// Q 10. 
+(function (x) {
+    // 	x = 1
+    return (function (y) {
+        // 	y = 2
+        console.log(x);
+    })(2)
+    console.log(y);
+})(1);
+/* 
+    1
+    undefined
 */
 
 
@@ -727,24 +779,27 @@ console.log(stoleSecretIdentity.apply(hero));
 console.log(stoleSecretIdentity.call(hero));
 
 /* 
-
-    // undefined 
-    // John Doe 
+    // undefined
+    // John Doe
+    // John Doe
+    // John Doe
 
     // Solution 1
-    stoleSecretIdentity = hero.stoleSecretIdentity.bind(hero);
+        stoleSecretIdentity = hero.stoleSecretIdentity.bind(hero);
 
     // Solution 2
-    stoleSecretIdentity.apply(hero)
-    stoleSecretIdentity.call(hero)
-
+        stoleSecretIdentity.apply(hero)
+        stoleSecretIdentity.call(hero)
 */
+
+
 
 
 
 // Q8. 
 // ******* IMP ********
 var length = 10;
+
 function fn() {
     console.log(this.length);
 }
@@ -781,8 +836,9 @@ obj2.method(fn, 1);
         5
         2
 
-
 */
+
+
 
 
 // Q7. 
@@ -835,12 +891,14 @@ girl();
 
 //Q4.  
 // What will be the output of the following. 
+
 // Scenario 1:
 for (let i = 0; i < 5; i++) {
     setTimeout(function () {
         console.log(i);
     }, i * 1000);
 }
+
 // Versus
 // Scenario 2:
 for (var i = 0; i < 5; i++) {
@@ -879,6 +937,9 @@ for (var i = 0; i < 5; i++) {
 
 
 
+
+
+
 //Q3.  How do you add an element at the begining of an array? How do you add one at the end?
 let a = [2, 3, 4, 5];
 /* 
@@ -894,12 +955,12 @@ let a = [2, 3, 4, 5];
 
 
 // Q2. 
-console.log(typeof typeof 1);       // stinrg
-typeof undefined == typeof null     // false
-console.log(1 < 2 < 3);             // true
-console.log(3 > 2 > 1);             // false
-3 > 2 == 1                          // true 
-3 > 2 === 1                         // false 
+console.log(typeof typeof 1);
+typeof undefined == typeof null
+console.log(1 < 2 < 3);
+console.log(3 > 2 > 1);
+3 > 2 == 1                          
+3 > 2 === 1                         
 /* 
         OUTPUT
     string
@@ -920,7 +981,7 @@ console.log(3 > 2 > 1);             // false
 
 
 
-// Q1. What will be the output.
+// Q1 - A . What will be the output.
 var Foo = function (a) {
     this.num = a;
     function bar() {
@@ -931,18 +992,22 @@ var Foo = function (a) {
     };
 };
 Foo.prototype.biz = function () {
-    return (this.num);
+    return (num);
 };
 var f = new Foo(7);
+f.num;
 f.bar();
 f.baz();
 f.biz();
 /* 
         OUTPUT
-    ERROR: undefined
-    ERROR: undefined
     7
+    Uncaught TypeError: f.bar is not a function
+    Uncaught TypeError: f.bar is not a function
+    ReferenceError: num is not defined
 */
+
+// Q1 - B . What will be the output.
 var Foo = function (a) {
     this.num = a;
     this.bar = () => {
