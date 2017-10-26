@@ -13,7 +13,7 @@
     <div class="exercise">
         <div class="ex-header"> Responsive Grid </div>
         <div class="playground">
-            
+
             <div id="grid-wrapper">
                 <div class="resp-card">
                     <div class="res-card-content">
@@ -44,15 +44,201 @@
 
     <div class="exercise">
         <div class="ex-header"> Responsive Table </div>
-        <div class="playground"></div>
+        <div class="playground">
+            <!-- 
+                            Things to Note 
+                <table></table> is used to wrap the TABLE
+                <td></td>       Used for table Cell
+                <tr></tr>       Used for table Row
+                <th></th>       Used for tabler Header Cell
+                <thead></thead> Used for Table HEADER
+                <tfoot></tfoot> Used for Table FOOTER
+                <tbody></tbody> Used b/w Table HEADER & Footer  
+            -->
+
+            <div class="table1">
+                <h4 aria-label="Responsive Table">Table 1</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th> Name </th`>
+                                <th> Place </th>
+                                <th> Animal </th>
+                                <th> Thing </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> Judi11 </td>
+                            <td> WCCA11 </td>
+                            <td> Cat11 </td>
+                            <td> Bill11 </td>
+                        </tr>
+                        <tr>
+                            <td> Judi 22</td>
+                            <td> WCCA 22</td>
+                            <td> Cat 22</td>
+                            <td> Bill 22</td>
+                        </tr>
+                        <tr>
+                            <td> Judi 33</td>
+                            <td> WCCA 33</td>
+                            <td> Cat 33</td>
+                            <td> Bill 33</td>
+                        </tr>
+                        <tr>
+                            <td> Judi 44</td>
+                            <td> WCCA 44</td>
+                            <td> Cat 44</td>
+                            <td> Bill 44</td>
+                        </tr>
+                        <tr>
+                            <td> Judi 55</td>
+                            <td> WCCA 55</td>
+                            <td> Cat 55</td>
+                            <td> Bill 55</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td> Please Get a Life Dude ! >> PASS </td>
+                            <td> 10 Pointes</td>
+                            <td> 4th Position </td>
+                            <td> Please Get a Life Dude !</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <br>
+            <br>
+
+            <div class="table2">
+                <h4> Table 2 Fellas </h4>
+
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Place</th>
+                    </tr>
+                    <tr>
+                        <td colspan="3"> F U </td>
+                    </tr>
+                    <tr>
+                        <td>Ef Me</td>
+                        <td>Tew</td>
+                    </tr>
+                </table>
+
+            </div>
+
+
+        </div>
+
         <div class="ex-footer"> </div>
     </div>
 
     <div class="exercise">
-        <div class="ex-header"> Video Streaming </div>
-        <div class="playground"></div>
+        <div class="ex-header"> Making ToolTip </div>
+        <div class="playground">
+            <!-- TODO 
+            https://www.w3schools.com/css/css_tooltip.asp -->
+            <div class="tooltip">
+                <div class="top-tip">
+                    Top Tip
+                    <span class="tooltiptext">Tooltip text</span>
+                </div>
+            </div>
+
+
+            <div class="tooltip">
+                <div class="bottom-tip">
+                    Bottom Tip
+                </div>
+            </div>
+
+
+            <div class="tooltip">
+                <div class="left-tip">
+                    Left Tip
+                </div>
+            </div>
+
+
+            <div class="tooltip">
+                <div class="right-tip">
+                    Right Tip
+                </div>
+            </div>
+
+
+
+        </div>
         <div class="ex-footer"> </div>
     </div>
+
+    <div class="exercise">
+        <div class="ex-header"> Dropdown HTML5 </div>
+        <div class="playground">
+
+            <div class="html5-dropdown">
+                <select id="dd-options" name="my-dropdown-options">
+                    <option name="option1"> option1 </option>
+                    <option name="option2"> option2 </option>
+                    <option name="option3"> option3 </option>
+                    <option name="option4"> option4 </option>
+                </select>
+            </div>
+            <script>
+                // debugger
+                document.querySelector('.html5-dropdown').addEventListener('click', handleClick, false);
+                function handleClick(e) {
+                    console.log("here !");
+                    console.log(e.target.name);
+
+                }
+
+            </script>
+            <style>
+            </style>
+
+        </div>
+        <div class="ex-footer"> </div>
+    </div>
+
+    <div class="exercise">
+        <!-- 
+            UI Mock :
+            https://storage.googleapis.com/material-design/publish/material_v_11/assets/0Bzhp5Z4wHba3SUZmdHBlLWk1d3M/components_buttons_dropdown1.png 
+        -->
+
+
+        <div class="ex-header"> Dropdown NATIVE HTML </div>
+        <div class="playground">
+            <div class="html-dropdown">
+                <button onclick="toggleDropdown" >Select One</button>
+                    <ul class="native-dropdown">
+                        <li value="option1"> option1 </li>
+                        <li value="option2"> option2 </li>
+                        <li value="option3"> option3 </li>
+                        <li value="option4"> option4 </li>
+                    </ul>
+            </div>
+            <script>
+                document.querySelector('.native-dropdown').addEventListener('click', handleClick, false);
+                function handleClick(e) {
+                    console.log("here !");
+                    console.log(e.target.innerText);
+                }
+
+            </script>
+            <style>
+            </style>
+
+        </div>
+        <div class="ex-footer"> </div>
+    </div>
+
 
 </body>
 
