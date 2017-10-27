@@ -1,0 +1,17 @@
+{
+  "name": "trees",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Queue.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/babel-cli/bin/babel-node.js --presets node6 Tree.js "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-node6": "^11.0.0",
+    "require": "^2.4.20"
+  }
+}
