@@ -1,0 +1,150 @@
+
+/* 
+    Tool tip 4 : LEFT
+*/
+
+#tip4 {
+    display: inline-block;
+    position: relative;
+}
+
+#tip4 .tip {
+    /* TOOLTIP DECORATION */
+    visibility: hidden;
+    width: 22rem;
+    height: 3rem;
+    background-color: slategray;
+    background: slategray;
+    text-transform: uppercase;
+    text-align: center;
+    color: blueviolet;
+    line-height: 47px;
+    border-radius: 12px;
+    
+    /* POSITION */
+    position: absolute;
+    left: -1123.3%;
+    top: -15px;
+
+}
+
+#tip4:hover .tip {
+    visibility: visible;
+}
+
+
+
+/* 
+    Tool tip 3 : TOP
+*/
+
+#tip3 {
+    display: inline-block;
+    position: relative;
+}
+
+#tip3 .tip{
+    visibility: hidden;
+    text-transform: uppercase;
+    padding: 5px 5px;
+    width: 235px;
+    background: tomato;
+    border-radius: 10px;
+    text-align: center;
+    text-shadow: 2px 2px violet;
+    /* POSITIONING */
+    position: absolute;
+    z-index: 1;
+    top: -47px;
+    left: -337%;
+
+}
+
+#tip3:hover .tip{
+    visibility: visible;
+}
+
+
+/* 
+    Tool tip 2 : RIGHT
+*/
+
+#tip2 {
+    display: inline-block;
+    position: relative;
+}
+
+#tip2 .tip2-tip{
+    /* TOOLTIP DECORATION */
+    visibility: hidden;
+    background: blanchedalmond;
+    text-align: center; 
+    padding: 5px 5px;
+    z-index: 1;
+    border-radius: 5px;
+    width: 175px;
+    text-transform: capitalize;
+    
+    /* POSITION */
+    position: absolute;
+    top: -15px;
+    left: 116%;
+    
+}
+
+#tip2:hover .tip2-tip{
+    visibility: visible;
+}
+
+
+
+/* 
+    Tool tip 1 : BOTTOM
+*/
+
+#tip1{
+    display: inline-block;
+    position: relative;
+}
+
+#tip1:hover .tip1-tip{
+    visibility: visible;
+}
+
+#tip1 .tip1-tip{
+    /* TOOLTIP DECORATION */
+    visibility: hidden;
+    width: 142px;
+    background: black;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-align: -webkit-center;
+
+    /* POSITIONING */
+    position: absolute;
+    z-index: 1;
+    top: 19px;
+    left: -180%;
+}
+
+
+/* 
+    WORK SECTIONS
+*/
+
+.playground-section {
+    margin: 3rem;
+}
+
+
+#tooltip-experiment {
+    display: inline-flex;
+    margin: 2rem;
+
+}
+
+
+body {
+    margin: 4px;
+}
