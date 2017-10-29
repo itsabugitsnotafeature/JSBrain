@@ -22,11 +22,29 @@
     border-radius: 12px;
     z-index: 1;
 
-    /* POSITION */
+    /* TOOLTIP POSITION */
     position: absolute;
     left: -1123.3%;
     top: -15px;
 
+}
+
+
+#tip4 .tip:after {
+    /* ARROW DECORATION */
+    content: " ";
+    color: black;
+    position: absolute;
+
+    margin-right: -5px;
+    /* BORDER WIDTH | STYLE | COLOR */
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent slategrey;
+
+    /* ARROW  POSITION */
+    left: 99.8%;
+    top: 17px;
 }
 
 #tip4:hover .tip {
@@ -45,7 +63,8 @@
 }
 
 #tip3 .tip{
-    visibility: hidden;
+    /* TOOLTIP DECORATION */
+    visibility: HIDDEN;
     text-transform: uppercase;
     padding: 5px 5px;
     width: 235px;
@@ -53,13 +72,35 @@
     border-radius: 10px;
     text-align: center;
     text-shadow: 2px 2px violet;
-    /* POSITIONING */
+    
+    /* TOOLTIP POSITIONING */
     position: absolute;
     z-index: 1;
     top: -47px;
     left: -337%;
-
 }
+
+#tip3 .tip::after{
+    /* ARROW DECORATION */
+    content: " ";
+    color: tomato;
+    position: absolute;
+    
+    /* MARGIN TOP */
+    margin-top: -5px;
+
+    /* BORDER - WIDTH | STYLE | COLOR */
+    border-width: 5px;
+    border-style: solid;
+    border-color: tomato transparent transparent transparent;
+    
+    /* ARROW POSITIONING */
+    left: 48%;
+    bottom: -10px;
+    
+}
+
+
 
 #tip3:hover .tip{
     visibility: visible;
@@ -85,11 +126,28 @@
     border-radius: 5px;
     width: 175px;
     text-transform: capitalize;
+    margin-left: 5px;
     
     /* POSITION */
     position: absolute;
     top: -15px;
     left: 116%;
+    
+}
+
+#tip2 .tip2-tip::after{
+    /* TOOLTIP ARROW DECORATION */
+    content: " ";
+    color: black;
+    margin-left: -13px;
+    border-width: 9px;
+    border-style: solid;
+    
+    /* TOOLTIP ARROW  POSITION */
+    position: absolute;
+    left: -2%;
+    top: 16px;
+    border-color: transparent blanchedalmond transparent transparent;
     
 }
 
