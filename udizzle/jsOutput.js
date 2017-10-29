@@ -12,8 +12,18 @@
 
 
 
+// Q 43.
+var obj = {x:111111};
+var obj2 = {x:999999};
 
-
+(function(){
+    setTimeout(()=>{
+	    console.log(this.x);
+    },1000)
+}).call(obj2)
+/* 
+    999999
+*/
 
 
 
@@ -41,17 +51,37 @@ c === a
 
 
 
-// Q 41.
+// Q 41. - A
 // ******* IMP ********
 function foo(){}
 console.log(foo.length);
 console.log(delete foo.length);
 console.log(typeof foo.length);
+console.log(foo.length);
 /* 
     0
     true
     number
+    0
 */
+
+// Q 41. - B
+// ******* IMP ********
+function foo(){
+	return new Array(5);    
+}
+console.log(foo.length);
+console.log(delete foo.length);
+console.log(typeof foo.length);
+console.log(foo.length);
+/* 
+    0
+    true
+    number
+    0
+*/
+
+
 
 
 
@@ -88,7 +118,7 @@ console.log(arr.length);
 
 
 // Q 38.
-// ******* IMP ********
+// ******* IMP ******** // "GotAnswer1"
 var foo = function bar(){}; 
 console.log(typeof bar);
 /* 
@@ -114,15 +144,15 @@ console.log(x);
 console.log(bar());
 /* 
     2
-    2
-    undefined
+    1
+    1
     2
 */
 
 
 
 // Q 36.
-// ******* IMP ********
+// ******* IMP ******** "GotAnswer1"
 var x   = 4,
 obj = {
     x: 3,
@@ -146,7 +176,7 @@ obj.bar();
 
 
 // Q 35.
-// ******* IMP ********
+// ******* IMP ******** "GotAnswer1"
 var x = 3;
 var foo = {
     x: 2,
@@ -158,8 +188,8 @@ var foo = {
     }
 }
 var go = foo.baz.bar;
-alert(go());
-alert(foo.baz.bar());
+console.log(go());
+console.log(foo.baz.bar());
 
 /* 
     3
@@ -174,7 +204,7 @@ alert(foo.baz.bar());
 
 
 
-// ******* IMP ********
+// ******* IMP ******** "GotAnswer1"
 // Q 34.
 var outerFunction = function () {
 
@@ -204,24 +234,19 @@ var outerFunction = function () {
 var test = true
 var myFunction = outerFunction();
 myFunction();
-
-
 /* 
     line 1, ReferenceError: y not defined
     true
-    --
+    <-->
     5
     7
     true
-    --
+    <-->
     5
     7
     true
-    --
+    <-->
 */
-
-
-
 
 
 
@@ -231,7 +256,7 @@ myFunction();
 // Q 33. What value is returned from the above statement?
 ~3.14
 ~~3.14
-~~~3.14
+~~~9.888
 ~~~~3.14
 ~~(-Infinity)
 ~~(-3.41)
@@ -240,17 +265,41 @@ myFunction();
     Answer: 
         -4
         3
-        -4
+        -10
         3
         0
         -3
         -3
     Meaning: 
-        ~ means =>  Remove the Decimal THEN (multiply with -1) THEN Subtract 1
+        ~ means =>  
+            Explainiation: 
+                Remove the Decimal  
+                Multiply with -1
+                Subtract 1
+
             Example: 
                 ~3 = (3 * -1 ) - 1 => -4
                 ~(-3) = ( (-3) * -1 ) - 1 => 2
-        ~~ means => Remove the Decimal THEN (multiply with +1)  
+        ~~ means =>  Do '~' operation TWICE :: ORRRR
+            Explainiation: 
+                Remove the Decimal  
+                Multiply with +1
+
+    JavaScript Bitwise Operators
+
+
+        Operator	Description	    Example	    Same as	        Result	    Decimal
+        &	            AND	        x = 5 & 1	0101 & 0001	    0001    	 1
+        |	            OR	        x = 5 | 1	0101 | 0001	    0101    	 5
+        ~	            NOT	        x = ~ 5	    ~0101	        1010    	 10
+        ^           	XOR	        x = 5 ^ 1	0101 ^ 0001	    0100    	 4
+        <<	        Left shift  	x = 5 << 1	0101 << 1   	1010	     10
+        >>	        Right shift	    x = 5 >> 1	0101 >> 1   	0010	     2
+
+    NOTE: 
+        The examples above uses 4 bits unsigned examples. But JavaScript uses 32-bit signed numbers.
+        Because of this, in JavaScript, ~ 5 will not return 10. It will return -6.
+        ~00000000000000000000000000000101 will return 11111111111111111111111111111010
 */
 
 
@@ -404,11 +453,11 @@ myObject.func();
 
 
 
-
+// ******* IMP ********
 // Q 25.
 typeof NaN
 NaN === NaN
-NaN == NaN      // ******* IMP ********
+NaN == NaN
 /* 
     Number 
     false
@@ -440,7 +489,7 @@ NaN == NaN      // ******* IMP ********
 
 
 // Q 23.
-// ******* IMP ******** // ******* IMP ********
+// ******* IMP ******** "GotAnswer1"
 // Write a function that can run both statements below
 console.log(sum(2, 3));   // Outputs 5
 console.log(sum(2)(3));  // Outputs 5
@@ -463,14 +512,13 @@ console.log(sum(2)(3));  // Outputs 5
 
 
 
-
 // Q 22.
-// ******* IMP ********
+// ******* IMP ******** "GotAnswer1"
 for (var i = 0; i < 5; i++) {
     var btn = document.createElement('button');
     btn.appendChild(document.createTextNode('Button ' + i));
     btn.addEventListener('click', function () { console.log(i); });
-    document.body.appendChild(btn);     // ******* IMP ********
+    document.body.appendChild(btn);
 
 }
 btn.click();
@@ -510,18 +558,18 @@ btn.click();
 
 
 
-
+ // ******* IMP ********
 // Q 21.
 var d = {};
 ['zebra', 'horse'].forEach(function (k) {
     d[k] = undefined;
 });
-d.hasOwnProperty()          // ******* IMP ********
-d.horse
-d.xyz
-d.hasOwnProperty('zebra')
-d.hasOwnProperty('horse')
-d.hasOwnProperty('xyz')     // ******* IMP ********
+d.hasOwnProperty();
+d.horse;
+d.xyz;
+d.hasOwnProperty('zebra');
+d.hasOwnProperty('horse');
+d.hasOwnProperty('xyz');
 /* 
     undefined
     undefined 
@@ -568,13 +616,13 @@ console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
 
 
 
-
+// ******* IMP ********
 // Q 19.
 (1 + "2" + "2");
 (1 + +"2" + "2");
 (1 + -"1" + "2");
-(+"1" + "1" + "2"); // ******* IMP ********
-("A" - "B" + "2");  // ******* IMP ********
+(+"1" + "1" + "2"); 
+("A" - "B" + "2");
 ("A" - "B" + 2);
 /* 
     "122"
@@ -672,6 +720,7 @@ console.log("1 && 2 = " + (1 && 2));    // ******* IMP ********
     2
 
 */
+
 
 
 
