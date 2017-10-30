@@ -5,7 +5,14 @@
                 "type": "node",
                 "request": "launch",
                 "name": "Launch Program",
-                "program": "${workspaceRoot}/udizzle/DataStructuresInJS/Tree.js"
+                "program": "${workspaceRoot}/udizzle/DataStructuresInJS/practice/try4/test.js",
+                "cwd": "${workspaceRoot}/udizzle/DataStructuresInJS/practice/try4/",
+                "runtimeExecutable": "${workspaceRoot}/udizzle/DataStructuresInJS/practice/try4/node_modules/babel-cli/bin/babel-node.js",
+                "sourceMaps": true,
+                "retainLines": true,
+                "args": [
+                    "--presets node6"                
+                ]
             }
         ]
     }
