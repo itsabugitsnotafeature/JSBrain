@@ -131,7 +131,7 @@ export default class Tree {
 
         // If both of the above calls return Non-NULL, then one key
         // is present in once subtree and other is present in other,
-        // So this node is the LCA
+        // So this node is the LCA <<<< SOLUTION 
         if (left_lca && right_lca){
             return treeNode;
         }
