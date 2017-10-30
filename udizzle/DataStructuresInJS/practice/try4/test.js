@@ -1,6 +1,5 @@
 'use strict'
 
-// import Tree from './Users/youdizzle/development/mygit/itsaBug/JSBrain/udizzle/DataStructuresInJS/practice/try4/Tree';
 import Tree from './Tree';
 
 let t = new Tree(15);
@@ -25,11 +24,11 @@ t.add(10, 14);
 t.add(1, 8);
 t.add(2, 8);
 
-/* console.log("\nDepthFirst ");
+console.log("\nDepthFirst ");
 t.depthFirst();
 console.log("\n\nBreadthFirst ");
 t.breadthFirst();
-console.log("\n\n "); */
+console.log("\n\n ");
 
 
 let tBinary = new Tree(1);

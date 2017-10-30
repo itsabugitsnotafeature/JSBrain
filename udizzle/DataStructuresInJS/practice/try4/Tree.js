@@ -1,6 +1,6 @@
 'use strict'
 
-// import Queue from './Users/youdizzle/development/mygit/itsaBug/JSBrain/udizzle/DataStructuresInJS/practice/try4/Queue'
+
 import Queue from './Queue'
 
 class TreeNode {
@@ -105,12 +105,11 @@ export default class Tree {
         parent.splice(childIndex, 1);
         return true;
     }
-
-    // lowestCommonAnsistor(firstNode, secondNode) {
-    //     return true;
-    //     // TODO
-    // }
-
+    
+    /* 
+        SOURCE : 
+        http://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/
+     */
     static lowestCommonAnsistor(treeNode, n1, n2) {
         // Base case
         if (treeNode == null) {
