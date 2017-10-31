@@ -11,7 +11,7 @@
     Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 */
 var lengthOfLongestSubstring = (s) => {
-    var patternSet = new Set;
+    var patternSet = new Set();
     str = [...s];
     res = '';
     for (var i = 0; i < str.length; i++) {

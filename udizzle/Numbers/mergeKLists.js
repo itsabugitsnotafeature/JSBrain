@@ -11,6 +11,7 @@ let mergeKSortedList = (lists) => {
             maxLength = (maxLength > list.length) ? (maxLength) : (list.length);     
         }
     }, this);
+    
     if(!maxLength){
         console.log("Wow dude, empty list")
         return lists;

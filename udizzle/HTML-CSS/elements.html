@@ -4,10 +4,10 @@
 <head>
     <title>Complex Table </title>
     <!-- CSS Properties - Exercises, Practice, Solution-->
-        <!-- https://www.w3resource.com/html-css-exercise/css-properties/index.php -->
+    <!-- https://www.w3resource.com/html-css-exercise/css-properties/index.php -->
 
     <!-- HTML5 Basic (Tag and attribute) - Exercises, Practice, Solution -->
-        <!-- https://www.w3resource.com/html-css-exercise/basic/index.php -->
+    <!-- https://www.w3resource.com/html-css-exercise/basic/index.php -->
 
 </head>
 
@@ -21,6 +21,9 @@
             padding: 1rem;
         }
     </style> -->
+
+    <link rel="stylesheet" href="elem.css" >
+    <script src="ele.js" type="text/javascript"></script>
 
     <!-- Practice 11 : Increase counter by step-->
     <!-- SRC: https://www.w3resource.com/html-css-exercise/set-counter-and-insert-before-answer.php -->
@@ -70,9 +73,11 @@
     </div>
     <style>
         /* When Target attribute begins with a certain value */
-        #increment-by-step .container[data-name^=w3r]{
-            color:#5ac4ed;
+
+        #increment-by-step .container[data-name^=w3r] {
+            color: #5ac4ed;
         }
+
         #increment-by-step {
             padding: 1rem;
         }
@@ -305,8 +310,8 @@
 
         #sticky-footer footer {
             margin: 1rem;
-            bottom: 0;
-            position: fixed;
+            bottom: 0;          /* Most Imp One */
+            position: fixed;    /* Most Imp One */
             background-color: turquoise;
             width: 100%;
             text-align: center;
@@ -567,6 +572,14 @@
     <!-- Table Implementation -->
     <!-- SRC: https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table_intro -->
     <style>
+
+        @media only screen and (max-width: 700px){
+            #myElem {
+
+            }
+        }
+
+
         #w3-practice {
             width: 100%;
             font-family: arial, sans-serif;
@@ -637,6 +650,31 @@
         <tr>
             <td colspan="3">prey to a hunter</td>
         </tr>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <td> 1 </td>
+                <td> 2 </td>
+                <td> 3 </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> 4 </td>
+                <td colspan="2"> 5 </td>
+            </tr>
+            <tr>
+                <td> 6 </td>
+                <td> 7 </td>
+            </tr>
+            <tr>
+                <td rowspan="2" > 8 </td>
+                <td> 9 </td>
+            </tr>
+        </tbody>
+        <tfoot></tfoot>
     </table>
 
 </body>

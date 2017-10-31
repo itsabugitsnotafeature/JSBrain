@@ -7,6 +7,10 @@
         12, 80 => 240
 */
 
+
+/* 
+    Lowest Common Multiple
+*/
 let calculateLowestCommonMultipleOfTwoNumbers = (a, b) => {
     let greatestDivisor = getGreatestCommonDivisor(a, b);
     let product = (a * b);
@@ -16,6 +20,13 @@ let calculateLowestCommonMultipleOfTwoNumbers = (a, b) => {
 };
 
 
+/* 
+    greatest common divisor [closed]
+        aka
+    highest common divisor
+        aka
+    highest common factor
+*/
 let getGreatestCommonDivisor = (a, b) => {
     // return !b ? a : getGreatestCommonDivisor(b, a % b);
     if(!b){

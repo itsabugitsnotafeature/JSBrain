@@ -81,6 +81,7 @@ let missingNumber = (numArray) => {
         }
     }
 }
+// Only works if array is sorted
 function missingNumberBetterAlgo(arr) {
     var n = arr.length + 1,
         sum = 0,

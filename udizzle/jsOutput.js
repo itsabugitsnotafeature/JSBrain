@@ -12,6 +12,91 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+function changeParam(x, y, z) {
+    x = 3;
+    y = "new string";
+    z["key2"] = "new";
+    z["key3"] = "newer";
+  
+    z = {"new" : "object"};
+  }
+  
+  var a = 1,
+      b = "something",
+      c = {"key1" : "whatever", "key2" : "original value"};
+  
+  changeParam(a, b, c);
+  
+  // at this point a is still 1
+  // b is still "something"
+  // c still points to the same object but its properties have been updated
+  // so it is now {"key1" : "whatever", "key2" : "new", "key3" : "newer"}
+  // c definitely doesn't point to the new object created as the last line
+  // of the function with z = ...
+
+
+
+var a = ["1", "2", {foo:"bar"}];
+var b = a[1]; // b is now "2";
+var c = a[2]; // c now references {foo:"bar"}
+a[1] = "4";   // a is now ["1", "4", {foo:"bar"}]; b still has the value
+              // it had at the time of assignment
+a[2] = "5";   // a is now ["1", "4", "5"]; c still has the value
+              // it had at the time of assignment, i.e. a reference to
+              // the object {foo:"bar"}
+console.log(b, c.foo); // "2" "bar"
+
+
+
+function f() {
+    var a = ["1", "2", "3"];
+    var b = a[1];
+    a[1] = "4";
+    // what is the value of b now for all possible data types that the array in "a" might hold?
+}
+
+function f() {
+    var a = [{yellow: "blue"}, {red: "cyan"}, {green: "magenta"}];
+    var b = a[1];
+    a[1].red = "tan";
+    // what is the value of b now and why?
+    b.red = "black";
+    // did the value of a[1].red change when I assigned to b.red?
+}
+
+
+
+function f(a,b,c) {
+    a = 3;
+    b.push("foo");
+    c.first = false;
+ }
+ 
+ var x = 4;
+ var y = ["eeny", "miny", "mo"];
+ var z = {first: true};
+ f(x,y,z);
+
+// What is valye of X, Y, Z
+
+
+
+
+
+
+
+
 // Q 43.
 var obj = {x:111111};
 var obj2 = {x:999999};
