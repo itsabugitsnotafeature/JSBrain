@@ -24,7 +24,7 @@ function dizzleSelectionSort(arr2Sort){
         for(let j=i+1 ; j<=arr2Sort.length-1 ; j++){
             debugger
             if(arr2Sort[i] > arr2Sort[j]){
-                arr2Sort[i] = [arr2Sort[j], arr2Sort[j] = arr2Sort[i]][0];
+                arr2Sort[i] = [ arr2Sort[j], arr2Sort[j ] = arr2Sort[i]][0];
             }
         }
     }

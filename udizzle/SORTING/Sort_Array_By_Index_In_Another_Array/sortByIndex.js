@@ -33,12 +33,15 @@ let arr1,
 let sortByIndev_v4 = (arrChar, arrIndex)=>{
     var arr1 = ['C', 'D', 'E', 'F', 'G'];
     var arr2 = [3, 0, 4, 1, 2];
+    // var result = new Array(arr1.length);
     
     arrChar = arrChar? arrChar: arr1;
     arrIndex = arrIndex? arrIndex: arr2;
 
     let map = new Map();
     for(let i = 0 ; i< arr1.length ; i++){
+        // result[arr2[i]] = arr1[i];
+
         map.set(arr2[i],arr1[i]);
     }
     
