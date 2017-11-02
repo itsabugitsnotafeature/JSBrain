@@ -58,6 +58,22 @@ function setElementBackgroundColor(elem, col) {
     elem.style.backgroundColor = col;
 }
 
+function setColor(){
+    // regEx : \d+
+    var sourceElem = document.querySelector('#tableDiv > table > tbody > tr:nth-child(1)');
+    var sourceElemColor = sourceElem.style.backgroundColor;
+    var sourceElemColorComponents = sourceElemColor.match(/\d+/g);;
+    let reductionFactor = 20;
+
+    var targetElem = document.querySelector('#tableDiv > table > tbody > tr:nth-child(2)');
+    var targetElemColorComponents = sourceElemColorComponents.reduce((prev, curr)=>{
+        var col = Math.floor(curr - (curr * reductionFactor / 100));
+        prev.push(col);
+        return prev;
+    },[]);
+    var targetElemColor = getColorValue(targetElemColorComponents[0], targetElemColorComponents[1], targetElemColorComponents[2]);    
+    targetElem.style.backgroundColor = targetElemColor
+}
 
 function initializePageByXhr() {
     let xhr = new XMLHttpRequest();
