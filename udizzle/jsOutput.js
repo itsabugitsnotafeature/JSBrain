@@ -14,6 +14,18 @@
 
 
 
+// ******* IMP ********
+arr = [1,2,3,4,5,6,7,8,9]
+arr.slice(-1)
+arr.slice(1,4)
+arr.slice(-2)
+arr.slice(-3)
+/* 
+    [9]
+    [2, 3, 4]
+    [8, 9]
+    [7, 8, 9]
+*/
 
 
 
@@ -21,62 +33,95 @@
 
 
 
-
-
+// ******* IMP ********
 function changeParam(x, y, z) {
     x = 3;
     y = "new string";
     z["key2"] = "new";
     z["key3"] = "newer";
-  
     z = {"new" : "object"};
   }
   
   var a = 1,
-      b = "something",
-      c = {"key1" : "whatever", "key2" : "original value"};
+    b = "something",
+    c = {
+        "key1" : "whatever", 
+        "key2" : "original value"
+    };
   
   changeParam(a, b, c);
   
-  // at this point a is still 1
-  // b is still "something"
-  // c still points to the same object but its properties have been updated
-  // so it is now {"key1" : "whatever", "key2" : "new", "key3" : "newer"}
-  // c definitely doesn't point to the new object created as the last line
-  // of the function with z = ...
+/* 
+    a => 1
+    b => "something"
+    c still points to the same object but its properties have been updated
+    so it is now {"key1" : "whatever", "key2" : "new", "key3" : "newer"}
+        c definitely doesn't point to the new object created as the last line
+        of the function with z = ... 
+    c => {key1: "whatever", key2: "new", key3: "newer"}
+*/
 
 
 
+
+
+
+
+// ******* IMP ********
 var a = ["1", "2", {foo:"bar"}];
-var b = a[1]; // b is now "2";
-var c = a[2]; // c now references {foo:"bar"}
-a[1] = "4";   // a is now ["1", "4", {foo:"bar"}]; b still has the value
-              // it had at the time of assignment
-a[2] = "5";   // a is now ["1", "4", "5"]; c still has the value
-              // it had at the time of assignment, i.e. a reference to
-              // the object {foo:"bar"}
-console.log(b, c.foo); // "2" "bar"
+var b = a[1];
+var c = a[2];
+a[1] = "4";
+a[2] = "5";
+console.log(b);
+console.log(c);
+console.log(a);
+/* 
+    b is now "2";
+    c now references {foo:"bar"}
+    a is now ["1", "4", {foo:"bar"}]; b still has the value
+    it had at the time of assignment
+    a is now ["1", "4", "5"]; c still has the value
+    it had at the time of assignment, i.e. a reference to
+    the object {foo:"bar"}
+    "2" "bar"
+    ANSWER: 
+        2
+        {foo: "bar"}
+        ["1", "4", "5"]
+*/
 
 
 
-function f() {
-    var a = ["1", "2", "3"];
-    var b = a[1];
-    a[1] = "4";
-    // what is the value of b now for all possible data types that the array in "a" might hold?
-}
-
-function f() {
-    var a = [{yellow: "blue"}, {red: "cyan"}, {green: "magenta"}];
-    var b = a[1];
-    a[1].red = "tan";
-    // what is the value of b now and why?
-    b.red = "black";
-    // did the value of a[1].red change when I assigned to b.red?
-}
 
 
 
+
+// QQ
+var a = ["1", "2", "3"];
+var b = a[1];
+a[1] = "4";
+// what is the value of b now for all possible data types that the array in "a" might hold?
+/* 
+    b => 2
+    a => ["1", "4", "3"]; 
+*/
+
+
+
+//  QQ
+var a = [{yellow: "blue"}, {red: "cyan"}, {green: "magenta"}];
+var b = a[1];
+a[1].red = "tan";
+b.red = "black";
+/* 
+    a => [{yellow: "blue"}, {red: "black"}, {green: "magenta"}];
+    b => {red: "black"}
+*/
+
+
+
+// QQ
 function f(a,b,c) {
     a = 3;
     b.push("foo");
@@ -89,6 +134,11 @@ function f(a,b,c) {
  f(x,y,z);
 
 // What is valye of X, Y, Z
+/* 
+    x => 4
+    y => ["eeny", "miny", "mo", "foo"]
+    z => {first: false}
+*/
 
 
 
@@ -96,13 +146,13 @@ function f(a,b,c) {
 
 
 
-
+// ******* IMP ********
 // Q 43.
 var obj = {x:111111};
 var obj2 = {x:999999};
 
 (function(){
-    setTimeout(()=>{
+    setTimeout(() => {
 	    console.log(this.x);
     },1000)
 }).call(obj2)
@@ -122,6 +172,7 @@ a == b
 [1,2,3] == [1,2,3]
 [] === []
 [] == []
+----
 c == a
 c === a
 /* 
@@ -129,6 +180,7 @@ c === a
     false
     false
     false
+    ----
     true
     true
 */
@@ -149,6 +201,13 @@ console.log(foo.length);
     number
     0
 */
+
+
+
+
+
+
+
 
 // Q 41. - B
 // ******* IMP ********
@@ -187,7 +246,7 @@ foo(1);
 
 
 // Q 39.
-// ******* IMP ********
+// ******* IMP ********     // "GotAnswer1"
 var arr = [];
 arr[0]  = 'a';
 arr[1]  = 'b';
@@ -203,7 +262,7 @@ console.log(arr.length);
 
 
 // Q 38.
-// ******* IMP ******** // "GotAnswer1"
+// ******* IMP ******** // "GotAnswer2"
 var foo = function bar(){}; 
 console.log(typeof bar);
 /* 
@@ -215,8 +274,7 @@ console.log(typeof bar);
 
 
 // Q 37.
-// ******* IMP ********
-// ******* IMP ********
+// ******* IMP ********      // "GotAnswer1"
 x = 1;
 function bar() {
     this.x = 2;
@@ -237,7 +295,7 @@ console.log(bar());
 
 
 // Q 36.
-// ******* IMP ******** "GotAnswer1"
+// ******* IMP ******** "GotAnswer2"
 var x   = 4,
 obj = {
     x: 3,
@@ -261,7 +319,7 @@ obj.bar();
 
 
 // Q 35.
-// ******* IMP ******** "GotAnswer1"
+// ******* IMP ******** "GotAnswer2"
 var x = 3;
 var foo = {
     x: 2,
@@ -337,7 +395,7 @@ myFunction();
 
 
 
-// ******* IMP ********
+// ******* IMP ********     "//GotAnswer1"
 // Q 33. What value is returned from the above statement?
 ~3.14
 ~~3.14
@@ -425,8 +483,6 @@ console.log(foo + bar)
     Answer: 
     "Hello World" 
     ReferenceError: bar is not defined
-
-
 */
 
 
@@ -472,7 +528,7 @@ typeof a3
 
 
 
-
+// ******* IMP ********     "//GotAnswer1"
 // Q 27.
 (function () {
     var a = b = 3;
@@ -513,7 +569,7 @@ console.log(b);
 
 
 
-
+// ******* IMP ********     "//GotAnswer1"
 // Q 26.
 var myObject = {
     foo: "bar",
@@ -538,7 +594,7 @@ myObject.func();
 
 
 
-// ******* IMP ********
+// ******* IMP ********     "//GotAnswer1"
 // Q 25.
 typeof NaN
 NaN === NaN
@@ -764,7 +820,7 @@ var globalVar = "xyz";
 
 
 // Q 16.
-// ******* IMP ******** //
+// ******* IMP ********     //"GotAnswer1"
 for (var i = 0; i < 5; i++) { 
     setTimeout(function () {
         console.log(i);
@@ -795,6 +851,8 @@ for (var i = 0; i < 5; i++) {
 // Q 15. 
 console.log("0 || 1 = " + (0 || 1));
 console.log("1 || 2 = " + (1 || 2));    // ******* IMP ********
+65 || 47
+47 || 65
 console.log("0 && 1 = " + (0 && 1));
 console.log("1 && 2 = " + (1 && 2));    // ******* IMP ********
 /* 
@@ -817,7 +875,6 @@ false == '0'    // ******* IMP ********
 false == +'0'
 false == 0 + '0' // ******* IMP ********
 false === 0
-
 /* 
     true
     true
@@ -825,6 +882,8 @@ false === 0
     true
     false
 */
+
+
 
 
 
@@ -931,7 +990,7 @@ console.log(stoleSecretIdentity.call(hero));
 
 
 // Q8. 
-// ******* IMP ********
+// ******* IMP ********     //GotAnswer1
 var length = 10;
 
 function fn() {

@@ -60,7 +60,7 @@ new User_mixin_1("Dizz-le").sayHi();
             Inner Lexical Environment
             Outer Lexical Enviroment 
         
-         CLOSURE : 
+        CLOSURE :
             is a function that remembers its outer variables 
                 and can access them. 
 
@@ -76,6 +76,7 @@ new User_mixin_1("Dizz-le").sayHi();
 */
 
 console.log("\n EX-2");
+
 function makeWorker(){ 
     let name1 = "Pete";
     return function(){ 
@@ -88,14 +89,84 @@ work();
 
 
 
-console.log("\n EX-1");
+// 
 let name = "John";
 console.log(sayHi());
+
 function sayHi(){ 
     return("Hi, " + name); 
-} 
+}
+function sayHiThis(){ 
+    return("Hi, " + this.name); 
+}
 name = "Pete";
 console.log(sayHi());
+console.log(sayHiThis());
+/* 
+    Hi John
+    Hi Peet
+    Hi undefined
+*/
+
+
+
+
+// QQ
+var name1 = "John";
+console.log(sayHi());
+
+function sayHi(){ 
+    return("Hi, " + this.name1); 
+} 
+
+name1 = "Pete";
+console.log(sayHi());
+/* 
+    Hi John
+    Hi Peet
+*/
+
+
+
+// QQ
+var name1 = "John";
+console.log(sayHi());
+function sayHi(){
+	var name1 = 'loo'
+    return("Hi, " + this.name1); 
+} 
+name1 = "Pete";
+console.log(sayHi());
+/* 
+    Hi John
+    Hi Peet
+*/
+
+
+
+
+
+let name1 = "John";
+console.log(sayHi());
+
+function sayHi(){
+	name1 = 'loo'
+    return("Hi, " + this.name1); 
+} 
+
+name1 = "Pete";
+console.log(sayHi());
+/* 
+    Hi undefined
+    Hi undefined
+*/
+
+
+
+
+
+
+
 
 // EXAMPLE 2 
 
