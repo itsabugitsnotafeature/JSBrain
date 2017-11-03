@@ -1,5 +1,86 @@
 'use strict'
 
+
+
+
+
+
+
+
+
+
+
+const chocolate = {
+    hasChocolate: () => true
+};
+const caramelSwirl = {
+    hasCaramelSwirl: () => true
+};
+const pecans = {
+    hasPecans: () => true
+};
+const iceCream = Object.assign({}, chocolate, caramelSwirl, pecans);
+/*
+// or, if your environment supports object spread...
+const iceCream = {...chocolate, ...caramelSwirl, ...pecans};
+*/
+console.log(`
+    hasChocolate: ${ iceCream.hasChocolate()}
+    hasCaramelSwirl: ${ iceCream.hasCaramelSwirl()}
+    hasPecans: ${ iceCream.hasPecans()}
+  `);
+
+
+
+
+/* 
+    Base object factory
+    Create an empty object
+    Add it a "name" property
+    Return the object 
+*/
+function base(spec) {
+    var that = {};              
+    that.name = spec.name;      
+    return that;                
+}
+
+/* 
+    Construct a child object, inheriting from "base"
+    Create the object through the "base" constructor 
+*/
+function child(spec) {
+    
+    var that = base(spec); 
+    that.sayHello = function() {            // Augment that object
+        return 'Hello, I\'m ' + that.name;
+    };
+    return that;                        // Return it
+}
+
+
+// Usage
+
+var result = child({ name: 'a functional object' });
+console.log(result.sayHello()); // "Hello, I'm a functional object"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 
     MIXINS 
     Concepts : 
@@ -17,24 +98,27 @@
 
 console.log("\n EX-3");
 
+/* 
+    MIXINS EXAMPLE  1
+*/
 let sayMixin = {
-    say(phrase){
+    say(phrase) {
         console.log(phrase);
     }
 }
 
 let sayHiMixin = {
     __proto__: sayMixin,
-    sayHi(name){
+    sayHi(name) {
         super.say("Hello " + this.name);
     },
-    sayBye(name){
+    sayBye(name) {
         super.say("Bye " + this.name);
     }
 }
 
-class User_mixin_1{
-    constructor(name){
+class User_mixin_1 {
+    constructor(name) {
         this.name = name;
     }
 }
@@ -45,6 +129,45 @@ u1.sayHi();
 u1.sayBye();
 
 new User_mixin_1("Dizz-le").sayHi();
+
+
+/* 
+    MIXINS EXAMPLE  2
+*/
+const chocolate = {
+    hasChocolate: () => true
+};
+const caramelSwirl = {
+    hasCaramelSwirl: () => true
+};
+const pecans = {
+    hasPecans: () => true
+};
+const iceCream = Object.assign({}, chocolate, caramelSwirl, pecans);
+/*
+// or, if your environment supports object spread...
+const iceCream = {...chocolate, ...caramelSwirl, ...pecans};
+*/
+console.log(`
+    hasChocolate: ${ iceCream.hasChocolate()}
+    hasCaramelSwirl: ${ iceCream.hasCaramelSwirl()}
+    hasPecans: ${ iceCream.hasPecans()}
+  `);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -77,9 +200,9 @@ new User_mixin_1("Dizz-le").sayHi();
 
 console.log("\n EX-2");
 
-function makeWorker(){ 
+function makeWorker() {
     let name1 = "Pete";
-    return function(){ 
+    return function () {
         console.log(name1);
     }
 };
@@ -89,15 +212,20 @@ work();
 
 
 
+
+
+
+
+
 // 
 let name = "John";
 console.log(sayHi());
 
-function sayHi(){ 
-    return("Hi, " + name); 
+function sayHi() {
+    return ("Hi, " + name);
 }
-function sayHiThis(){ 
-    return("Hi, " + this.name); 
+function sayHiThis() {
+    return ("Hi, " + this.name);
 }
 name = "Pete";
 console.log(sayHi());
@@ -111,13 +239,19 @@ console.log(sayHiThis());
 
 
 
+
+
+
+
+
+
 // QQ
 var name1 = "John";
 console.log(sayHi());
 
-function sayHi(){ 
-    return("Hi, " + this.name1); 
-} 
+function sayHi() {
+    return ("Hi, " + this.name1);
+}
 
 name1 = "Pete";
 console.log(sayHi());
@@ -128,19 +262,28 @@ console.log(sayHi());
 
 
 
+
+
+
+
+
 // QQ
 var name1 = "John";
 console.log(sayHi());
-function sayHi(){
-	var name1 = 'loo'
-    return("Hi, " + this.name1); 
-} 
+function sayHi() {
+    var name1 = 'loo'
+    return ("Hi, " + this.name1);
+}
 name1 = "Pete";
 console.log(sayHi());
 /* 
     Hi John
     Hi Peet
 */
+
+
+
+
 
 
 
@@ -149,10 +292,10 @@ console.log(sayHi());
 let name1 = "John";
 console.log(sayHi());
 
-function sayHi(){
-	name1 = 'loo'
-    return("Hi, " + this.name1); 
-} 
+function sayHi() {
+    name1 = 'loo'
+    return ("Hi, " + this.name1);
+}
 
 name1 = "Pete";
 console.log(sayHi());
@@ -172,27 +315,27 @@ console.log(sayHi());
 
 (function outerFunc(outerArg) {
     var outerVar = 3;
-  
+
     (function middleFunc(middleArg) {
-      var middleVar = 4;
-  
-      (function innerFunc(innerArg) {
-        var innerVar = 5;
-        // EXAMPLE OF SCOPE IN CLOSURE:
-        // Variables from innerFunc, middleFunc, and outerFunc,
-        // as well as the global namespace, are ALL in scope here.
-        console.log("outerArg="+outerArg+
-                    " middleArg="+middleArg+
-                    " innerArg="+innerArg+"\n"+
-                    " outerVar="+outerVar+
-                    " middleVar="+middleVar+
-                    " innerVar="+innerVar);
-        // --------------- THIS WILL LOG: ---------------
-        //    outerArg=123 middleArg=456 innerArg=789
-        //    outerVar=3 middleVar=4 innerVar=5
-      })(789);
+        var middleVar = 4;
+
+        (function innerFunc(innerArg) {
+            var innerVar = 5;
+            // EXAMPLE OF SCOPE IN CLOSURE:
+            // Variables from innerFunc, middleFunc, and outerFunc,
+            // as well as the global namespace, are ALL in scope here.
+            console.log("outerArg=" + outerArg +
+                " middleArg=" + middleArg +
+                " innerArg=" + innerArg + "\n" +
+                " outerVar=" + outerVar +
+                " middleVar=" + middleVar +
+                " innerVar=" + innerVar);
+            // --------------- THIS WILL LOG: ---------------
+            //    outerArg=123 middleArg=456 innerArg=789
+            //    outerVar=3 middleVar=4 innerVar=5
+        })(789);
     })(456);
-  })(123);
+})(123);
 
 
 
@@ -263,11 +406,11 @@ console.log("\t****\n");
 
 
 let rabbit = {
-    humps : "I'm Hopping !",
+    humps: "I'm Hopping !",
     walk() {
-        return("I'm Hopping");
+        return ("I'm Hopping");
     },
-    __proto__ : animal
+    __proto__: animal
 }
 console.log(rabbit.eats);
 console.log(rabbit.walk());
@@ -282,5 +425,5 @@ let fluffyKins = {
     longEars: true,
     __proto__: rabbit,
 }
-    console.log(fluffyKins.eats);
+console.log(fluffyKins.eats);
 console.log(fluffyKins.walk());

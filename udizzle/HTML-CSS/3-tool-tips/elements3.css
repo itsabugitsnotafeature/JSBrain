@@ -33,6 +33,8 @@
     content: " ";
     color: black;
     position: absolute;
+    left: 102%;
+    top: 50px;
 
 
     /* margin-left: 2px; */
@@ -41,10 +43,6 @@
     border-width: 5px;
     border-color: transparent transparent black transparent;
 
-
-    left: 102%;
-    top: 50px;
-
 }
 
 
@@ -52,7 +50,11 @@
     /* ARROW DECORATION */
     content: " ";
     color: black;
+
+    /* ARROW  POSITION */
     position: absolute;
+    left: 99.8%;
+    top: 17px;
 
     margin-right: -5px;
     /* BORDER WIDTH | STYLE | COLOR */
@@ -60,9 +62,6 @@
     border-style: solid;
     border-color: transparent transparent transparent slategrey;
 
-    /* ARROW  POSITION */
-    left: 99.8%;
-    top: 17px;
 }
 
 #tip4:hover .tip {
@@ -93,16 +92,20 @@
     
     /* TOOLTIP POSITIONING */
     position: absolute;
-    z-index: 1;
     top: -47px;
     left: -337%;
+    z-index: 1;
 }
 
 #tip3 .tip::after{
     /* ARROW DECORATION */
     content: " ";
     color: tomato;
+
+    /* ARROW POSITIONING */
     position: absolute;
+    left: 48%;
+    bottom: -10px;
     
     /* MARGIN TOP */
     margin-top: -5px;
@@ -111,10 +114,6 @@
     border-width: 5px;
     border-style: solid;
     border-color: tomato transparent transparent transparent;
-    
-    /* ARROW POSITIONING */
-    left: 48%;
-    bottom: -10px;
     
 }
 
