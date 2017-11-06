@@ -41,6 +41,21 @@ let firstNonRepeatChar = (str) => {
     })
     return firstUniqueChar;
 }
+let firstNonRepeatingChar_better = (inpStr) => {
+    let ind = 0;
+    let str = '';
+    let arr = [...inpStr];
+    arr.forEach((char)=>{
+        let thisInxed = str.indexOf(char);
+        if(thisInxed > -1){
+            str = str.slice(0,thisInxed) + str.slice(thisInxed+1, str.length);
+        } else {
+            str += char;
+        }
+    });
+    return str.charAt(0);
+}
+firstNonRepeatingChar("aaaabcdefghcdefghijjkkl");
 // console.log( firstNonRepeatChar('the quick brown fox jumps then quickly blow air'))
 
 
