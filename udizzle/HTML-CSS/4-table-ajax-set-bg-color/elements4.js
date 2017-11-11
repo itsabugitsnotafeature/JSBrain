@@ -71,7 +71,8 @@ function setColor(){
         prev.push(col);
         return prev;
     },[]);
-    var targetElemColor = getColorValue(targetElemColorComponents[0], targetElemColorComponents[1], targetElemColorComponents[2]);    
+    var targetElemColor = getColorValue(targetElemColorComponents[0], 
+            targetElemColorComponents[1], targetElemColorComponents[2]);    
     targetElem.style.backgroundColor = targetElemColor
 }
 

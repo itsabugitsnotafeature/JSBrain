@@ -101,7 +101,6 @@ function partition(arr, pivot, left, right) {
     var pivotValue = arr[pivot],
         partitionIndex = left;
     for (var i = left; i < right; i++) {
-
         if (arr[i] < pivotValue) {
             swap(arr, i, partitionIndex);
             partitionIndex++;
@@ -119,7 +118,7 @@ let randomArray = (length, max) => [...new Array(length)]
     .map(() => Math.round(Math.random() * max));
 
 
-let testData1 = [7,5,2,4,3,9],
+let testData1 = [ 7, 9, 4, 10, 10, 14, 4, 11, 0, 11, 1, 17, 2, 4, 13 ],
     testData2 = [9,7,5,4,3,1],
     testData3 = [1,2,3,4,5,6];
 

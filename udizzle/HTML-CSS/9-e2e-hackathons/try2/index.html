@@ -1,0 +1,35 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>Try 2</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <h3>Hello World</h3>
+
+        <ul>
+            <li> Make AJAX on button click </li>
+            <li> render table</li>
+            <li> add tool tip above</li>
+            <li> add tool tip below</li>
+            <li> add tool tip to the right</li>
+        </ul>
+        <!-- <div class="tooltip"><span> ToolTip Data </span></div> -->
+
+        <button type="submit" onclick="initializeTable()" > BEGIN GAME </button>
+        <button type="submit" onclick="updateDemoDiv(' ')" > CLEAR TABLE </button>
+        <button type="submit" onclick="addToolTip()" > ADD TOOLTIPS </button>
+
+        <div id="demo"></div>
+
+
+        <form onsubmit="acceptForm()">
+            <input type="text" placeholder="Enter Repo Here" >
+            <input type="number" placeholder="Enter Number Here" >
+            <button type="submit" > Submit </button>
+            <button type="reset" > Reset </button>
+        </form>
+
+        <script src="./logic.js" ></script>
+    </body>
+</html>
