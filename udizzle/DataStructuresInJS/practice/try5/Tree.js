@@ -103,8 +103,6 @@ class Tree {
     }
 }
 
-
-
 let t = new Tree(15);
 t.add(11, 15);
 t.add(12, 15);
@@ -126,7 +124,6 @@ t.add(10, 14);
 t.add(1, 8);
 t.add(2, 8);
 
-
 console.log("\nDepthFirst ");
 t.depthFirst();
 console.log("\n\nBreadthFirst ");
@@ -137,3 +134,5 @@ console.log("\n\n ");
 t.deleteNode(1);
 console.log("\nDepthFirst ");
 t.depthFirst();
+
+
