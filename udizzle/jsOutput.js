@@ -15,6 +15,7 @@
 
 
 // ******* IMP ********
+// GotAnswer1
 arr = [1,2,3,4,5,6,7,8,9]
 arr.slice(-1)
 arr.slice(1,4)
@@ -34,6 +35,7 @@ arr.slice(-3)
 
 
 // ******* IMP ********
+// GotAnswer1
 function changeParam(x, y, z) {
     x = 3;
     y = "new string";
@@ -101,7 +103,8 @@ console.log(a);
 var a = ["1", "2", "3"];
 var b = a[1];
 a[1] = "4";
-// what is the value of b now for all possible data types that the array in "a" might hold?
+// what is the value of b now for all possible 
+// data types that the array in "a" might hold?
 /* 
     b => 2
     a => ["1", "4", "3"]; 
@@ -110,7 +113,11 @@ a[1] = "4";
 
 
 //  QQ
-var a = [{yellow: "blue"}, {red: "cyan"}, {green: "magenta"}];
+var a = [
+        {yellow: "blue"}, 
+        {red: "cyan"}, 
+        {green: "magenta"}
+    ];
 var b = a[1];
 a[1].red = "tan";
 b.red = "black";
@@ -233,6 +240,7 @@ console.log(foo.length);
 
 // Q 40.
 // ******* IMP ********
+// GOT -- WRONGGGG
 function foo(a) {
     arguments[0] = 2;
     console.log(a);
@@ -246,7 +254,7 @@ foo(1);
 
 
 // Q 39.
-// ******* IMP ********     // "GotAnswer1"
+// ******* IMP ********     // "GotAnswer2"
 var arr = [];
 arr[0]  = 'a';
 arr[1]  = 'b';
@@ -262,7 +270,7 @@ console.log(arr.length);
 
 
 // Q 38.
-// ******* IMP ******** // "GotAnswer2"
+// ******* IMP ******** // "GotAnswer3"
 var foo = function bar(){}; 
 console.log(typeof bar);
 /* 
@@ -274,7 +282,7 @@ console.log(typeof bar);
 
 
 // Q 37.
-// ******* IMP ********      // "GotAnswer1"
+// ******* IMP ********      // "GotAnswer2"
 x = 1;
 function bar() {
     this.x = 2;
@@ -295,7 +303,7 @@ console.log(bar());
 
 
 // Q 36.
-// ******* IMP ******** "GotAnswer2"
+// ******* IMP ******** "GotAnswer3"
 var x   = 4,
 obj = {
     x: 3,
@@ -319,7 +327,7 @@ obj.bar();
 
 
 // Q 35.
-// ******* IMP ******** "GotAnswer2"
+// ******* IMP ******** "GotAnswer3"
 var x = 3;
 var foo = {
     x: 2,
@@ -347,7 +355,7 @@ console.log(foo.baz.bar());
 
 
 
-// ******* IMP ******** "GotAnswer1"
+// ******* IMP ******** "GotAnswer-00"
 // Q 34.
 var outerFunction = function () {
 
@@ -446,7 +454,16 @@ myFunction();
 */
 
 
-
+-Infinity + Infinity
+-1 * (-Infinity)
+~Infinity
+~(-Infinity)
+/* 
+    NaN
+    Infinity
+    -1
+    -1
+*/
 
 
 // Q 32. What value is returned from the above statement?
@@ -460,7 +477,7 @@ myFunction();
 
 
 
-// Q 31. What is the value of window.foo?
+// Q 31. What is the value of window.foo?   *******************
 (window.foo || (window.foo = "bar"))
 /* 
     Answer: "bar"
@@ -472,7 +489,7 @@ myFunction();
 
 
 
-// Q 30. What is the outcome of the two console.logs above?
+// Q 30. What is the outcome of the two console.logs above?   *******************
 var foo = "Hello"
 (function () {
     var bar = " World"
@@ -490,7 +507,7 @@ console.log(foo + bar)
 
 
 
-// Q 29.
+// Q 29.   *******************
 // how to tell if an object is an array 
 let a = [1, 2, 3]
 typeof a // object
@@ -506,7 +523,7 @@ typeof a // object
 
 
 
-// Q 28.
+// Q 28.   *******************
 let a0 = () => {
     return true;
 };
@@ -528,7 +545,7 @@ typeof a3
 
 
 
-// ******* IMP ********     "//GotAnswer1"
+// ******* IMP ********     "//GotAnswer- 0 "
 // Q 27.
 (function () {
     var a = b = 3;
@@ -541,6 +558,7 @@ console.log(b);
 /* 
     true
     false
+    ReferenceError: a is not defined
     3
 
     But in fact, var a = b = 3; is actually shorthand for:
@@ -569,7 +587,7 @@ console.log(b);
 
 
 
-// ******* IMP ********     "//GotAnswer1"
+// ******* IMP ********     "//GotAnswer - 0 "
 // Q 26.
 var myObject = {
     foo: "bar",
@@ -585,10 +603,10 @@ var myObject = {
 };
 myObject.func();
 /* 
-    bar 
-    bar 
-    undeifned 
-    bar
+    outer func:  this.foo = bar
+    outer func:  self.foo = bar
+    inner func:  this.foo = undefined
+    inner func:  self.foo = bar
 */
 
 
@@ -630,7 +648,7 @@ NaN == NaN
 
 
 // Q 23.
-// ******* IMP ******** "GotAnswer1"
+// ******* IMP ******** "GotAnswer12"
 // Write a function that can run both statements below
 console.log(sum(2, 3));   // Outputs 5
 console.log(sum(2)(3));  // Outputs 5
@@ -649,8 +667,6 @@ console.log(sum(2)(3));  // Outputs 5
     // sum(2)(3) => 5
 
 */
-
-
 
 
 // Q 22.
@@ -724,12 +740,12 @@ d.hasOwnProperty('xyz');
 
 
 // Q 20.
-// ******* IMP ********
+// ******* IMP ******** ******** ******** ******** ********
 var arr1 = "john".split('');
 var arr2 = arr1.reverse();
 var arr3 = "jones".split('');
 arr2.push(arr3);
-console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(-1));
+console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(-1)); 
 console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
 
 /* 
@@ -848,7 +864,7 @@ for (var i = 0; i < 5; i++) {
 
 
 
-// Q 15. 
+// Q 15.    ********************************************************
 console.log("0 || 1 = " + (0 || 1));
 console.log("1 || 2 = " + (1 || 2));    // ******* IMP ********
 65 || 47
@@ -859,6 +875,8 @@ console.log("1 && 2 = " + (1 && 2));    // ******* IMP ********
 
     1
     1
+    65
+    47
     0
     2
 
@@ -869,7 +887,7 @@ console.log("1 && 2 = " + (1 && 2));    // ******* IMP ********
 
 
 
-// Q 14. 
+// Q 14.  ******** ******** ******** ******** ********
 false == 0
 false == '0'    // ******* IMP ********
 false == +'0'
@@ -918,8 +936,8 @@ console.log(a[b]);
 /* 
     456
     BECAUSE: 
-    b and c get translated to 
-    a["[object Object]"]
+        b and c get translated to 
+        a["[object Object]"]
 
 */
 

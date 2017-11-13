@@ -4,6 +4,31 @@
 
 
 
+/* 
+    querySelector
+    firstChild
+    lastChild
+    createElement
+    cloneNode
+*/
+
+
+
+var X = function(someValue) {
+    this.hello = function() {
+       return someValue;
+    };
+};
+
+X.prototype.test = function(){
+     return this.someValue;
+};
+
+var x = new X("hi");
+
+// ------ what will the following code return?
+console.log(x.hello());
+console.log(x.test()); 
 
 
 
@@ -13,14 +38,93 @@
 
 
 
+/* 
+    [[1,1],2,[1,1]],
+    return 10. 
+    (four 1's at depth 2, one 2 at depth 1)
+ 
+*/
+
+let nestedListSum = (list, depth) => {
+    debugger
+    if(list.length === 0){
+        return 0;
+    }
+    if( depth === undefined ){
+        depth = 1;
+    }
+
+    if(list.length % 2 !== 0){
+        // If list is odd numbered : Middle one is root
+        let mid = Math.ceil(list.length / 2) - 1;
+        let kind = Object.prototype.toString.call(list[mid]);
+        if( kind.indexOf('Array') > -1 ){
+            // Array node
+            let thisSum = 0;
+            for( let i=0 ; i<list[mid].length ; i++  ){
+                thisSum += (list[mid][i] * depth);
+            }
+            
+            let leftSum = nestedListSum(list.slice(0, mid), depth + 1);
+            let rightSum = nestedListSum(list.slice(mid+1, list.length), depth + 1);
+            return ( thisSum + leftSum + rightSum);
+        }
+        else {
+            // Single node
+            let thisSum = list[mid] * depth;
+            let leftSum = nestedListSum(list.slice(0, mid), depth + 1);
+            let rightSum = nestedListSum(list.slice(mid+1, list.length), depth + 1);
+
+            return ( thisSum + leftSum + rightSum);
+        }
+    } else {
+        // If list is EVEN numbered : Middle one is root
+        // 0th is root
+        // rest are children
+        
+        let fistElement = list[0];
+        let kind = Object.prototype.toString.call(fistElement);
+        if( kind.indexOf('Array') > -1 ){
+            // Array node
+            let thisSum = 0;
+            for( let i=0 ; i<list.length ; i++  ){
+                thisSum += (list[i] * depth);
+            }
+            let childSum = nestedListSum(list.slice(1, list.length)[0], depth + 1);
+            return ( thisSum + childSum);
+        } else {
+            let thisSum = list[0] * depth;
+            let childSum = nestedListSum(list.slice(1, list.length)[0], depth + 1);
+            return ( thisSum + childSum);
+        }
+    }
+}
+let lists = [[1,1],2,[1,1]];
+let list2 =  [1,[4,[6]]];
+// console.log(nestedListSum(lists));
+console.log(nestedListSum(list2));
 
 
 
 
 
 
+let sRoot = (num, guess) => {
+    if(!guess){
+        guess = num/2.0 ;
+    }
 
+    let div = num/guess ;
+    let newGuess = ((div + guess) /2 );
 
+    if (guess == newGuess){
+        return guess;
+    }
+    else {
+        return sRoot(num, newGuess);
+    }
+}
+// sRoot(3)
 
 
 
@@ -32,12 +136,8 @@ let hcf = (b, a) => {
     }
     return hcf( a, b%a );
 }
-console.log(hcf(16,20));
-console.log(hcf(100,90));
-
-
-
-
+// console.log(hcf(16,20));
+// console.log(hcf(100,90));
 
 
 
@@ -157,7 +257,7 @@ let arr = [
     [99, 100],
     [76]
 ];
-console.log(mergeKSortedList(arr));
+// console.log(mergeKSortedList(arr));
 
 
 let arrayProduct = (arr) => {
