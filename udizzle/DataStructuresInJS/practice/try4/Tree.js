@@ -116,9 +116,12 @@ export default class Tree {
             return null;
         }
 
-        // If either n1 or n2 matches with root's key, report
-        // the presence by returning root (Note that if a key is
-        // ancestor of other, then the ancestor key becomes LCA
+        /* 
+            If either n1 or n2 matches with root's key, report
+            the presence by returning root 
+            ( Note that if a key is ancestor of other, 
+                then the ancestor key becomes LCA 
+        */
         if (treeNode.data == n1 || treeNode.data == n2){
             return treeNode;
         }
@@ -128,9 +131,12 @@ export default class Tree {
         let left_lca  = Tree.lowestCommonAnsistor(treeNode.children[0], n1, n2);
         let right_lca = Tree.lowestCommonAnsistor(treeNode.children[1], n1, n2);
 
-        // If both of the above calls return Non-NULL, then one key
-        // is present in once subtree and other is present in other,
-        // So this node is the LCA <<<< SOLUTION 
+        /* 
+                        <<<< SOLUTION  >>>>
+            If both of the above calls return Non-NULL, then one key
+            is present in one subtree and other is present in other,
+            So this node is the LCA 
+        */
         if (left_lca && right_lca){
             return treeNode;
         }
