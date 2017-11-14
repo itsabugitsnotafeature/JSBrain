@@ -5,7 +5,144 @@
 
 
 
+/* 
+    METHOD 1:
+    INHERITING OBJECTS AS PROTOTYPES 
 
+*/
+var parent = {
+    val:2,
+    sayHi: function(){
+        console.log("Hi There !")
+    }
+}
+let child = Object.create(parent);
+let child1 = {};
+child1.__proto__ = parent;
+
+// Example 2:
+let animal = {
+    poops:true,
+    walks(){
+        // Walk definition goes here
+    }
+}
+
+let rabbit = {
+    jumps: true
+}
+// This makes animal as prototype of rabbit
+rabbit.__proto__ = animal;
+let rabbit1 = {
+    __proto__: animal,
+}
+
+// Example 3:
+let user = {
+    firstName: 'john',
+    lastName: 'doe',
+    isHuman: true,
+    getName1(){
+        // Returns name
+        return ( `${this.firstName} ${this.lastName} ` );
+    },
+    getName2(){
+        // Returns Error
+        return ( `${firstName} ${lastName} ` );
+    }
+}
+
+let adminUser = {
+    __proto__: user,
+    isAdmin: true
+}
+
+
+
+
+/* 
+    METHOD 2:
+    INHERITING SUB-CLASSES from PARENT CLASSES
+*/
+
+// Example 1:
+class Dog {
+    constructor(name){
+        this.name = name;
+        this.speed = 5;
+    }
+
+    getSpeed(){
+        return this.speed;
+    }
+}
+
+class Bulldog extends Dog {
+    constructor(name){
+        super(name);
+        this.color = 'brown';
+    }
+}
+
+let bd1 = new Bulldog('Buddy');
+let d1 = bd1 = new Dog('Tuddy');
+
+// Example 2:
+
+let animal1 = {
+    poops: true
+}
+
+let animal2 = {
+    eats: true
+}
+
+function Rabbit(){
+    this.eats = true;
+    this.walk = () =>{
+        console.log("HOPPIN !!")
+    }
+}
+Rabbit.__proto__ = animal;
+
+let r1 = new Rabbit()
+
+
+
+
+
+
+
+
+
+
+
+/* 
+    METHOD 2:
+        COMPOSITION
+*/
+
+let choco = {
+    hasChoco(){
+        return true;
+    }
+}
+let vanilla = {
+    hasVanilla(){ 
+        return  true
+    }
+}
+let berry = {
+    hasBerry () {
+        return true;
+    }
+}
+
+let iceCream = Object.assign({}, choco, vanilla, berry)
+let ic2 = {
+    melts: true,
+    __proto__: choco
+}
 
 
 
