@@ -115,6 +115,16 @@ class Tree {
     /* 
         AKA LCA -> Least Common Ancestor
     */     
+    /* 
+        ALGO Summary:
+        1. if parent = null/undefined, return null.
+        2. if ((node1 || node2) === parent), return parent as LCA.
+        3. Calculate lca_parent_child0, lca_parent_child1,
+            if both are non-null,
+                return parent
+            else
+                return which ever is not null
+    */
     static lowestCommonAncestor(currentNode, node1, node2){
         /* 
             Return null if current node is null
