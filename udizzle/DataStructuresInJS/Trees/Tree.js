@@ -1,165 +1,150 @@
 'use strict'
 
-import Queues from './Queues';
+// START : 04:23pm
+import Queue from './Queue';
+
 
 class TreeNode {
-    constructor(data){
+    constructor(data) {
         this.data = data;
+        this.children = new Array();
         this.parent = null;
-        this.children = [];
     }
 }
 
-class Tree{
-
+class Tree {
     constructor(data){
-        this._root = new TreeNode(data);
+        this.root = new TreeNode(data);
     }
 
-    traverseDepthFirst(myCallback){
-        if(!this._root){
-            console.log("No TREE IN EXISTANCE DUMBASS !");
+    showNode(node) {
+        if(!node){
+            console.error("No node");
+            return;
+        }
+        process.stdout.write(" => " + node.data);
+    }
+
+    depthFirst(callback){
+        if(!this.root){
+            console.error("No root node");
             return;
         }
 
-        let thisCallback = (node) => {
-            console.log("Tree Data => " + node.data);
-        }
+        callback = callback ? callback : this.showNode;
+        let current = this.root;
 
-        thisCallback = myCallback ? myCallback : thisCallback;
-        let currentTree = this._root;
+        (function recurse(current){
+            for(let i=0; i<current.children.length ; i++){
+                recurse(current.children[i]);
+            }
+            callback(current);
+        })(current);
+
+        return true;
+    }
+
+    breadthFirst(callback){
+        if(!this.root){
+            console.error("No root node");
+            return;
+        }
+        callback = callback ? callback : this.showNode;
+
+        let que = new Queue(this.root);
+        let current = que.dequeue();
+
+        while(current){
+            for(let i=0; i<current.children.length ; i++){
+                que.enqueue(current.children[i]);
+            }
+            callback(current);
+            current = que.dequeue();
+        }
+        return true;
+    }
+
+    add(nodeData, parentData, traversalMethod){
+        if(!this.root){
+            console.error("No root node");
+            return;
+        }
+        traversalMethod = traversalMethod ? traversalMethod : this.depthFirst;
         
-        (function recurse(currentTree) {
-            for(let i=0 ; i< currentTree.children.length ; i++){
-                recurse(currentTree.children[i]);
+        let insertChildCallback = (thisParent) => {
+            if(thisParent.data === parentData){
+                let newTreeNode = new TreeNode(nodeData);
+                thisParent.children.push(newTreeNode);
+                // console.log("Node insertion successful!")
             }
-            thisCallback(currentTree);
-        })(this._root);
-    };
+        }
+        traversalMethod.call(this, insertChildCallback);
+        return true;
+    }
 
-    traverseBreadthFirst(myCallback){
-        if(!this._root){
-            console.log("No TREE IN EXISTANCE DUMBASS !");
+    remove(nodeData, traversalMethod){
+        if(!this.root){
+            console.error("No root node");
             return;
         }
 
-        let thisCallback = (node) => {
-            console.log("Tree Data => " + node.data);
-        }
-
-        thisCallback = myCallback ? myCallback : thisCallback;
-
-        let myQue = new Queues;
-        myQue.enqueue(this._root);
-        debugger
-        let currentTree = myQue.dequque();
-
-        while(currentTree){
-            for(let i=0; i < currentTree.children.length ; i++){
-                myQue.enqueue(currentTree.children[i]);
-            }
-            thisCallback(currentTree);
-            currentTree = myQue.dequque();
-        }
-    };
-
-    contains(myCallback, traversalMethod){
-        traversalMethod.call(this, myCallback);
-    };
-
-    add(data, toData, traversalMethod){
-        let childNode = new TreeNode(data);
-        let parent = null;
-
-        let setParent = (treeNode) => {
-            if(treeNode.data === toData){
-                parent = treeNode;
-            }
-        };
-
-        this.contains(setParent, traversalMethod);
-
-        if(!parent){
-            console.log("No parent found with data item => " + toData);
-            return;
-        } else {
-            parent.children.push(childNode);
-            childNode.parent = parent;
-        }
-    };
-
-    remove(data, fromData, traversalMethod){
-        let parent = null;
-        let setParent = (treeNode) => {
-            if(treeNode.data = fromData){
-                parent = treeNode;
-            }
-        };
-
-        this.contains(setParent, traversalMethod);
-
-        if(!parent){
-            console.log("No parent found with data item => " + toData);
-            return;
-        } else {
-            let removeIndex = null;
-            let deletedNode = null;
-            for(let i=0 ; i<parent.children.length ; i++){
-                if(parent.children[i].data === data){
-                    removeIndex = i;
-                    break;
+        let immediateParent = null;
+        let childIndex = null;
+        traversalMethod = traversalMethod ? traversalMethod : this.breadthFirst;
+        
+        let tagParentCallback = (thisParent) => {
+            for(let i=0; i<thisParent.children.length ; i++){
+                if(thisParent.children[i].data === nodeData){
+                    immediateParent = thisParent;
+                    childIndex = i;
                 }
             }
+        }
 
-            if(removeIndex === null){
-                console.log("The Parent: " + fromData + 
-                    " has no child with value: " + toData);
-            } else {
-                deletedNode = parent.children.splice(removeIndex, 1);
-                console.log("Node deleted !");
-                
-            }
-            return deletedNode;
+        traversalMethod.call(this, tagParentCallback);
+        if(immediateParent){
+            immediateParent.splice(childIndex, 1);
+            console.log("Child node deleted !")
+            return true;
+        } else {
+            console.error("Could not delete !")
+            return false;
         }
     }
+
+    /* 
+        AKA LCA -> Least Common Ancestor
+    */     
+    static lowestCommonAncestor(currentNode, node1, node2){
+        /* 
+            Return null if current node is null
+        */
+        if(currentNode === null || currentNode === undefined ){
+            return null ;
+        }
+        
+        /* 
+            if either node is same as current, that one is the ancestor
+        */
+        if(currentNode.data === node1 || currentNode.data === node1) {
+            return currentNode;
+        }
+
+        /* 
+            calc if either children return with NON-NULL LCA
+        */
+        let left_lca = Tree.lowestCommonAncestor(currentNode.children[0], node1, node2);
+        let right_lca = Tree.lowestCommonAncestor(currentNode.children[1], node1, node2);
+
+        if( left_lca !== null && right_lca !== null ){
+            return currentNode;
+        }
+
+        return (left_lca === null ? right_lca : left_lca);
+    }
+
 }
 
+export default Tree;
 
-let t1 = new Tree(15);
-t1.add(11, 15, t1.traverseDepthFirst);
-t1.add(12, 15, t1.traverseDepthFirst);
-t1.add(13, 15, t1.traverseDepthFirst);
-t1.add(14, 15, t1.traverseDepthFirst);
-t1.add(3, 11, t1.traverseDepthFirst);
-t1.add(4, 11, t1.traverseDepthFirst);
-t1.add(5, 12, t1.traverseDepthFirst);
-t1.add(6, 12, t1.traverseDepthFirst);
-t1.add(7, 12, t1.traverseDepthFirst);
-t1.add(8, 13, t1.traverseDepthFirst);
-t1.add(9, 13, t1.traverseDepthFirst);
-t1.add(1, 8, t1.traverseDepthFirst);
-t1.add(2, 8, t1.traverseDepthFirst);
-t1.add(10, 14, t1.traverseDepthFirst);
-/* 
-TREE Structure
-|
-└-- 15 ( ROOT)
-    |
-    ├─-- 11-┬- 3
-    |       └- 4
-    |
-    ├─-- 12-┬- 5
-    |       ├─-6
-    |       └- 7
-    |
-    ├─-- 13-┬- 8 --┬- 1
-    |       └- 9   └- 2     
-    |
-    └- -- 14 -- 10
 
-*/
-console.log("\n\n Traversing Depth First !")
-t1.traverseDepthFirst();
-
-console.log("\n\n Breadth Depth First !")
-t1.traverseBreadthFirst();
