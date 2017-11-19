@@ -56,16 +56,13 @@ let countWaysToGetSum = (givenVals, targetSum) => {
 
     return memCache[targetSum];
 }
-console.log( countWaysToGetSum([1,2,3], 1) );
-console.log( countWaysToGetSum([1,2,3], 2) );
-console.log( countWaysToGetSum([1,2,3], 3) );
-console.log( countWaysToGetSum([1,2,3], 4) );
-console.log( countWaysToGetSum([1,2,3], 5) );
-console.log( countWaysToGetSum([1,2,3], 6) );
-console.log( countWaysToGetSum([1,2,3], 7) );
-
-
-
+// console.log( countWaysToGetSum([1,2,3], 1) );
+// console.log( countWaysToGetSum([1,2,3], 2) );
+// console.log( countWaysToGetSum([1,2,3], 3) );
+// console.log( countWaysToGetSum([1,2,3], 4) );
+// console.log( countWaysToGetSum([1,2,3], 5) );
+// console.log( countWaysToGetSum([1,2,3], 6) );
+// console.log( countWaysToGetSum([1,2,3], 7) );
 
 
 
@@ -102,6 +99,7 @@ let countWays_sharam = (arr, N) => {
     #Practice #2
     Source:
         http://www.geeksforgeeks.org/number-of-ways-to-calculate-a-target-number-using-only-array-elements/
+        http://www.geeksforgeeks.org/number-of-ways-to-calculate-a-target-number-using-only-array-elements/
     Number of ways to calculate a target number using only array elements
 
     Problem Statement: 
@@ -114,29 +112,30 @@ let countWays_sharam = (arr, N) => {
 
 */
 
-function subsetSum(numbers, target, partial) {
-    var s, n, remaining;
+function subsetSum(givenArray, targetSum, partialArray) {
+    var currentSum, n, remaining;
 
-    partial = partial || [];
+    partialArray = partialArray || [];
 
-    // sum partial
-    s = partial.reduce(function (a, b) {
+    // sum partialArray
+    currentSum = partialArray.reduce(function (a, b) {
         return a + b;
     }, 0);
 
-    // check if the partial sum is equals to target
-    if (s === target) {
-        console.log("%s=%s", partial.join("+"), target)
+    // check if the partialArray sum is equals to targetSum
+    if (currentSum === targetSum) {
+        console.log("%s=%s", partialArray.join("+"), targetSum)
     }
 
-    if (s >= target) {
-        return;  // if we reach the number why bother to continue
+    // if we reach the number why bother to continue
+    if (currentSum >= targetSum) {
+        return;  
     }
 
-    for (var i = 0; i < numbers.length; i++) {
-        n = numbers[i];
-        remaining = numbers.slice(i + 1);
-        subsetSum(remaining, target, partial.concat([n]));
+    for (var i = 0; i < givenArray.length; i++) {
+        currentNum = givenArray[i];
+        remainingArray = givenArray.slice(i + 1);
+        subsetSum(remainingArray, targetSum, partialArray.concat([currentNum]));
     }
 }
 
