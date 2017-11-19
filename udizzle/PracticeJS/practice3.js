@@ -4,6 +4,109 @@
 
 
 
+let treeSum = (arr, depth) =>  {
+    let sum = 0;
+    let length = arr.length;
+    if(!depth){
+        depth = 1;
+    }
+    if(length===0){
+        return 0;
+    }
+    
+    if(length===1){
+        return (arr[0] * depth);
+    }
+
+    if(length % 2 !== 0){
+        /* 
+            Odd Length:
+            Meaning, has a root, left and right child 
+        */
+        let mid = arr[ Math.floor(length/2) ];
+        sum = (mid*depth) + treeSum( arr.slice(0, Math.floor(length/2))[0], depth+1) + 
+            treeSum(arr.slice(Math.floor(length/2)+1, length)[0] , depth+1);
+    } else {
+        /* 
+            Even Length:
+            Meaning, Traverse children unless you encounter an array
+        */
+        arr.forEach((val)=>{
+            if( !isThisAnArray(val) ){
+                sum += (val*depth);
+            } else {
+                let childSum = treeSum(val , depth+1);
+                sum += childSum;
+            }
+        });
+    }
+    return sum;
+}
+function isThisAnArray(arr){
+    return ( Object.prototype.toString.call(arr).indexOf('Array') > -1 ) ? true : false;
+}
+
+// let arr0 = [[[1],4,[2]],5,[6]];
+// let arr1 = [[1,1],2,[1,1]];
+let arr2 =  [1,[4,[6]]];
+
+// console.log(treeSum(arr0)); // 34
+// console.log(treeSum(arr1)); // 10
+console.log(treeSum(arr2)); // 27
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+Flatten a Tree / Array of Array List
+*/
+
+
+let flattenTree= (arr) => {
+    if( arr.length ===0 ){
+        return;
+    } else {
+        let res = [];
+        for( let i=0 ; i<arr.length ; i++ ){
+            if( isArray(arr[i]) ){
+                let flattened = flattenTree(arr[i]);
+                while( flattened.length > 0 ){
+                    res.push(flattened.shift());
+                }
+            } else {
+                res.push(arr[i]);
+            }
+        }
+        return res;
+    }
+}
+
+function isArray(arr){
+    return ( Object.prototype.toString.call(arr).indexOf('Array') > -1 ) ? true : false;
+}
+
+// var arr1 = [ [1,2,3],[ 4,5,[6] ], [[7,8],[9,10,[11,12,13]]] ];
+// let arr2 = [[1,1],2,[1,1]];
+// var arr3 = [[4,[11,12],5,6],2,1,3,[7,8,[10,9]]];
+// let arr4 =  [1,[4,[6]]];
+// console.log(flattenTree(arr1));
+// console.log(flattenTree(arr2));
+// console.log(flattenTree(arr3));
+// console.log(flattenTree(arr4));
+
+
+
+
+
+
 /* 
     querySelector
     firstChild
@@ -27,8 +130,8 @@ X.prototype.test = function(){
 var x = new X("hi");
 
 // ------ what will the following code return?
-console.log(x.hello());
-console.log(x.test()); 
+// console.log(x.hello());
+// console.log(x.test()); 
 
 
 
@@ -102,7 +205,7 @@ let nestedListSum = (list, depth) => {
 let lists = [[1,1],2,[1,1]];
 let list2 =  [1,[4,[6]]];
 // console.log(nestedListSum(lists));
-console.log(nestedListSum(list2));
+// console.log(nestedListSum(list2));
 
 
 
