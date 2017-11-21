@@ -13,9 +13,66 @@
 
     JSBIN Solution: 
         https://jsbin.com/giyetaw/edit?js,console
- */
+*/
 
 
+
+
+// FIFTH Implementation
+function showData(data){
+    console.log("\n\n" + JSON.stringify(data, null, 2) );
+}
+
+
+const ARR1 = ['C', 'D', 'E', 'F', 'G'];
+const INDEX1 = [3, 0, 4, 1, 2];
+const SOL1 = ['D', 'F', 'G', 'C', 'E'];
+
+const ARR2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+const INDEX2 = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+const SOL2 = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+
+let sortByIndex = (arr, iArray) => {
+    let seperator = "****";
+    debugger
+    for(let i=0 ; i<arr.length ; i++){
+        let destIndex = iArray[i];
+        if(destIndex < i){
+            if( arr[i].indexOf(seperator) > -1 ){
+                
+                let itemToMove = arr[i].substring(0, arr[i].indexOf(seperator));
+                arr[i] = arr[i].substring( arr[i].indexOf(seperator) + seperator.length, arr[i].length  )
+                
+                arr[destIndex] = itemToMove;
+            } else {
+                arr[destIndex] = arr[i];
+            }
+        } else {
+            if( arr[i].indexOf(seperator) > -1 ){
+                
+                let itemToMove = arr[i].substring(0, arr[i].indexOf(seperator));
+                arr[i] = arr[i].substring( arr[i].indexOf(seperator) + seperator.length, arr[i].length  )
+                
+                arr[destIndex] = itemToMove;
+            } else {
+                arr[destIndex] += seperator + arr[i];
+            }
+        }
+    }
+
+}
+sortByIndex(ARR1, INDEX1)
+showData( ARR1 );
+
+
+
+
+
+
+
+
+
+// FOURTH Implementation
 const ARR1 = ['C', 'D', 'E', 'F', 'G'];
 const INDEX1 = [3, 0, 4, 1, 2];
 const SOL1 = ['D', 'F', 'G', 'C', 'E'];
@@ -29,7 +86,6 @@ let arr1,
     arr2,
     index2;
 
-// FOURTH Implementation
 let sortByIndev_v4 = (arrChar, arrIndex)=>{
     var arr1 = ['C', 'D', 'E', 'F', 'G'];
     var arr2 = [3, 0, 4, 1, 2];
@@ -54,7 +110,7 @@ let sortByIndev_v4 = (arrChar, arrIndex)=>{
     return sorted;
 };
 
-// THIRD Implementation
+// THIRD Implementation ==> MOST MIND BOGGLING 
 function sortByIndex_v3(array, index) {
     for (let i = 0; i < index.length; ++i) {
         let tmp = i;
