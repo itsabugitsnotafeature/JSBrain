@@ -10,6 +10,63 @@ let test = () => {
 };
 
 
+let quickSortAgain = (arr, left, right, count) => {
+    if(left === undefined) {
+        left = 0;
+        right = arr.length-1;
+        count = 0;
+    }
+    if(count > 20){
+        return null;
+    }
+
+    if(left < right){
+        let pivotIndex = right;
+        let partitionIndex = partitionAgain(arr, left, right, pivotIndex );
+        quickSortAgain(arr, left, partitionIndex -1, ++count);
+        quickSortAgain(arr, partitionIndex+1, right, ++count);
+    }
+    // mistake1
+    return arr;
+}
+
+function swapAgain(arr, i, j) {
+    arr[j] = [ arr[i], arr[i]=arr[j] ][0];
+}
+
+let partitionAgain = (arr, left, right, pivotIndex) => {
+    let partitionIndex = left;
+    let pivotValue = arr[pivotIndex];
+
+    // mistake2
+    for(let i=left ; i<right ; i++){
+    // for(let i=left ; i<=right ; i++){
+        if(arr[i] <= pivotValue ){
+            // swap a[i] val with a[partitionIndex]
+            swapAgain(arr, i, partitionIndex);
+            partitionIndex++;
+        }
+    }
+    // mistake3
+    swapAgain(arr, partitionIndex, pivotIndex);
+    return partitionIndex;
+}
+
+let arrAgain = [ 9,8,7,6,5,4,3,2,1,0 ];
+console.log(quickSortAgain(arrAgain));
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 
     SELECTION    SORT
     Time Complexity: 
@@ -157,7 +214,7 @@ function partition( arr, left, right, pivot ){
 
 
 /* 
-    BUVVLE  SORT
+    BUBBLE  SORT
     Time Complexity: 
         Ω(n)
     Space Complexity: 
@@ -235,11 +292,13 @@ let quickSort3 = (arr, left, right) => {
     return arr;
 }
 
-// Note that you are always passing the 
-//      whole array, not a sub part of it
-// PartitionIndex also == Index where 
-//      the pivot value is located at the 
-//      very end of the method
+/* 
+    Note that you are always passing the 
+        whole array, not a sub part of it
+    PartitionIndex also == Index where 
+        the pivot value is located at the 
+        very end of the method 
+*/
 let partition3 = (arr, left, right, pivotIndex) => {
     let pivotValue = arr[pivotIndex];
     // mistake4 : assigining this as left instead of 0
@@ -265,5 +324,5 @@ let partition3 = (arr, left, right, pivotIndex) => {
 }
 let tc = [ 7, 9, 4, 10, 10, 14, 4, 11, 0, 19, 1, 17, 2, 4, 11 ];
 // console.log( tc );
-console.log( quickSort3(tc) );
+// console.log( quickSort3(tc) );
 
