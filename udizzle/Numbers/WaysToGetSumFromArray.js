@@ -56,13 +56,13 @@ let countWaysToGetSum = (givenVals, targetSum) => {
 
     return memCache[targetSum];
 }
-// console.log( countWaysToGetSum([1,2,3], 1) );
-// console.log( countWaysToGetSum([1,2,3], 2) );
-// console.log( countWaysToGetSum([1,2,3], 3) );
-// console.log( countWaysToGetSum([1,2,3], 4) );
-// console.log( countWaysToGetSum([1,2,3], 5) );
-// console.log( countWaysToGetSum([1,2,3], 6) );
-// console.log( countWaysToGetSum([1,2,3], 7) );
+console.log( countWaysToGetSum([1,2,3], 1) );
+console.log( countWaysToGetSum([1,2,3], 2) );
+console.log( countWaysToGetSum([1,2,3], 3) );
+console.log( countWaysToGetSum([1,2,3], 4) );
+console.log( countWaysToGetSum([1,2,3], 5) );
+console.log( countWaysToGetSum([1,2,3], 6) );
+console.log( countWaysToGetSum([1,2,3], 7) );
 
 
 

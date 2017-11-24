@@ -99,7 +99,7 @@ let animal2 = {
 
 function Rabbit(){
     this.eats = true;
-    this.walk = () =>{
+    this.walk = () => {
         console.log("HOPPIN !!")
     }
 }
@@ -357,6 +357,7 @@ work();
 // 
 let name = "John";
 console.log(sayHi());
+console.log(sayHiThis());
 
 function sayHi() {
     return ("Hi, " + name);
@@ -368,9 +369,10 @@ name = "Pete";
 console.log(sayHi());
 console.log(sayHiThis());
 /* 
-    Hi John
-    Hi Peet
-    Hi undefined
+    Hi, John
+    Hi, 
+    Hi, Pete
+    Hi, 
 */
 
 
@@ -383,18 +385,25 @@ console.log(sayHiThis());
 
 
 // QQ
-var name1 = "John";
+var name = "John";
 console.log(sayHi());
+console.log(sayHiThis());
 
 function sayHi() {
-    return ("Hi, " + this.name1);
+    return ("Hi, " + name);
+}
+function sayHiThis() {
+    return ("Hi, " + this.name);
 }
 
-name1 = "Pete";
+name = "Pete";
 console.log(sayHi());
+console.log(sayHiThis());
 /* 
-    Hi John
-    Hi Peet
+    Hi, John
+    Hi, John
+    Hi, Pete
+    Hi, Pete
 */
 
 
@@ -439,6 +448,13 @@ console.log(sayHi());
 /* 
     Hi undefined
     Hi undefined
+
+
+    But if we used:
+        VAR name1 = "John";
+    Output would be:
+        Hi undefined
+        Hi undefined
 */
 
 

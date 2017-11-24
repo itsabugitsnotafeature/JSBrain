@@ -1,8 +1,13 @@
 
 
 /* 
-    Source http://www.crazyforcode.com/eulers-totient-function/
+    Source 
+        http://www.crazyforcode.com/eulers-totient-function/
     Euler’s Totient Function
+    Number N , is Eulers Totient to number K,
+        if 
+            1. K < N
+            2. K and N have no common divisors
 
 */
 
@@ -11,19 +16,19 @@
 
 let getEulesTotient = (num) => {
     let count = 1;
-    // let uniques = [];
+    let uniques = [];
     for (let i = 2; i < num; i++) {
         process.stdout.clearLine();  // clear current text
         process.stdout.cursorTo(0);
         process.stdout.write("Checking Number " + i + " works or not");
         
         if (!hasCommonDovosot(num, i)) {
-            // uniques.push(i);
+            uniques.push(i);
             count++;
         }
     }
-    return count;
-    // return uniques
+    // return count;
+    return uniques
 }
 
 let hasCommonDovosot = (num, guess) => {
@@ -35,6 +40,7 @@ let hasCommonDovosot = (num, guess) => {
     return false;
 }
 // getEulesTotient(100);   // 40
+console.log(getEulesTotient(100));
 
 
 let sharamAnswer = (num) => {

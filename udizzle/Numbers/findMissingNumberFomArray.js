@@ -26,3 +26,12 @@ let findMissingNumber = (arr, lower, upper) => {
 }
 let arr=[2, 5, 1, 4, 9, 6, 3, 7];
 console.log(findMissingNumber(arr,1,9))
+
+/* 
+    Example:
+        1,2,4,5,6,7
+    Various Algos: 
+        (n * (n-1))/2 - arr[i]
+        sort , min and count 
+        sum(frst and last must be same), like clock ( 12+1 = 11 +2 = 10 + 3 etc )
+*/

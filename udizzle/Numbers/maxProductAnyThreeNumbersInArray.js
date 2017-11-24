@@ -17,13 +17,32 @@
         The length of the given array will be in range [3,104] 
         All elements are in the range [-1000, 1000].
         Multiplication of any three numbers in the input won't exceed the range of 32-bit signed integer.
- */
+*/
+
+
 let TC = {
     one: [1, 2, 3],
     two: [1, 2, 3, 4],
     three: [-1, -2, -3],
     four: [-4, -3, -2, -1, 60]
 };
+
+let maxProductNewWay = (arr) => {
+    arr.sort();
+
+    return Math.max( arr[0] * arr[1] * arr[arr.length-1],
+        arr[arr.length-3] * arr[arr.length-2] * arr[arr.length-1]
+    );
+}
+debugger
+console.log(maxProductNewWay([1,2,1,3,1,4,1]));
+console.log(maxProductNewWay([-1,-2,-3]));
+console.log(maxProductNewWay(TC.one));
+console.log(maxProductNewWay(TC.two));
+console.log(maxProductNewWay(TC.three));
+console.log(maxProductNewWay(TC.four));
+console.log("\n\n\n\n");
+
 
 let maximumProduct_consecutiveNumbers = (arr) => {
 
@@ -62,6 +81,7 @@ let maximumProduct_consecutiveNumbers = (arr) => {
 };
 
 let maxProduct_prototype = (arr) => {
+    debugger
     // if size is less than 3, no triplet exists
     if (arr.length < 3) {
         return -1;
@@ -144,6 +164,20 @@ let maxProduct_prototype = (arr) => {
 
     return max_product;
 }
+TC = {
+    one: [1, 2, 3],
+    two: [1, 2, 3, 4],
+    three: [-1, -2, -3],
+    four: [-4, -3, -2, -1, 60]
+};
+debugger
+console.log(maxProduct_prototype([1,2,1,3,1,4,1]));
+console.log(maxProduct_prototype([-1,-2,-3]));
+console.log(maxProduct_prototype(TC.four));
+console.log(maxProduct_prototype(TC.three));
+console.log(maxProduct_prototype(TC.two));
+console.log(maxProduct_prototype(TC.one));
+
 
 let myMaxProduct = (arr) => {
     if(arr.length < 3) {
@@ -202,9 +236,3 @@ let myMaxProduct = (arr) => {
     }
     return maxProd;
 }
-console.log(maxProduct_prototype([1,2,1,3,1,4,1]));
-console.log(maxProduct_prototype([-1,-2,-3]));
-console.log(maxProduct_prototype(TC.four));
-console.log(maxProduct_prototype(TC.three));
-console.log(maxProduct_prototype(TC.two));
-console.log(maxProduct_prototype(TC.one));
