@@ -13,7 +13,7 @@ let  recursiveFun1 = (n) => {
 /* 
     The first function is being called recursively n times 
         before reaching base case so its O(n), often called linear.
-   O(n) 
+        O(n)
 */
 
 
@@ -28,8 +28,8 @@ let  recursiveFun2 = (n) => {
     O(n)
     The second function is called n-5 for each time, 
         so we deduct five from n before calling the function, 
-        but n-5 is also O(n). (Actually called order of n/5 times. 
-        And, O(n/5) = O(n) ).
+        but n-5 is also O(n). 
+        (Actually called order of n/5 times. And, O(n/5) = O(n) ).
 */
 
 
@@ -43,7 +43,8 @@ let  recursiveFun3 = (n) => {
 /* 
     log(n) base 5
     This function is log(n) base 5, 
-        for every time we divide by 5 before calling the function so its O(log(n))(base 5), 
+        for every time we divide by 5 before calling the function so its 
+            O(log(n))(base 5), 
         often called logarithmic and most often 
         Big O notation and complexity analysis uses base 2.
     
@@ -62,7 +63,9 @@ let recursiveFun4 = (n, m, o) => {
 }
 /* 
     O(2^n):
-    In the fourth, it's O(2^n), or exponential, 
+    In the fourth, it's 
+        O(2^n), 
+        or exponential, 
         since each function call calls itself 
         twice unless it has been recursed n times.
     
