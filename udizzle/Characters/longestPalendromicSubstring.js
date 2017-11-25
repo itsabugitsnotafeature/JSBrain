@@ -11,6 +11,30 @@
         Output: "bb"
 
 */
+
+let largestPalendrome_simplified = (str) => {
+    str = [...str];
+    let offset = 1;
+    let result = '';
+    debugger
+    for(let i=1 ; i < str.length ;){
+        offset = 1;
+        while( str[i+offset] === str[i-offset] ){
+            offset++;
+            if( str[i+offset] === str[i-offset] ){
+                let thisPalen = str.slice(i-offset, i+offset+1 ).join('');
+                // console.log("thisPalen => " + thisPalen)
+                if( result.length < thisPalen.length ){
+                    result = thisPalen;
+                }
+            }
+        } 
+        i += offset;
+    }
+    return result;
+}
+
+
 let longestPalindrome = function (s) {
     if (s.length > 1000) {
         return null;
@@ -108,6 +132,15 @@ function longestPalindrome_efficient(str) {
 }
 let testIp1 = 'aaaaafvewvrewgfdcrwgfrewff';
 let testIp2 = 'babcbabcbaccba';
-let startTime1 = Date.now();
+
+let startTime1;
+// TEST 1
+startTime1 = Date.now();
 console.log(longestPalindrome_efficient(testIp));
-console.log("RUNTIME: " + (Date.now() - startTime1) / 1000);
+console.log("RUNTIME 1 : " + (Date.now() - startTime1) / 1000);
+
+
+// TEST 2
+startTime1 = Date.now();
+console.log(largestPalendrome_simplified(testIp));
+console.log("RUNTIME 2 : " + (Date.now() - startTime1) / 1000);

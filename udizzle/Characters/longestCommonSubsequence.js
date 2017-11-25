@@ -20,7 +20,7 @@ It is a classic computer science problem, the basis of diff
 
 Examples:
     LCS for input Sequences “ABCDGH” and “AEDFHR” is “ADH” of length 3.
-    LCS for input Sequences “AGGTAB” and “GXTXAYB” is “GTAB” of length 4.
+    LCS for input Sequences “AGGTAB” and “GXTXGTABAYB” is “GTAB” of length 4.
 
 
 */
@@ -62,11 +62,19 @@ let longestCommonsubsequence_sharam = (a,b) => {
     if( a.length === 0 || b.length ===0 ){
         return 0;
     } else if( a[a.length -1] === b[b.length -1] ){
-        console.log("Got 1 for a=> " + a + " and b=>" + b);
-        return 1 + longestCommonsubsequence_sharam( a.substring(0, a.length - 1), b.substring(0, b.length - 1) )
+        
+        let aSub = a.substring(0, a.length - 1);
+        let bSub = b.substring(0, b.length - 1);
+
+        let next = longestCommonsubsequence_sharam( aSub, bSub);
+        return 1 + next
     } else {
-        return Math.max( longestCommonsubsequence_sharam( a.substring(0, a.length - 1), b), 
-        longestCommonsubsequence_sharam( a, b.substring(0, b.length - 1)) );
+        let aSub1 = a.substring(0, a.length - 1);
+        let next1 = longestCommonsubsequence_sharam( aSub1, b);
+
+        let bSub1 = b.substring(0, b.length - 1);
+        let next2 = longestCommonsubsequence_sharam( a, bSub1);
+        return Math.max( next1, next2);
     }
 }
 let str1 = 'AGGTAB';

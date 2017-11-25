@@ -32,6 +32,46 @@
 */
 
 
+// ITERATIVE SOLUTION
+
+
+let editDistance_iterative = (str1, str2) => {
+    let distance = 0;
+    debugger
+    if(str1.length === str2.length){
+        // Candidate for Modify
+        for(let i=0 ; i<str1.length ; i++){
+            if(str1[i] !== str2[i]){
+                distance++
+            }
+        }
+        return distance;
+    } else {
+        // Candidate for Add / Remove
+        let longerStr = str1.length > str2.length ? str1 : str2;
+        let shorterStr = str1.length < str2.length ? str1 : str2;
+
+        for(let i=0 ; i<longerStr.length ; i++){
+            if(shorterStr[i] === longerStr[i]){
+                continue;
+            } else {
+                if(shorterStr.length < longerStr.length ){
+                    // insert operation
+                    shorterStr = shorterStr.slice(0,i) + longerStr[i] + shorterStr.slice(i, shorterStr.length);
+                } else {
+                    // replace operation operation
+                    shorterStr = shorterStr.slice(0,i) + longerStr[i] + shorterStr.slice(i+1, shorterStr.length);
+                }
+                distance++;
+            }
+        }
+        return distance;
+    }
+}
+
+
+
+// Dynamic Programming 
 let editDist = (str1, str2, len1, len2) => {
 
     if(len1 == undefined) {
@@ -63,11 +103,13 @@ let findMin = ( a, b, c ) => {
     return Math.min( Math.min(a, b), c);
 }
 
-// let str1 = "sunday";
-// let str2 = "saturday";
-// console.log(editDist( str1 , str2));
-
-let str1 = "aaaabc";
-let str2 = "bbbbca";
+let str1 = "sunday";
+let str2 = "saturday";
 console.log(editDist( str1 , str2));
+console.log(editDistance_iterative( str1 , str2));
+
+str1 = "geek";
+str2 = "gesek";
+console.log(editDist( str1 , str2));
+console.log(editDistance_iterative( str1 , str2));
 

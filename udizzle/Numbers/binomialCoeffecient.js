@@ -31,18 +31,20 @@ let binomialCoef1 = (n, k) => {
     let C = new Array(n).fill(new Array(k));
     let i, j;
  
-    // Caculate value of Binomial Coefficient in bottom up manner
-    for (i = 0; i <= n; i++)
-    {
-        for (j = 0; j <= Math.min(i, k); j++)
-        {
-            // Base Cases
-            if (j == 0 || j == i)
+    for (i = 0; i <= n; i++) {
+        // Caculate value of Binomial Coefficient in bottom up manner
+
+        for (j = 0; j <= Math.min(i, k); j++) {
+            
+            if (j == 0 || j == i){
+                // Base Cases
                 set(C, i, j, 1);
+            }
  
-            // Calculate value using previosly stored values
-            else
-            set(C, i, j, (get(C, i-1, j-1) + get(C, i-1, j) ));
+            else {
+                // Calculate value using previosly stored values
+                set(C, i, j, (get(C, i-1, j-1) + get(C, i-1, j) ));
+            }
         }
     }
     return C[n][k];

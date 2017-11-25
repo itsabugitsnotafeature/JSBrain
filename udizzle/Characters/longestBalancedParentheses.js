@@ -45,6 +45,24 @@ console.log( longestParentheses(t3) );
 console.log( longestParentheses(t4) );
 
 
+let longestBalancedParenthesis_NewOne = (str) => {
+    let stack = [];
+    let res = 0;
+    debugger
+    for(let i=0 ; i<str.length ; i++){
+        if(str[i] === '('){
+            stack.push(str[i]);
+        } else {
+            stack.pop();
+            let thisLength = i - stack.length;
+            res = Math.max(thisLength, res);
+        }
+    }
+    return res;
+}
+console.log(longestBalancedParenthesis_NewOne('((((()()())))'));
+
+
 
 let sharamCopied = (str) => {
     str = [...str];
@@ -58,8 +76,7 @@ let sharamCopied = (str) => {
     let result = 0;
   
     // Traverse all characters of given string
-    for (let i=0; i<n; i++)
-    {
+    for (let i=0; i<n; i++) {
         // If opening bracket, push index of it
         if (str[i] == '(')
           stack.push(i);
