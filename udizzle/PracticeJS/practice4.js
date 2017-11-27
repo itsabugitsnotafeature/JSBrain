@@ -3,9 +3,9 @@
 
     1. Sorting              -- DONE
     2. JS PROTOTYPES        -- DONE
-    3. NUMBERS              -- 
-    4. CHARACTERS           -- 
-    5. UDEMY                -- 
+    3. NUMBERS              -- DONE
+    4. CHARACTERS           -- DONE
+    5. UDEMY                -- DONE
 
 */
 
@@ -19,6 +19,69 @@ with negative
 non negative array
 
 */
+
+
+
+let quicksort_again = (arr, low, hi) => {
+    debugger
+    if(arr.length === 0){
+        return;
+    } 
+    if(low === undefined){
+        low = 0;
+        hi = arr.length-1;
+    }
+    if(low <= hi){
+        let pivotIndex = hi;
+        let partitionIndex = partitionArray( arr, low, hi, pivotIndex);
+        quicksort_again(arr, low, partitionIndex - 1);
+        quicksort_again(arr, partitionIndex + 1, hi);
+    }
+    return arr;
+}
+
+let partitionArray = (arr, low, hi, pivotIndex) =>{
+    let pivotValue = arr[pivotIndex];
+    let partitionIndex = low;
+    for (let i=low ; i<hi ; i++) {
+        if(arr[i] < pivotValue){
+            swapThis(arr, i, partitionIndex);
+            partitionIndex++;
+        }
+    }
+    swapThis(arr, partitionIndex, pivotIndex);
+    return partitionIndex;
+}
+
+let swapThis = (arr, src, dest) => {
+    arr[dest] = [arr[src], arr[src] = arr[dest]][0];
+}
+
+// console.log(quicksort_again([10,9,8,7,6,5,4,3,2,1]));
+// console.log(quicksort_again([55,77,22,34,65,12,87,4,8,2,5,7,8,5,43,3,6,7,8,6,5,4,32]));
+
+
+
+
+
+
+/* let newAToI_vanilla = (num) => {
+    if(num[0].charCodeAt(0))
+
+    let base = ('0').charCodeAt(0);
+    return (num[0].charCodeAt(0) - base) + 10 * num.slice(1,num.length) ;
+}
+
+let newAToI_withNegatives = (num) => {
+    if(num[0] === '-'){
+        return (-1 * num.slice(1,num.length));
+    } else {
+        return num.slice(0,num.length);
+    }
+} */
+// console.log(newAToI_withNegatives("9999"));
+// console.log(newAToI_withNegatives("-9999"));
+
 
 
 
@@ -57,8 +120,8 @@ let AtoIWithDecimal = (str) => {
         return (beforeDecimal + afterDecimal);
     }
 }
-console.log(AtoIWithDecimal("-12345.9912345"));
-console.log(AtoIWithDecimal("-12345.123"));
+// console.log(AtoIWithDecimal("-12345.9912345"));
+// console.log(AtoIWithDecimal("-12345.123"));
 
 // console.log(AtoI("-12345"));
 
@@ -89,10 +152,17 @@ let editDistance = (str1, str2) => {
             } else {
                 if(shorterStr.length < longerStr.length ){
                     // insert operation
-                    shorterStr = shorterStr.slice(0,i) + longerStr[i] + shorterStr.slice(i, shorterStr.length);
+                    shorterStr = 
+                        shorterStr.slice(0,i) + 
+                        longerStr[i] + 
+                        shorterStr.slice(i, shorterStr.length);
+
                 } else {
                     // replace operation operation
-                    shorterStr = shorterStr.slice(0,i) + longerStr[i] + shorterStr.slice(i+1, shorterStr.length);
+                    shorterStr = 
+                        shorterStr.slice(0,i) + 
+                        longerStr[i] + 
+                        shorterStr.slice(i+1, shorterStr.length);
                 }
                 distance++;
             }
@@ -188,7 +258,7 @@ let longestBalancedParenthesis = (str) => {
         } else {
             stack.pop();
             let thisLength = i - stack.length;
-            res = Math.max(thisLength, res);
+            res = Math.max(res, thisLength);
         }
     }
     return res;
@@ -260,6 +330,95 @@ let longestCommonSubsequence = (a, b) => {
     return result;
 }
 
+/*
+    Source: https://github.com/elazzabi/longest-common-subsequence/blob/master/index.js
+*/
+function Chori_ka_Lcs (firstSequence, secondSequence, caseSensitive) {
+	var firstString = caseSensitive ? firstSequence : firstSequence.toLowerCase();
+	var secondString = caseSensitive ? secondSequence : secondSequence.toLowerCase();
+
+	if (firstString === secondString) {
+		return firstString;
+	}
+
+	if ((firstString || secondString) === '') {
+		return '';
+	}
+
+	var firstStringLength = firstString.length;
+	var secondStringLength = secondString.length;
+	var lcsMatrix = createArray(secondStringLength + 1);
+
+	var i;
+	var j;
+	for (i = 0; i <= firstStringLength; i++) {
+		lcsMatrix[0][i] = 0;
+	}
+
+	for (i = 0; i <= secondStringLength; i++) {
+		lcsMatrix[i][0] = 0;
+	}
+
+	for (i = 1; i <= secondStringLength; i++) {
+		for (j = 1; j <= firstStringLength; j++) {
+			if (firstString[j - 1] === secondString[i - 1]) {
+				lcsMatrix[i][j] = lcsMatrix[i - 1][j - 1] + 1;
+			} else {
+				lcsMatrix[i][j] = Math.max(lcsMatrix[i - 1][j], lcsMatrix[i][j - 1]);
+			}
+		}
+	}
+
+	var lcs = "";
+	i = secondStringLength;
+	j = firstStringLength;
+
+	while (i > 0 && j > 0) {
+		if (firstString[j - 1] === secondString[i - 1]) {
+			lcs = firstString[j - 1] + lcs;
+			i--;
+			j--;
+		} else if (Math.max(lcsMatrix[i - 1][j], lcsMatrix[i][j - 1]) === lcsMatrix[i - 1][j]) {
+			i--;
+		} else {
+			j--;
+		}
+	}
+
+	return lcs;
+};
+function createArray(dimension) {
+	var array = [];
+
+	for (var i = 0; i < dimension; i++) {
+		array[i] = [];
+	}
+
+	return array;
+}
+console.log( Chori_ka_Lcs("AGGTAB", "GXTXGTABAYB") );
+console.log( Chori_ka_Lcs("aaaa", "baabaabb") );
+
+
+
+let longestCommonSubsequence_practice_butBroken = (a, b) => {
+    if(a.length == 0 || b.length == 0){
+        return 0;
+    }
+    if(a[a.length-1] === b[b.length-1]){
+        return 1 + longestCommonSubsequence_practice(
+            a.slice(0, a.length-1), 
+            b.slice(0, b.length-1));
+    } else {
+        let max1 = longestCommonSubsequence_practice(a.slice(0, a.length-1), b);
+        let max2 = longestCommonSubsequence_practice(a, b.slice(0, b.length-1));
+        return Math.max(max1, max2);
+    }
+}
+// console.log( longestCommonSubsequence_practice("AGGTAB", "GXTXGTABAYB") );
+// console.log( longestCommonSubsequence_practice("aaaa", "baabaabb") );
+
+
 let longestCommonSubsequence_hacka = (a, b) => {
     if(a.length ===0 || b.length===0){
         return 0;
@@ -275,6 +434,7 @@ let longestCommonSubsequence_hacka = (a, b) => {
         return Math.max( max1, max2 );
     }
 }
+
 
 let longestCommonSubsequence_ReImagined = (a, b) => {
     if(a.length === 0 || b.length === 0){
@@ -294,7 +454,6 @@ let longestCommonSubsequence_ReImagined = (a, b) => {
         return Math.max(subSeq1, subSeq2);
     }
 }
-
 
 
 let longestCommonsubsequence_sharam = (a,b) => {
