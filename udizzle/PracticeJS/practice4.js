@@ -21,6 +21,32 @@ non negative array
 */
 
 
+let bindPerson = {
+    name:"Dolly",
+    sayHi: function(){
+        console.log("Well hello there " + this.name);
+    }
+}
+
+let newHiToJane = bindPerson.sayHi.bind({name:"Jane"});
+
+
+
+let isSubsequenceDivisibleBy_8 = (numString, res) => {
+    if(res === undefined){
+        res = [];
+    }
+    if(numString.length === 0){
+        return;
+    }
+    if( (parseInt(numString) % 8) === 0){
+        res.push(numString);
+        return;
+    } 
+    isSubsequenceDivisibleBy_8(numString.slice(1, numString.le))
+}
+
+
 
 let quicksort_again = (arr, low, hi) => {
     debugger

@@ -79,18 +79,21 @@ console.log(b);
 console.log(c);
 console.log(a);
 /* 
-    b is now "2";
-    c now references {foo:"bar"}
-    a is now ["1", "4", {foo:"bar"}]; b still has the value
+    Initially
+        b is now "2";
+        c now references {foo:"bar"}
+        a is now ["1", "4", {foo:"bar"}]; 
+        b still has the value
     it had at the time of assignment
-    a is now ["1", "4", "5"]; c still has the value
-    it had at the time of assignment, i.e. a reference to
-    the object {foo:"bar"}
-    "2" "bar"
-    ANSWER: 
-        2
-        {foo: "bar"}
-        ["1", "4", "5"]
+        a is now ["1", "4", "5"]; 
+        c still has the value
+            it had at the time of assignment, i.e. a reference to
+            the object {foo:"bar"}
+        "2" "bar"
+        ANSWER: 
+            2
+            {foo: "bar"}
+            ["1", "4", "5"]
 */
 
 
@@ -179,7 +182,7 @@ a == b
 [1,2,3] == [1,2,3]
 [] === []
 [] == []
-----
+// ----
 c == a
 c === a
 /* 
@@ -314,10 +317,19 @@ obj = {
             console.log(this.x);
             console.log(x);
         }, 1000);
+    },
+    baz: function() {
+        var x = 2;
+        console.log(this.x);
+        console.log(x);
+    
     }
 };
 obj.bar();
+obj.baz();
 /* 
+    3
+    2
     4
     1
 */
@@ -355,7 +367,7 @@ console.log(foo.baz.bar());
 
 
 
-// ******* IMP ******** "GotAnswer-00"
+// ******* IMP ******** "GotAnswer- -1"
 // Q 34.
 var outerFunction = function () {
 
