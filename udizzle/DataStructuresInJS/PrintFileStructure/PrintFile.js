@@ -69,32 +69,27 @@ let printWithIndent = (input) => {
     debugger;
 
     (function recurseAndPrint(node, depth){
-        
-        if(depth === undefined){
-            depth = 0;
-        }
-
-        if(depth === 100){
-            return;
-        }
-
-        // console.log("LABEL: " + node.label);
-        // console.log("depth: " + depth);
-
-        
-        let allChildren = parentMap.get(node.label);
-
-        for(let i=0 ; i<children.length ; i++){
-            recurseAndPrint(children[i], depth+1);
-        }
+        depth = depth || 0; 
 
         consolePrintWithIndent(node, depth);
+        let allChildren = parentMap.get(node.label);
+        if(allChildren){
+            for(let i=0 ; i<allChildren.length ; i++){
+                recurseAndPrint(allChildren[i], depth+1);
+            }
+        }
     })(root);
-
+    console.log("\n");
+    console.log("\n");
 }
 
 function consolePrintWithIndent(child, depth) {
-    console.log(JSON.stringify(child.label, null, depth));
+    console.log("\n");
+    while(depth>0){
+        process.stdout.write("\t");
+        depth--
+    }
+    process.stdout.write(child.label);
 }
 
 
@@ -111,7 +106,7 @@ let input = {
             id: 2
         },
         {
-            label: "2017",
+            label: "2018",
             parent: "Travel",
             id: 3
         },
