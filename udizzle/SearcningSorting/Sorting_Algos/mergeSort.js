@@ -91,18 +91,22 @@ function dizzleMergeNow(leftArray, rightArray){
     }
     return result;
 }
+debugger
+let tc = [ 7, 9, 4, 10, 10, 14, 4, 11, 0, 11, 1, 17, 2, 4, 13 ];
+console.log(JSON.stringify(dizzleMergeSort(tc)));
+console.log(JSON.stringify(tc));
 
-let testData1 = [7, 5, 2, 4, 3, 9],
-    testData2 = [9, 7, 5, 4, 3, 1],
-    testData3 = [1, 2, 3, 4, 5, 6];
+// let testData1 = [7, 5, 2, 4, 3, 9],
+//     testData2 = [9, 7, 5, 4, 3, 1],
+//     testData3 = [1, 2, 3, 4, 5, 6];
 
-console.log(JSON.stringify(dizzleMergeSort(testData1)));
-console.log(JSON.stringify(dizzleMergeSort(testData2)));
-console.log(JSON.stringify(dizzleMergeSort(testData3)));
+// console.log(JSON.stringify(dizzleMergeSort(testData1)));
+// console.log(JSON.stringify(dizzleMergeSort(testData2)));
+// console.log(JSON.stringify(dizzleMergeSort(testData3)));
 
-let randomArray = (length, max) => [...new Array(length)]
-.map(() => Math.round(Math.random() * max));
+// let randomArray = (length, max) => [...new Array(length)]
+// .map(() => Math.round(Math.random() * max));
 
-let startTime = Date.now();
-dizzleMergeSort(randomArray(9999, 1000));
-console.log("Total Runtime: " + (Date.now() - startTime) );
+// let startTime = Date.now();
+// dizzleMergeSort(randomArray(9999, 1000));
+// console.log("Total Runtime: " + (Date.now() - startTime) );
