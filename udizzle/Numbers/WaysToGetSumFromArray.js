@@ -56,13 +56,13 @@ let countWaysToGetSum = (givenVals, targetSum) => {
 
     return memCache[targetSum];
 }
-console.log( countWaysToGetSum([1,2,3], 1) );
-console.log( countWaysToGetSum([1,2,3], 2) );
-console.log( countWaysToGetSum([1,2,3], 3) );
-console.log( countWaysToGetSum([1,2,3], 4) );
-console.log( countWaysToGetSum([1,2,3], 5) );
-console.log( countWaysToGetSum([1,2,3], 6) );
-console.log( countWaysToGetSum([1,2,3], 7) );
+// console.log( countWaysToGetSum([1,2,3], 1) );
+// console.log( countWaysToGetSum([1,2,3], 2) );
+// console.log( countWaysToGetSum([1,2,3], 3) );
+// console.log( countWaysToGetSum([1,2,3], 4) );
+// console.log( countWaysToGetSum([1,2,3], 5) );
+// console.log( countWaysToGetSum([1,2,3], 6) );
+// console.log( countWaysToGetSum([1,2,3], 7) );
 
 
 
@@ -106,40 +106,44 @@ let countWays_sharam = (arr, N) => {
         Given an integer array, find number of ways 
         to calculate a target number 
         using only array elements 
-        and addition or subtraction operator.
+        and ADDITION OR SUBTRACTION operator.
 
     NOTE: You can use a number only once
 
 */
 
-function subsetSum(givenArray, targetSum, partialArray) {
-    var currentSum, n, remaining;
+let subsetSum = (arr, targetSum, currentIndex) => {
+    currentIndex = currentIndex || 0;
 
-    partialArray = partialArray || [];
-
-    // sum partialArray
-    currentSum = partialArray.reduce(function (a, b) {
-        return a + b;
-    }, 0);
-
-    // check if the partialArray sum is equals to targetSum
-    if (currentSum === targetSum) {
-        console.log("%s=%s", partialArray.join("+"), targetSum)
+    // If all elements are processed, i.e currentIndex > arr.length
+    // target is not reached, return 0
+    if (currentIndex >= arr.length && targetSum !== 0){
+        return 0;
     }
 
-    // if we reach the number why bother to continue
-    if (currentSum >= targetSum) {
-        return;  
+    // If target is reached, return 1
+    if (targetSum === 0) {
+        return 1;
     }
 
-    for (var i = 0; i < givenArray.length; i++) {
-        currentNum = givenArray[i];
-        remainingArray = givenArray.slice(i + 1);
-        subsetSum(remainingArray, targetSum, partialArray.concat([currentNum]));
-    }
+    // 1. Don't consider current element
+    let nativeCase =  subsetSum(arr, targetSum, currentIndex + 1);
+    
+    // 2. Consider current element and subtract it from target
+    let subtractionCase =  subsetSum(arr, targetSum - arr[currentIndex], currentIndex + 1);
+    
+    // 3. Consider current element and add it to target
+    // NOTE: Set following to 0 for only subtraction scenario
+    let additionCase =  subsetSum(arr, targetSum + arr[currentIndex], currentIndex + 1);
+
+    // Return total count of three cases
+    return nativeCase + additionCase + subtractionCase;
 }
 
-// subsetSum([3, 9, 8, 4, 5, 7, 10], 15);
+// console.log(subsetSum([3, 9, 8, 4, 5, 7, 10], 15));
+console.log(subsetSum([9, 20], 11));
+console.log(subsetSum([9, 9], 18));
+console.log(subsetSum([1,2,3], 4));
 
 // output:
 // 3+8+4=15

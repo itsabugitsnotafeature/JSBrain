@@ -44,8 +44,8 @@ function isArray(item) {
         true : false;
 }
 
-let arr1 = [[1,1],2,[1,1]];
-let arr2 =  [1,[4,[6]]];
+let arr1 = [[1,1],2,[1,1]]; // 10
+let arr2 =  [1,[4,[6]]];    // 27
 debugger
 console.log(treeSumByDepth(arr1));
 console.log(treeSumByDepth(arr2));
