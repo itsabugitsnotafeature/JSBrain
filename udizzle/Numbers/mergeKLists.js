@@ -1,6 +1,6 @@
 'use strict'
 
-
+// Attempt #1 : 
 let mergeKSortedList = (lists) => {
     let maxLength = 0;
     let numSlices = [];
@@ -42,6 +42,37 @@ let insertSortedElement = (arr, num) => {
         index++;
     }
     arr = [ ...(arr.slice(0,index)) , num , ...(arr.slice(index, arr.length))  ];
+    return arr;
+}
+
+
+// Attempt #2 : Better Implementation / Same Algo
+let mergeKSortedList = (arr) => {
+    let result = [];
+    let maxLen = -Infinity;
+    for(let i=0 ; i<arr.length ; i++){
+        maxLen = Math.max(maxLen, arr[i].length);
+    }
+    for(let i=0 ; i<maxLen ; i++){
+        for(let j=0 ; j<arr.length ; j++){
+            if(arr[j].length > 0){
+                result = insertElemByVal(result, arr[j].shift());
+            }
+        }
+    }
+    return result;
+}
+
+let insertElemByVal = (arr, num) => {
+    if(arr.length === 0){
+        arr.push(num);
+    } else {
+        let ind = 0;
+        while(arr[ind] <= num) {
+            ind++;
+        }
+        arr = arr.slice(0,ind).concat([num]).concat(arr.slice(ind,arr.length));
+    }
     return arr;
 }
 

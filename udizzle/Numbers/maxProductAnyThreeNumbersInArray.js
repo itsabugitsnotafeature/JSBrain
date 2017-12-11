@@ -27,7 +27,7 @@ let TC = {
     four: [-4, -3, -2, -1, 60]
 };
 
-let maxProductNewWay = (arr) => {
+let maxProductOfThree_Non_Consecutive_Numbers = (arr) => {
     arr.sort();
 
     return Math.max( arr[0] * arr[1] * arr[arr.length-1],
@@ -35,12 +35,12 @@ let maxProductNewWay = (arr) => {
     );
 }
 debugger
-console.log(maxProductNewWay([1,2,1,3,1,4,1]));
-console.log(maxProductNewWay([-1,-2,-3]));
-console.log(maxProductNewWay(TC.one));
-console.log(maxProductNewWay(TC.two));
-console.log(maxProductNewWay(TC.three));
-console.log(maxProductNewWay(TC.four));
+console.log(maxProductOfThree_Non_Consecutive_Numbers([1,2,1,3,1,4,1]));
+console.log(maxProductOfThree_Non_Consecutive_Numbers([-1,-2,-3]));
+console.log(maxProductOfThree_Non_Consecutive_Numbers(TC.one));
+console.log(maxProductOfThree_Non_Consecutive_Numbers(TC.two));
+console.log(maxProductOfThree_Non_Consecutive_Numbers(TC.three));
+console.log(maxProductOfThree_Non_Consecutive_Numbers(TC.four));
 console.log("\n\n\n\n");
 
 

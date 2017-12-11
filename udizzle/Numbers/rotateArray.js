@@ -25,6 +25,14 @@
         5 1 2 3 4
  */
 
+let rotateArray_update = (arr, times, anticlockwise) => {
+    if(anticlockwise){
+        arr.slice(arr.length-times,arr.length).concat(arr.slice(0,arr.length-times));
+    } else {
+        return arr.slice(times, arr.length).concat(arr.slice(0,times));
+    }
+}
+
 // Using Internal API's
 let rotateArr = (arr, times, reverse) => {
     if (reverse) {

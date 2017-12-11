@@ -8,6 +8,20 @@
 */
 
 
+let getLcm = (a,b) => {
+    let prod = a*b;
+    let hcf = getHcf(a,b);
+    return (prod / hcf);
+};
+
+let getHcf = (a,b) => {
+    if(!b) {
+        return a;
+    }
+    return getHcf (b, a % b );
+};
+
+
 /* 
     Lowest Common Multiple
 */
