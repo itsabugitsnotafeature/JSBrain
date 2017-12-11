@@ -80,55 +80,22 @@ let testIp = "civilwartestingwhetherthatnaptionoranynartionsoconceivedandsodedic
     appended to each end 
     to avoid bounds checking 
 */
-function preProcess(str) {
-    if (str.length == 0) {
-        return "^$";
+let largestPalendrome = (str) => {
+    str = [...str];
+    let offset = 1;
+    let result = '';
+    for(let i=1 ; i < str.length ;){
+        offset = 1;
+        while( str[i+offset] === str[i-offset] ){
+            offset++;
+            let thisPalen = str.slice(i-offset, i+offset+1 ).join('');
+            if( result.length < thisPalen.length ){
+                result = thisPalen;
+            }
+        } 
+        i += offset;
     }
-    let ret = "^";
-    for (let i = 0; i < str.length; i++) {
-        ret += "#" + str.substr(i, 1);
-    }
-    ret += "#$";
-    return ret;
-}
-
-function longestPalindrome_efficient(str) {
-    debugger
-    let transformedString = preProcess(str);
-    let transformedLength = transformedString.length;
-    let palendromeCenterLength = new Array(str.length);
-    let centerOfPalendrome = 0,
-        rightEdge = 0;
-
-    for (let i = 1; i < transformedLength - 1; i++) {
-
-        let i_mirror = 2 * centerOfPalendrome - i; // equals to i' = centerOfPalendrome - (i-centerOfPalendrome)
-
-        palendromeCenterLength[i] = (rightEdge > i) ? Math.min(rightEdge - i, palendromeCenterLength[i_mirror]) : 0;
-
-        // Attempt to expand palindrome centered at i
-        while (transformedString[i + 1 + palendromeCenterLength[i]] == transformedString[i - 1 - palendromeCenterLength[i]])
-            palendromeCenterLength[i]++;
-
-        // If palindrome centered at i expand past rightEdge,
-        // adjust center based on expanded palindrome.
-        if (i + palendromeCenterLength[i] > rightEdge) {
-            centerOfPalendrome = i;
-            rightEdge = i + palendromeCenterLength[i];
-        }
-    }
-
-    // Find the maximum element in palendromeCenterLength.
-    let maxLen = 0;
-    let centerIndex = 0;
-    for (let i = 1; i < transformedLength - 1; i++) {
-        if (palendromeCenterLength[i] > maxLen) {
-            maxLen = palendromeCenterLength[i];
-            centerIndex = i;
-        }
-    }
-    delete palendromeCenterLength;
-    return str.substr((centerIndex - 1 - maxLen) / 2, maxLen);
+    return result;
 }
 let testIp1 = 'aaaaafvewvrewgfdcrwgfrewff';
 let testIp2 = 'babcbabcbaccba';
@@ -136,11 +103,11 @@ let testIp2 = 'babcbabcbaccba';
 let startTime1;
 // TEST 1
 startTime1 = Date.now();
-console.log(longestPalindrome_efficient(testIp));
+console.log(largestPalendrome(testIp));
 console.log("RUNTIME 1 : " + (Date.now() - startTime1) / 1000);
 
 
 // TEST 2
 startTime1 = Date.now();
-console.log(largestPalendrome_simplified(testIp));
+console.log(largestPalendrome(testIp));
 console.log("RUNTIME 2 : " + (Date.now() - startTime1) / 1000);

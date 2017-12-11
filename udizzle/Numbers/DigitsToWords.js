@@ -71,7 +71,48 @@ console.log(digitsToWords(916) === 'nine hundred sixteen');
 console.log(digitsToWords(906) === 'nine hundred six');
 
 
+// NEW ALGO
+let digitsToWords = (num) => {
+    let units = [ '', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve',
+                    'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen' ];
+    let tens = [ '', '', 'twenty', 'thirty', 'fourty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety' ];
+    let hundreds = [ '', 'hundred', 'thousand', 'million', 'billion', 'trillion'];
 
+    
+    if(num < 20) {
+        return units[num];
+    }
+    if(num < 100){
+        // return tens[ Math.floor(num/10) ] + ' ' + units[num - (Math.floor(num/10) * 10)];
+        return tens[ Math.floor(num/10) ] + ' ' + units[ Math.floor(num%10)];
+    }
+    if(num < 1000){
+        return units[Math.floor(num/100) ] + ' hundred ' +  digitsToWords( Math.floor(num%100) );
+    }
+    if(num < 1000000){
+        return digitsToWords(Math.floor(num/1000)) + ' thousand ' +  digitsToWords( Math.floor(num%1000) );
+    }
+    if(num < 1000000000){
+        return digitsToWords(Math.floor(num/1000000)) + ' million ' +  digitsToWords( Math.floor(num%1000000) );
+    }
+
+}
+
+let digitsToWordsWithDecimal = (num) => {
+    num = num.toString();
+    let whole;
+    let decimal;
+    if(num.indexOf('.') > -1){
+        whole = parseInt(num.slice(0, num.indexOf('.')));
+        decimal = num.slice(num.indexOf('.') + 1, num.length);
+    }
+    let minorString = '';
+    decimal = [...decimal];
+    decimal.forEach(val => {
+        minorString += digitsToWords(parseInt(val)) + ' ' ;
+    });
+    return digitsToWords(whole) + ' POINT ' + minorString;
+}
 
 
 

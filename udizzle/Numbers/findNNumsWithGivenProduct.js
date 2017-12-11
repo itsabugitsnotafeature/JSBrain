@@ -43,7 +43,7 @@ let find_2_WithGivenProduct = (arr, targetProduct) => {
             hi--;
         } else if( (arr[hi] * arr[lo]) < targetProduct ){
             lo++; 
-        } else if( (arr[hi] * arr[lo]) == targetProduct ){
+        } else if( (arr[hi] * arr[lo]) === targetProduct ){
             return [ arr[lo], arr[hi] ];
         }
     }

@@ -22,6 +22,37 @@
     and creating all test cases.
 */
 
+
+let isHappyNum = (num, iter) => {
+    if(!iter) {
+        iter = 1;
+    } 
+    if(iter > 9999){
+        console.log("Too deep!");
+        return false;
+    }
+
+    if (num < 0) {
+        return false;
+    }
+
+    if (num < 10 && num!==1) {
+        return false;
+    }
+
+    if (num===1) {
+        return true;
+    }
+
+    num = [...num.toString()];
+    let sum = 0;
+    for(let i=0 ; i < num.length ; i++){
+        sum += Math.pow(parseInt(num[i]), 2)
+    }
+    return isHappyNum(sum, iter+1);
+}
+
+
 let isHappyWithFailsafe = function(n, attempt, MAX_ATTEMPT) { 
     if(attempt > MAX_ATTEMPT){
         return false;
