@@ -434,7 +434,7 @@ console.log(sayHi());
 
 
 
-
+// Using LET instead of VAR
 let name1 = "John";
 console.log(sayHi());
 
@@ -522,6 +522,12 @@ console.log(admin.getName());
 console.log(admin.setName("Tom Cruise"));
 console.log(admin.getName());
 console.log(User.getName());
+
+/* 
+    John Doe
+    Tom Cruise
+    John Doe
+*/
 
 
 

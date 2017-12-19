@@ -41,6 +41,116 @@
 
 
 
+
+
+
+
+
+// Mixin example 2
+
+
+
+let hasChocolate = {
+    hasChocolate: () => { return true}
+}
+let hasCaramel = {
+    hasCaramel: () => { return true}
+}
+let hasButter = {
+    hasButter: () => { return true}
+}
+
+let iceCream1 = Object.assign({}, hasChocolate, hasCaramel);
+let iceCream2 = Object.assign({}, hasButter, hasCaramel);
+
+
+
+
+
+
+// Mixin example 1 
+// Practice1
+let sayMixin = {
+    say(phrase){
+        console.log(phrase)
+    }
+}
+let greetMixin = {
+    __proto__: sayMixin,
+    sayHi(){
+        super.say("Hi " + this.name)
+    },
+    sayBye(){
+        super.say("Bye " + this.name)
+    }
+}
+class User {
+    constructor(name){
+        this.name = name;
+    }
+}
+let u1= new User("dizzle");
+Object.assign(u1.__proto__, greetMixin);
+u1.sayHi();
+u1.sayBye();
+
+// Practice2
+let sayPhrase = {
+    say(phrase){
+        console.log(phrase)
+    }
+}
+let greeUser = {
+    __proto__: sayPhrase,
+    sayHi(){
+        super.say("Hi " + this.name)
+    },
+    sayBye(){
+        super.say("Bye " + this.name)
+    }
+}
+class User{
+    constructor(name){
+        this.name = name;
+    }
+}
+let u1 = new User("Judy");
+Object.assign(u1.__proto__, greeUser);
+u1.sayBye();
+u1.sayHi();
+
+
+
+
+
+
+
+let editDistance = (str1, str2) => {
+    if(str1.length === 0) {
+        return str2.length;
+    }
+
+    if(str2.length === 0) {
+        return str1.length;
+    }
+
+    if( str1.charAt(0) === str2.charAt(0) ) {
+        return editDistance( str1.substring(1, str1.length), str2.substring(1, str2.length) );
+    }
+
+    else {
+        return 1 + Math.min(
+            editDistance( str1, str2.substring(1, str2.length) ),
+            editDistance( str1.substring(1, str1.length), str2 ),
+            editDistance( str1.substring(1, str1.length), str2.substring(1, str2.length) )
+        )
+    }
+}
+console.log(editDistance('sunday', 'sundayXX'));
+
+
+
+
 let longestCommonSubsequence = (a, b) => {
     if(a.length === 0 || b.length ===0) {
         return 0;
@@ -54,9 +164,9 @@ let longestCommonSubsequence = (a, b) => {
     let two = longestCommonSubsequence(a.substring(1, a.length),b);
     return Math.max(one, two);
 }
-let str1 = 'AGGTAB';
-let str2 = 'GXTXAYB';
-console.log(longestCommonSubsequence(str1, str2));
+// let str1 = 'AGGTAB';
+// let str2 = 'GXTXAYB';
+// console.log(longestCommonSubsequence(str1, str2));
 
 
 
@@ -109,7 +219,6 @@ let digitsToWords = (num) => {
         return units[num];
     }
     if(num < 100){
-        // return tens[ Math.floor(num/10) ] + ' ' + units[num - (Math.floor(num/10) * 10)];
         return tens[ Math.floor(num/10) ] + ' ' + units[ Math.floor(num%10)];
     }
     if(num < 1000){
@@ -222,7 +331,7 @@ let intersectionOfTwoArrays = (arr1, arr2) => {
 // console.log(firstArray);
 
 
-function greatestCommonDivisor(a, b){
+function greatestCommonDivisor(a, b){ 
     if(!b){
         return a;
     } else {
@@ -729,7 +838,7 @@ function isArray(arr) {
 
 
 // Max product of 3
-let maxProductOf3 = (arr) => {
+let i = (arr) => {
     arr.sort();
     return Math.max((arr[0] * arr[1] * arr[arr.length - 1]), (arr[arr.length - 1] * arr[arr.length - 2] * arr[arr.length - 3]));
 }
