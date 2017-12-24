@@ -7,19 +7,18 @@ const request = require('request');
 
 
 function getCurrentForecast(lat, lng) {
-    debugger
     return new Promise((resolve, reject)=> {
         let options = {
             url: `https://api.darksky.net/forecast/${API_KEY}/${lat},${lng}`,
             json: true
         }
+        
         request(options, (error, response, body) => {
             if(error) {
                 reject ("Received Error: " + JSON.stringify(error, null, 2));
-            } else if(body.status === 'OK') {
-                debugger
+            } else if(response.statusCode === 200) {
                 resolve ({
-                    resp: body.results.currently
+                    resp: body.currently.summary
                 });
             } else if(body.status === 'ZERO_RESULTS') {
                 reject ('No valid results found');

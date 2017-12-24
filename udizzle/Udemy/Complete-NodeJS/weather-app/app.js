@@ -28,7 +28,7 @@ geocode.getGeocodeAddress(argv.a)
 })
 
 function fetchAndDisplayWeather(lat, lng) {
-    debugger
+    
     forecast.getCurrentForecast(lat, lng)
     .then((curForecast) =>{
         console.log(JSON.stringify(curForecast, null, 2));
