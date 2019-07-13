@@ -1,0 +1,31 @@
+:host:: content .tooltip, 
+
+body {
+    margin: 1rem;
+}
+
+#tooltip {
+    width: 10rem;
+    height: 2rem;
+    background-color: coral;
+    border-radius: 4px;
+    text-align: -webkit-center;
+    line-height: 34px;
+    position: absolute;
+    visibility: hidden;
+    /* visibility: visible; */
+}
+
+#tooltip span::after  {
+    content: "";
+    border-style: solid;
+    border-width: 5px;
+    border-color: transparent transparent coral transparent;
+    position: relative;
+    right: 44px;
+    top: -31px;
+}
+
+tr:hover #tooltip {
+    visibility: visible;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta>
+    <meta>
+    <title>Delete On Click</title>
+<!-- 
+    Implement the registerClickHandler function that registers a 
+    click event handler and implements the following logic: 
+    When
+    the button of class remove is clicked, its parent
+    <div> element should be removed from the gallery. For example, after the first image has been removed from the gallery above,
+        it's HTML code should look like this:
+
+        <div class="image">
+            <img src="https://goo.gl/tniGAc" alt="Second">
+            <button class="remove">X</button>
+        </div>
+ -->
+
+
+
+</head>
+
+<body>
+    <br>
+    <div id="styling_qq">
+        <a href="http://www.testdome.com"> >Check documentation< </a>
+    </div>
+    <br>
+    <div id="img_admin">
+        <div class="image" id="img_1">
+            <img src="http://placehold.it/120x120&text=image1" alt="First">
+            <button class="remove">X</button>
+        </div>
+        <div class="image" id="img_2">
+            <img src="http://placehold.it/120x120&text=image2" alt="Second">
+            <button class="remove">X</button>
+        </div>
+        <div class="image" id="img_3">
+            <img src="http://placehold.it/120x120&text=image3" alt="Second">
+            <button class="remove">X</button>
+        </div>
+        <div class="image" id="img_4">
+            <img src="http://placehold.it/120x120&text=image4" alt="Second">
+            <button class="remove">X</button>
+        </div>
+        <div class="image" id="img_5">
+            <img src="http://placehold.it/120x120&text=image5" alt="Second">
+            <button class="remove">X</button>
+        </div>
+    </div>
+
+
+    <script>
+
+        function removeImg(e) {
+            console.log("here ")
+            e.target.parentElement.parentElement.removeChild(e.target.parentElement)
+            console.log("and here ")
+
+        }
+        window.onload = function () {
+            console.log("I'm In !")
+            // document.getElementById('img_admin').addEventListener('click', removeImg);
+            let removeBtns = document.getElementsByTagName('button');
+            for (let i = 0; i < removeBtns.length; i++) {
+                removeBtns[i].addEventListener('click', removeImg);
+            }
+        }
+
+        function removeChar(str , char){
+            while( str.indexOf(char) !== -1 ){
+                str = str.replace(char,'')
+            }
+            return str;
+        }
+
+    </script>
+</body>
+
+</html>

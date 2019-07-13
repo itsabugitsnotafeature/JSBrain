@@ -1,0 +1,38 @@
+{
+  "name": "polymer-starter-kit",
+  "authors": [
+    "The Polymer Authors"
+  ],
+  "license": "https://polymer.github.io/LICENSE.txt",
+  "dependencies": {
+    "app-layout": "PolymerElements/app-layout#^2.0.0",
+    "app-route": "PolymerElements/app-route#^2.0.0",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.0",
+    "iron-iconset-svg": "PolymerElements/iron-iconset-svg#^2.0.0",
+    "iron-media-query": "PolymerElements/iron-media-query#^2.0.0",
+    "iron-pages": "PolymerElements/iron-pages#^2.0.0",
+    "iron-selector": "PolymerElements/iron-selector#^2.0.0",
+    "polymer": "Polymer/polymer#^2.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
+    "iron-input": "polymerelements/iron-input#^1.0.0",
+    "paper-input": "polymerelements/paper-input#^2.0.1",
+    "paper-drawer-panel": "polymerelements/paper-drawer-panel#^2.0.0",
+    "paper-button": "https://github.com/PolymerElements/paper-button.git#^2.0.0",
+    "paper-fab": "polymerelements/paper-fab#^2.0.0",
+    "paper-menu": "polymerelements/paper-menu#^1.3.0",
+    "paper-material": "polymerelements/paper-material#^2.0.0",
+    "paper-checkbox": "https://github.com/PolymerElements/paper-checkbox.git#^2.0.1",
+    "paper-dialog": "https://github.com/PolymerElements/paper-dialog.git#^2.0.0",
+    "paper-toolbar": "https://github.com/PolymerElements/paper-toolbar.git#^2.0.0",
+    "paper-listbox": "https://github.com/PolymerElements/paper-listbox.git#^2.0.0",
+    "paper-icon-button": "https://github.com/PolymerElements/paper-icon-button.git#^2.0.1",
+    "iron-icons": "https://github.com/PolymerElements/iron-icons.git#^2.0.1"
+  },
+  "resolutions": {
+    "polymer": "^2.0.0"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0"
+  },
+  "private": true
+}

@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Complex Table </title>
+    <!-- CSS Properties - Exercises, Practice, Solution-->
+    <!-- https://www.w3resource.com/html-css-exercise/css-properties/index.php -->
+
+    <!-- HTML5 Basic (Tag and attribute) - Exercises, Practice, Solution -->
+    <!-- https://www.w3resource.com/html-css-exercise/basic/index.php -->
+
+</head>
+
+<body>
+    <!-- Practice X : XX-->
+    <!-- SRC: XXX -->
+    <!-- <div id="XXX">
+    </div>
+    <style>
+        #XXX {
+            padding: 1rem;
+        }
+    </style> -->
+
+    <!-- <link rel="stylesheet" href="elem.css" >
+    <script src="ele.js" type="text/javascript"></script> -->
+
+    <!-- Practice 11 : Increase counter by step-->
+    <!-- SRC: https://www.w3resource.com/html-css-exercise/set-counter-and-insert-before-answer.php -->
+    <div id="increment-by-step">
+        <ol>
+            <li>item</li>
+            <!-- 1     -->
+            <li>item
+                <!-- 2     -->
+                <ol>
+                    <li>item</li>
+                    <!-- 2.1   -->
+                    <li>item</li>
+                    <!-- 2.2   -->
+                    <li>item
+                        <!-- 2.3   -->
+                        <ol>
+                            <li>item</li>
+                            <!-- 2.3.1 -->
+                            <li>item</li>
+                            <!-- 2.3.2 -->
+                        </ol>
+                        <ol>
+                            <li>item</li>
+                            <!-- 2.3.1 -->
+                            <li>item</li>
+                            <!-- 2.3.2 -->
+                            <li>item</li>
+                            <!-- 2.3.3 -->
+                        </ol>
+                    </li>
+                    <li>item</li>
+                    <!-- 2.4   -->
+                </ol>
+            </li>
+            <li>item</li>
+            <!-- 3     -->
+            <li>item</li>
+            <!-- 4     -->
+        </ol>
+        <ol>
+            <li>item</li>
+            <!-- 1     -->
+            <li>item</li>
+            <!-- 2     -->
+        </ol>
+    </div>
+    <style>
+        /* When Target attribute begins with a certain value */
+
+        #increment-by-step .container[data-name^=w3r] {
+            color: #5ac4ed;
+        }
+
+        #increment-by-step {
+            padding: 1rem;
+        }
+
+        increment-by-step ol {
+            counter-reset: Step;
+            /* Creates a new instance of the Step counter with each ol element */
+            list-style-type: none;
+        }
+
+        increment-by-step li:before {
+            counter-increment: Step;
+            /* Increments only this instance of the Step counter */
+            content: counters(Step, ".") " ";
+            /* Adds the value of all instances of the Step counter separated by a ".". */
+        }
+    </style>
+
+
+
+
+
+    <!-- Practice 10 : Top corner ribbon-->
+    <!-- SRC: https://www.w3resource.com/html-css-exercise/corner-ribbon-answer.php -->
+    <div id="corner-ribbon">
+        <div class="ribbon">
+            <a href="#">
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Best Value Pack &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            </a>
+        </div>
+
+    </div>
+    <style>
+        #corner-ribbon .ribbon {
+            background-color: red;
+            /* Placing in top left corner */
+            position: absolute;
+            left: -94px;
+            top: 40px;
+            width: calc(500px - 15%);
+            /* Adding 45degree sotation */
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            /* for creating shadow */
+            -webkit-box-shadow: 0 0 10px #888;
+            -moz-box-shadow: 0 0 10px #888;
+            box-shadow: 0 0 10px #888;
+        }
+
+        #corner-ribbon p::first-letter {
+            font-weight: bold;
+        }
+
+        #corner-ribbon p::first-line {
+            color: blue;
+        }
+
+        #corner-ribbon .container {
+            background: #5ac4ed;
+            height: 150px;
+            width: 200px;
+            margin: 10px
+        }
+
+        #corner-ribbon .container:empty {
+            background: #ec8007;
+            height: 150px;
+            width: 200px;
+            margin: 10px
+        }
+
+        .linear {
+            background: linear-gradient(to bottom, #4b6c9c, #5ac4ed);
+        }
+
+        .radial {
+            background: radial-gradient(#4b6c9c, #5ac4ed);
+        }
+
+        .repeating-linear {
+            background: repeating-linear-gradient(-45deg, #4b6c9c, #5ac4ed 5px, #fff 5px, #fff 10px);
+        }
+
+        .repeating-radial {
+            background: repeating-radial-gradient(#4b6c9c, #5ac4ed 5px, #fff 5px, #fff 10px);
+        }
+
+        /* Adjcent sibling selesctor */
+
+        h2+h3+p {
+            border-bottom: 8px solid silver
+        }
+
+        #corner-ribbon .ribbon a {
+            border: 1px solid #faa;
+            color: #fff;
+            display: block;
+            font: bold 100% 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 1px 0;
+            padding: 10px 50px;
+            text-align: center;
+            text-decoration: none;
+            /* for creating shadow */
+            text-shadow: 0 0 5px #444;
+        }
+
+        #corner-ribbon {
+            padding: 1rem;
+        }
+    </style>
+
+
+
+
+    <!-- Practice 9 : Huge button-->
+    <!-- SRC: https://www.w3resource.com/html-css-exercise/button-answer.php -->
+    <div id="huge-button">
+        <button>
+            Subscribe Now
+        </button>
+
+    </div>
+    <style>
+        #huge-button button {
+            width: 200px;
+            padding: 8px;
+            background-color: #428bca;
+            border-color: #357ebd;
+            border: 2px dashed greenyellow;
+            color: #fff;
+
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            /* future proofing */
+            -khtml-border-radius: 10px;
+            /* for old Konqueror browsers */
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid transparent;
+
+            font-weight: 900;
+            font-size: 125%
+        }
+
+        #huge-button {
+            padding: 1rem;
+        }
+    </style>
+
+
+
+
+
+
+    <!-- Practice 8 : Zebra Striped Table-->
+    <!-- SRC: https://www.w3resource.com/html-css-exercise/zebra-table-answer.php -->
+    <div id="zebra-table">
+        <table>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Major</td>
+            </tr>
+            <tr>
+                <td>1001</td>
+                <td>Gopal</td>
+                <td>Physics</td>
+            </tr>
+            <tr>
+                <td>1002</td>
+                <td>joy</td>
+                <td>eco</td>
+            </tr>
+            <tr>
+                <td>1003</td>
+                <td>Chandu</td>
+                <td>Math</td>
+            </tr>
+        </table>
+
+
+
+    </div>
+    <style>
+        #zebra-table table tr:nth-child(1) {
+            text-align: center;
+            font-weight: bold;
+            background-color: rgb(209, 207, 207);
+        }
+
+        #zebra-table table tr:nth-child(even) {
+            background-color: greenyellow;
+        }
+
+        #zebra-table {
+            padding: 1rem;
+        }
+
+        #zebra-table table {
+            width: 50%;
+        }
+
+        #zebra-table table tr td {
+            border: 1px solid black;
+        }
+    </style>
+
+
+
+
+
+
+
+
+    <!-- Practice 7 : Sticky Footer-->
+    <!-- SRC: https://www.w3resource.com/html-css-exercise/footer-answer.php -->
+    <div id="sticky-footer">
+        <footer>
+            Here is my Footer
+        </footer>
+    </div>
+    <style>
+        #sticky-footer {
+            padding: 1rem;
+        }
+
+        #sticky-footer footer {
+            margin: 1rem;
+            bottom: 0;          /* Most Imp One */
+            position: fixed;    /* Most Imp One */
+            background-color: turquoise;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+
+
+
+
+    <!-- Practice 6 : Adaptible Grid-->
+    <!-- SRC: XXX -->
+    <div id="responsive_4x4_grid">
+        <div id="grid_section">
+            <div class="elem">
+                Elem 1
+            </div>
+            <div class="elem">
+                Elem 2
+            </div>
+            <div class="elem">
+                Elem 3
+            </div>
+            <div class="elem">
+                Elem 4
+            </div>
+        </div>
+
+    </div>
+    <style>
+        #grid_section .elem {
+            display: block;
+            width: 24%;
+            float: left;
+            border: 1px solid black;
+        }
+
+        @media only screen and (max-width: 800px) {
+            #grid_section .elem {
+                display: block;
+                width: 49%;
+                float: left;
+                border: 1px solid black;
+            }
+        }
+
+        @media only screen and (max-width: 450px) {
+            #grid_section .elem {
+                display: block;
+                width: 99%;
+                float: left;
+                border: 1px solid black;
+            }
+        }
+
+        #responsive_4x4_grid {
+            padding: 1rem;
+        }
+    </style>
+
+
+
+
+
+    <!-- Practice 5 : Navigation Bar-->
+    <!-- SRC: https://www.w3resource.com/html-css-exercise/navigation-answer.php -->
+    <div id="nav_bar">
+        <nav>
+            <ul>
+                <li>
+                    <a href="#"> Home </a</li>
+                        <li>
+                            <a href="#"> About </a>
+                            <ul>
+                                <li>
+                                    <a href="#"> Engineering </a>
+                                </li>
+                                <li>
+                                    <a href="#"> Telecom </a>
+                                </li>
+                                <li>
+                                    <a href="#"> Finance </a>
+                                </li>
+                                <li>
+                                    <a href="#"> Consultancy </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"> Products </a>
+                            <li>
+                                <a href="#"> Services </a>
+                                <li>
+                                    <a href="#"> Contact </a>
+                                </li>
+                            </li>
+                        </li>
+                </li>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+    <style>
+        #nav_bar {
+            padding: 1rem;
+        }
+
+        #nav_bar nav {
+            display: block;
+            top: 0;
+            width: 100%;
+            background-color: green;
+        }
+
+        #nav_bar li {
+            display: inline;
+            margin-right: 20px;
+            font-size: 25px;
+        }
+
+        #nav_bar li ul {
+            display: none;
+        }
+
+        #nav_bar li:hover ul {
+            display: block;
+            position: absolute;
+            left: 100px;
+            background-color: green;
+            margin: 0;
+        }
+
+        #nav_bar li:hover ul li a:link {
+            display: block;
+            margin: 10px;
+        }
+    </style>
+
+
+
+
+
+
+
+    <!-- Practice 4 : Embedding video-->
+    <!-- SRC: https://www.w3resource.com/html-css-exercise/audio-video-answer.php -->
+    <div id="embed_video">
+        <video controls>
+            <source src="https://www.w3resource.com/html-css-exercise/big_buck_bunny.ogv"> Your browser does not support the
+            <code>video</code> element.
+        </video>
+    </div>
+    <style>
+        #embed_video {
+            padding: 2rem;
+        }
+    </style>
+
+
+
+
+    <!-- Practice 3 : Collecting Form Data-->
+    <!-- SRC: https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table_intro -->
+    <style>
+        #prac3 {
+            border: 2px solid black;
+            padding: 2rem;
+        }
+    </style>
+    <div id="prac3">
+        <h2>Travel Reservation Form</h2>
+        <h4>* denotes mandatory</h4>
+        <form id="registration_form">
+            <label>Full Name*:</label>
+            <br>
+            <!-- <input type="text" placeholder="Firstname Lastname" autofocus="autofocus" name="full_name"></input> -->
+            <input type="text" placeholder="Firstname Lastname" name="full_name"></input>
+            <br>
+
+            <label>Email address*:</label>
+            <br>
+            <input type="text" placeholder="EMAIL_ADDRESS" name="email"></input>
+            <br>
+
+            <label>Select Tour Package*:</label>
+            <br>
+            <select name="package">
+                <option value="Goa">Goa</option>
+                <option value="Kashmir">Kashmir</option>
+                <option value="Jaipur">Jaipur</option>
+            </select>
+            <br>
+
+            <label>Arrival Date*:</label>
+            <br>
+            <input type="date" name="arv_dt" placeholder="mm/dd/yyyy"></input>
+            <br>
+
+            <label>Number of Persons*:</label>
+            <br>
+            <input name="num_of_persons" type="number"></input>
+            <br>
+
+            <label>What would you want to avail?*</label>
+            <br> Boarding
+            <input type="checkbox" name="facilities[]" value="boarding"></input>
+            <br> Flooding
+            <input type="checkbox" name="facilities[]" value="flooding"></input>
+            <br> Sight seeing
+            <input type="checkbox" name="facilities[]" value="sight_seeing"></input>
+            <br>
+
+            <label>Discount Coupon code:</label>
+            <br>
+            <input type="text" name="coupon_code"></input>
+            <br>
+
+            <label>Terms and conditions*</label>
+            <br>
+            <input type="radio" name="aggrement_selected" value="agree">I agree</input>
+            <input type="radio" name="aggrement_selected" value="disagree">I Disagre</input>
+            <br>
+
+            <button type="submit" onclick="gatherPrac3FormData()">Complete Reservation</button>
+        </form>
+    </div>
+    <script type="text/javascript">
+        console.log("Initializing gatherPrac3FormData function ");
+        function gatherPrac3FormData(event) {
+            console.log("Okay we're in here.");
+            let formData = {
+                name: registration_form.full_name.value,
+                email: registration_form.email.value,
+                packateType: registration_form.package.value,
+                arrivalDate: new Date(registration_form.arv_dt.value),
+                numOfPersons: registration_form.num_of_persons.value,
+                avail: [],
+                couponCode: registration_form.coupon_code.value,
+                agreement: registration_form.aggrement_selected.value
+            }
+            let availableOptions = document.getElementsByName('facilities[]');
+
+            availableOptions.forEach((option) => {
+                if (option.checked) {
+                    formData.avail.push(option.value);
+                }
+            });
+            console.log(JSON.stringify(formData, null, 2))
+            debugger;
+        }
+    </script>
+
+    <br>
+    <br>
+
+
+    <!-- Practice 2 : Creating Nice Table-->
+    <!-- Table Implementation -->
+    <!-- SRC: https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table_intro -->
+    <style>
+
+        @media only screen and (max-width: 700px){
+            #myElem {
+
+            }
+        }
+
+
+        #w3-practice {
+            width: 100%;
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+        }
+
+        #w3-practice td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 0.2rem;
+        }
+
+        #w3-practice tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+    <table id='w3-practice' border="1">
+        <tr>
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>22</td>
+            <td>33</td>
+        </tr>
+        <tr>
+            <td>111</td>
+            <td>222</td>
+            <td>333</td>
+        </tr>
+        <tr>
+            <td>1111</td>
+            <td>2222</td>
+            <td>3333</td>
+        </tr>
+        <tr>
+            <td>11111</td>
+            <td>22221</td>
+            <td>33331</td>
+        </tr>
+    </table>
+
+    <br>
+    <br>
+
+    <!-- Practice 1 : Creating complex table-->
+    <!-- Table Implementation -->
+    <table border="1">
+        <tr>
+            <td>Quick</td>
+            <td colspan="2">Brown Fox</td>
+            <td>jumps</td>
+        </tr>
+        <tr>
+            <td rowspan="3">over the</td>
+            <td>lazy</td>
+            <td>dog</td>
+            <td>and</td>
+        </tr>
+        <tr>
+            <td>then</td>
+            <td>it</td>
+            <td>fall</td>
+        </tr>
+        <tr>
+            <td colspan="3">prey to a hunter</td>
+        </tr>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <td> 1 </td>
+                <td> 2 </td>
+                <td> 3 </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> 4 </td>
+                <td colspan="2"> 5 </td>
+            </tr>
+            <tr>
+                <td> 6 </td>
+                <td> 7 </td>
+            </tr>
+            <tr>
+                <td rowspan="2" > 8 </td>
+                <td> 9 </td>
+            </tr>
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+
+</body>
+
+</html>
+<!-- 
+
+        CHEAT SHEET 
+<table>	    Defines a table
+<th>	    Defines a header cell in a table
+<tr>	    Defines a row in a table
+<td>	    Defines a cell in a table
+<caption>	Defines a table caption
+<colgroup>	Specifies a group of one or more columns in a table for formatting
+<col>	    Specifies column properties for each column within a <colgroup> element
+<thead>	    Groups the header content in a table
+<tbody>	    Groups the body content in a table
+<tfoot>	    Groups the footer content in a table 
+
+-->

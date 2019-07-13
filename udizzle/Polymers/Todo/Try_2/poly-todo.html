@@ -1,0 +1,165 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href='../bower_components/paper-input/paper-input.html' />
+<link rel="import" href='../bower_components/paper-checkbox/paper-checkbox.html' />
+<link rel="import" href='../bower_components/paper-item/paper-item.html' />
+
+<dom-module id="poly-todo">
+  <template>
+    <style>
+       :host {
+        display: block;
+      }
+
+      .taskBox {
+        --paper-checkbox-label-spacing: 38px;
+        --paper-checkbox-checked-color: green;
+      }
+    </style>
+
+    <paper-input 
+      label="Enter Todo" 
+      placeholder="Add a Todo Task.." 
+      value="{{prop1}}" 
+      on-keypress="_keyPressed">
+    </paper-input>
+    <paper-button toggles raised type="submit" on-click="_addTask">Add Todo</paper-button>
+
+    <br>
+    <br>
+
+    <template is="dom-repeat" items="{{allTodos}}">
+
+      <paper-item>
+        <div>
+          <paper-checkbox checked='{{item.isCompleted}}' class='flex-11 taskBox' on-change='_toggleTask'>
+          </paper-checkbox>
+          <paper-input label="ToDo" value="{{item.value}}" on-change='_todosChanged'></paper-input>
+        </div>
+      </paper-item>
+
+    </template>
+
+
+  </template>
+
+  <script>
+    /**
+     * `poly-todo`
+     * polymer todo list element
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class PolyTodo extends Polymer.Element {
+      static get is() { return 'poly-todo'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: ''
+          },
+          allTodos: {
+            type: Array,
+            value: [
+              { isCompleted: false, id: "f35ef260-fe12-4b50-be88-533bd4831a17", value: "First Dummy Todo" },
+              { isCompleted: false, id: "c3409fdd-3337-4c1b-a335-0c7c7b166a3f", value: "Second Dummy Todo" }
+            ]
+          }
+        };
+      }
+
+      static get observers() {
+        return [
+          // Observer method name, followed by a list of dependencies, in parenthesis
+          '_todosChanged(allTodos.splices)'
+        ]
+      }
+
+      _toggleTask(event) {
+        self = this;
+        console.log("Received _toggleTask for: " + event.model.__data.item.value);
+        
+        if(self._debouncer.isActive()) {
+          // Throttle Subsequent requests if one is already active;
+          setTimeout(() =>{ 
+            console.log("Debounce logic Busy, Throttling request for: " + event.model.__data.item.value);
+            self._toggleTask(event);
+          },1000)
+        } else {
+          self._debouncer = Polymer.Debouncer.debounce(self._debouncer, Polymer.Async.timeOut.after(2000), () => {
+            console.log("called _toggleTask: Debounce !")
+            self._removeTodoByTodoItem(event.model.__data.item);
+          });
+        }
+      }
+
+      _keyPressed(e) {
+        if (13 === e.charCode) {
+          this._addTask(e);
+        }
+      }
+
+      _removeTodoByTodoItem(item) {
+        if (item.isCompleted) {
+          let self = this;
+          let index = self._findIndexById(item.id);
+          if (index >= 0) {
+            console.log("Deleting Item:" + item.value);
+            this.splice('allTodos', index, 1);
+          } else {
+            console.log("CRAP! Item Not Found Bro...");
+          }
+        } else {
+          console.log("This ToDo Got Saved: " + item.value);
+        }
+      }
+
+      _findIndexById(id) {
+        let self = this;
+        let objIndex = -1;
+        self.allTodos.forEach(function (item, index) {
+          if (item.id === id) {
+            console.log("Found Item to Delete with ID:" + item.id);
+            objIndex = index;
+          }
+        });
+        return objIndex;
+      }
+
+      _addTask() {
+        let self = this;
+        console.log("called _addTask");
+        let newTask = {
+          isCompleted: false,
+          value: self.prop1,
+          id: self.generateUUID()
+        }
+        self.push('allTodos', newTask);
+        self.prop1 = '';
+      }
+
+      _todosChanged() {
+        let self = this;
+        console.log("called _todosChanged");
+        self._debouncer = Polymer.Debouncer.debounce(this._debouncer,
+          Polymer.Async.timeOut.after(2000), () => {
+            // self.notifySplices(self.allTodos);
+            console.log("called _todosChanged: Debounce !")
+          });
+      }
+
+      generateUUID() {
+        let d = new Date().getTime();
+        let uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+          let r = (d + Math.random() * 16) % 16 | 0;
+          d = Math.floor(d / 16);
+          return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        });
+        return uuid;
+      }
+
+    }
+    window.customElements.define(PolyTodo.is, PolyTodo);
+  </script>
+</dom-module>

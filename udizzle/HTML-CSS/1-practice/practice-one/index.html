@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta></meta>
+    <title> Practice One </title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- Left Nav -->
+    <div id="app-left-nav">
+        <div class="nav-header">
+            Header and Logo
+        </div>
+        <div class="nav-body">
+            <ul id="left-options">
+                <li value="0">
+                    Item 1
+                </li>
+                <li value="1">
+                    item2
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="app-header">
+        This is body header
+    </header>
+
+    <!-- Body -->
+    <div id="app-body">
+        <!-- All the Magic happens here -->
+        <div class="thisbody">
+
+            <div class="user-form">
+
+                <div>
+                    <form type="submit" id="user-form-fill">
+                        <span> First Name </span>
+                        <input type="text" name="fistName" value="" placeholder="First Name...">
+                        <br>
+
+                        <span> Last Name </span>
+                        <input type="text" name="lastName" value="" placeholder="Last Name...">
+                        <br>
+
+                        <span> Preferred Password </span>
+                        <input type="password" name="password" value="" placeholder="abcd">
+                        <br>
+
+                        <span> Enter URL </span>
+                        <input type="text" name="userUrl" value="" placeholder="http://www.go.com">
+                        <br>
+
+                        <button type="submit" onclick="getFormData()"> ACTIVATE </button>
+                    </form>
+
+                </div>
+                <div id="form-display"></div>
+            </div>
+
+            <div class="user-table">
+                <h3> This is the magic of Tables </h3>
+            </div>
+
+            <div class="user-tooltip">
+
+                <!-- TOP -->
+                <div id="tooltip">
+                    Here is my parent text
+                    <div class="tooltip-top">
+                        This is tooltip advice from top !
+                    </div>
+                </div>
+                
+
+                <!-- BOTTOM -->
+                <div id="tooltip">
+                    Here is my parent text
+                    <span class="tooltip-bottom">
+                        This is tooltip advice from bottom !
+                    </span>
+                </div>
+
+
+                <!-- LEFT -->
+                <div id="tooltip">
+                    Here is my parent text
+                    <span class="tooltip-left">
+                        This is tooltip advice from left !
+                    </span>
+                </div>
+
+
+                <!-- RIGHT -->
+                <div id="tooltip">
+                    Here is my parent text
+                    <span class="tooltip-right">
+                        This is tooltip advice from right !
+                    </span>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Footer -->
+    <footer id="app-footer">
+        <ul>
+            <li>About Us</li>
+            <li>Contact</li>
+            <li>Crack a Joke</li>
+        </ul>
+    </footer>
+    <script src="./logic.js"></script>
+</body>
+
+</html>
