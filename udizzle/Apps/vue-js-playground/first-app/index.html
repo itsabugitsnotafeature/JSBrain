@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YouDizzle's Vue:1</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./styles/main.css">
+
+</head>
+<body>
+<div id="app">
+  <!-- 
+    Template DOM:
+
+<div class="vue-experiment">
+  <h2 class="experiment-header">
+  </h2>
+  <div class="experiment-body">
+  </div>
+</div>
+  -->
+
+  <div class="vue-experiment">
+    <h2 class="experiment-header">
+      Conditional Rendering
+    </h2>
+    <div class="experiment-body">
+      <div>
+          <div  v-if="loginType === 'username'">
+          <label>Username</label>
+          <input placeholder="Enter your username"
+            v-model="usernameInput">
+          </div>
+        <div v-else-if="loginType === 'pass'">
+          <label>Password</label>
+          <input placeholder="Enter your Password"
+            v-model="passwordInput"
+            type="password">
+        </div>
+        <button v-on:click="toggleLoginTypeForConditionalRendering">
+          Toggle Login Type
+        </button>
+      </div>
+      <br>
+      <br>
+      <a href="https://vuejs.org/v2/guide/conditional.html">
+      Click Here to Learn more about Conditional Rendering
+      </a>
+    </div>
+  </div>
+
+  <div class="vue-experiment">
+    <h2 class="experiment-header">
+      Hello Vue Class Binding
+    </h2>
+    <div class="experiment-body">
+        <div
+          class="static"
+          v-bind:class="{ 'active': isActive, 'text-small': hasErrorOne }">
+          Body 1
+        </div>
+        <div
+          class="static"
+          v-bind:class="{ 'active': isActive, 'text-small': hasErrorTwo }">
+          Body 2
+        </div>
+    </div>
+  </div>
+
+  <div class="vue-experiment">
+    <h2>Example of Computed Properties Vs Message</h2>
+    <div>
+      <div>First Name :</div>
+      <input v-model="firstName">
+    </div>
+    <br>
+    <div>
+      <div>Last Name :</div>
+      <input v-model="lastName">
+    </div>
+    <br>
+    <p> COMPUTED  || Will update for this</p>
+    <div>{{fullName}}</div>
+
+    <p>  FUNCTION  || Will always update</p>
+    <div>{{fullNameMethod()}}</div>
+    <a href="https://vuejs.org/v2/guide/computed.html#Computed-Caching-vs-Methods">
+      Read More by clicking here
+    </a>
+  </div>
+
+  <div class="vue-experiment">
+    <h2 class="experiment-header">
+      YES / NO Question App
+    </h2>
+    <div class="experiment-body">
+        <p>Uses Vue Watcher</p>
+        <p>snippet: This is most useful when you want to perform asynchronous or expensive operations in response to changing data.</p>
+        <a href="https://vuejs.org/v2/guide/computed.html#Watchers">
+          Click here to Learn more about VUE Watchers
+        </a>
+      <p>
+        Please ask a Yes / No Question:
+        <input v-model="questionAsked">
+      </p>
+      <div class="question">
+        <div>ANSWER: {{ answeredQuestion }}</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="vue-experiment">
+    <h2 class="experiment-header">
+      TODO Using Component
+    </h2>
+    <div class="experiment-body">
+      <div class="vue-todo-list">
+        <h3>Compiled List</h3>
+        <ol>
+          <todo-item
+          v-for="item in newTodos"
+          v-bind:todo="item"
+          v-bind:key="item.id">
+        </todo-item>
+      </ol>
+    </div>
+    <input v-model="newTodoInput">
+    <br>
+    <div>
+      <button v-on:click="addToNewTodo">Click to Add New Todo</button>
+    </div>
+  </div>
+  </div>
+
+  <div class="vue-experiment">
+    <h2>Reversable Message</h2>
+    <div>{{reversableMessage}}</div>
+    <input v-model="reversableMessage">
+    <br>
+    <button v-on:click="reverseMessage">Click to Reverse</button>
+  </div>
+
+  <div class="vue-experiment">
+    <h3>
+      A Simple Message
+    </h3>
+    {{ message }}
+    <p> Full Name From Computed Property: {{fullName}}</p>
+    <div>{{ htmlString }}</div>
+    <div v-html="htmlString"></div>
+  </div>
+
+  <div class="vue-experiment">
+    <span v-bind:title="message2">
+      Hover here and see the magic
+    </span>
+    <h3>
+      Seen Unseen DOM's
+    </h3>
+    <div v-if="seen">This will be seen</div>
+    <div v-if="unseen">This will be unseen</div>
+  </div>
+
+  <div class="vue-experiment">
+    <h3>
+      Dynamic TODO App  
+    </h3>
+    <div v-for="todo in todos">
+      <ul>
+        <li>
+          {{todo.text}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script src="./main.js"></script>
+</body>
+</html>
