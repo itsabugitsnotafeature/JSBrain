@@ -26,6 +26,12 @@
 
     <!-- Carousel Example -->
     <div class="my-vue-experiment">
+      <h1>Hello Carousel Test 2</h1>
+      <CarouselTestTwo/>
+    </div>
+
+    <!-- Carousel Example -->
+    <div class="my-vue-experiment">
       <h1>Hello Carousel</h1>
       <CarouselTest/>
     </div>
@@ -43,6 +49,8 @@
 import Vue from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 import CarouselTest from './components/CarouselTest.vue'
+import CarouselTestTwo from './components/CarouselTestTwo.vue'
+
 // import NavTestTwo from './components/NavTestTwo.vue'
 
 // import NavTestOne from './components/NavTestOne.vue'
@@ -74,6 +82,7 @@ export default {
   components: {
     HelloWorld,
     CarouselTest,
+    CarouselTestTwo,
     // NavTestTwo
   }
 }

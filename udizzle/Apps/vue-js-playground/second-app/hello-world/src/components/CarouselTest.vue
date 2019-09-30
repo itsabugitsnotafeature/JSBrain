@@ -37,6 +37,8 @@ export default {
 }
 </script>
 
+when making a web request. Here's an example:
+https://api.nasa.gov/planetary/apod?api_key=xuV24A5cq6gJlD8hv4lR7uXuvV4O32z7uJ0AZK5I
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
