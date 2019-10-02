@@ -1,6 +1,9 @@
 <template>
-    <div class="image-container">
-        <img v-for="image in allImages" :src="image.link" :key="image.id"/>
+    <div>
+        <div v-if="isLoggendIn" class="image-container">
+            <img v-for="image in allImages" :src="image.link" :key="image.id"/>
+        </div>
+        <h2 v-else> Please Log In To Get Started !</h2>
     </div>
 </template>
 
@@ -10,7 +13,7 @@ import { mapActions, mapGetters } from 'vuex';
 export default {
     name: 'ImageList',
     methods: mapActions(['fetchImages']),
-    computed: mapGetters(['allImages']),
+    computed: mapGetters(['allImages', 'isLoggendIn']),
     created() {
         this.fetchImages();
     }
