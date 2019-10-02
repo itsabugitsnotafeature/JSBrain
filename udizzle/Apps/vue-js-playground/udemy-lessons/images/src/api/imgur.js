@@ -16,7 +16,6 @@ export default {
         window.location = `${ROOT_URL}/oauth2/authorize?${qs.stringify(queryString)}`;
     },
     fetchImages(access_tokae) {
-        debugger
         return axios.get(`${ROOT_URL}/3/account/me/images`, {
             headers: {
                 Authorization: `Bearer ${access_tokae}`,
