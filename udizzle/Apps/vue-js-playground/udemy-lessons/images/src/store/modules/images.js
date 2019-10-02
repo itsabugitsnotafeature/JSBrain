@@ -20,8 +20,17 @@ const actions = {
         const response = await api.fetchImages(token);
         commit('setImages', response.data.data);
     },
-    uploadImages({commit}, images) {
+    async uploadImages({rootState}, images) {
         console.log(images);
+        // Get access token
+        const { token } = rootState.auth;
+
+
+        // Call API to upload all files
+        await api.uploadImages(images, token);
+
+
+        // Redirect to Image List Component
     },
 };
 
