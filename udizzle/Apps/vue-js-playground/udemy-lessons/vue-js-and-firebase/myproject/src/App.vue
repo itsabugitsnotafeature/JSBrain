@@ -3,6 +3,7 @@
     <NavBar/>
     <AllFriends :friends="friends" @deleteThisFriend="deleteFriend" />
     <OnlineFriends :friends="friends" />
+    <Blogs />    
   </div>
 </template>
 
@@ -11,7 +12,7 @@
 import NavBar from './components/NavBar.vue'
 import AllFriends from './components/AllFriends.vue'
 import OnlineFriends from './components/OnlineFriends.vue'
-
+import Blogs from './components/Blogs.vue'
 
 export default {
   name: 'app',
@@ -19,6 +20,7 @@ export default {
     NavBar,
     AllFriends,
     OnlineFriends,
+    Blogs,
   },
   methods: {
     deleteFriend(payload) {
