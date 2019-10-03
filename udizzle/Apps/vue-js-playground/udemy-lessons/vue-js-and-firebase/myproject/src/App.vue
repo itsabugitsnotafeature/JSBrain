@@ -21,8 +21,9 @@ export default {
     OnlineFriends,
   },
   methods: {
-    deleteFriend() {
-      debugger
+    deleteFriend(payload) {
+      // console.log("Intercepted call to delete friend " + payload.name);
+      this.friends = this.friends.filter(eachFriend => (eachFriend.name !== payload.name))
     },
   },
   data() {
