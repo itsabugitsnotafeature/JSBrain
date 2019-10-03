@@ -4,9 +4,10 @@
       AllFriends
     </h2>
     <div v-for="(friend, index) in friends" :key="index">
-      <!-- <span v-if="friend.online">{{friend.name}}</span> -->
-      <span>{{friend.name}}</span> - 
-      <span>{{friend.online}}</span>
+      <div @click="unfriend(friend)">
+        <span>{{friend.name}}</span> - 
+        <span>{{friend.online}}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -15,6 +16,11 @@
 export default {
   name: 'AllFriends',
   props: ['friends'],
+  methods: {
+    unfriend(friend) {
+      this.$emit('deleteThisFriend', friend);
+    }
+  }
 }
 </script>
 

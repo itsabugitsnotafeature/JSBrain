@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <NavBar/>
-    <AllFriends :friends="friends" />
+    <AllFriends :friends="friends" @deleteThisFriend="deleteFriend" />
     <OnlineFriends :friends="friends" />
   </div>
 </template>
@@ -19,6 +19,11 @@ export default {
     NavBar,
     AllFriends,
     OnlineFriends,
+  },
+  methods: {
+    deleteFriend() {
+      debugger
+    },
   },
   data() {
     return {
