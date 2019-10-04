@@ -4,19 +4,30 @@
       <button @click="changeTitle" >Chenge Title</button>
       <div v-for="post in posts" :key="post.id">
         <h3>{{ post.title }}</h3>
-        <p>{{ post.body }}</p>
+        <p>{{ post.body | snippet }}</p>
       </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import Vue from 'vue';
+
+// Vue.filter('snippet', val => val.slice(50).concat('...'))
+Vue.filter('snippet', val => {
+  if(!val || typeof(val) !== 'string') {
+    return '';
+  }
+  val.slice(50).concat('...')
+})
+
 
 export default {
   name: 'Blogs',
   data() {
     return {
-      posts: []
+      posts: [],
+      blogTitle: 'My BLOG !!',
     }
   },
   methods: {
