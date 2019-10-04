@@ -1,11 +1,15 @@
 <template>
   <div class="blogs">
       <h2> {{ blogTitle}} </h2>
+
+      <input v-model="searchQuery" />
       <button @click="changeTitle" >Chenge Title</button>
-      <div v-for="post in posts" :key="post.id">
+
+      <div v-for="post in filterPosts" :key="post.id">
         <h3>{{ post.title }}</h3>
         <p>{{ post.body | snippet }}</p>
       </div>
+
   </div>
 </template>
 
@@ -13,14 +17,7 @@
 import axios from 'axios';
 import Vue from 'vue';
 
-// Vue.filter('snippet', val => val.slice(50).concat('...'))
-Vue.filter('snippet', val => {
-  if(!val || typeof(val) !== 'string') {
-    return '';
-  }
-  val.slice(50).concat('...')
-})
-
+Vue.filter('snippet', val => val.slice(50).concat('...'))
 
 export default {
   name: 'Blogs',
@@ -28,7 +25,13 @@ export default {
     return {
       posts: [],
       blogTitle: 'My BLOG !!',
+      searchQuery: '',
     }
+  },
+  computed: {
+    filterPosts() {
+      return this.posts.filter(post => post.title.match(this.searchQuery))
+    },
   },
   methods: {
     changeTitle() {
