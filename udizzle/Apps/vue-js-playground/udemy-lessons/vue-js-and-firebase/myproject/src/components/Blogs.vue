@@ -2,15 +2,21 @@
   <div class="blogs">
       <h2> {{ blogTitle}} </h2>
       <button @click="changeTitle" >Chenge Title</button>
+      <div v-for="post in posts" :key="post.id">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.body }}</p>
+      </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'Blogs',
   data() {
     return {
-      blogTitle: 'Blogs'
+      posts: []
     }
   },
   methods: {
@@ -18,14 +24,12 @@ export default {
       this.blogTitle = 'WooHoo!! Blog Title Updated'
     },
   },
-  beforeCreate() {
-    alert('beforeCreate Hook for Blogs')
-  },
-  created() {
-    alert('created Hook for Blogs')
-  },
-  beforeUpdate() {
-    alert('beforeUpdate Hook for Blogs')
+  created() {    
+    axios.get('https://jsonplaceholder.typicode.com/posts/')
+      .then(response => {
+        this.posts = response.data;
+      }).catch(e => console.log(e))
+
   },
 }
 </script>
@@ -35,7 +39,7 @@ export default {
 
 .blogs {
   margin: 2px;
-  background-color: aqua;
+  background-color: #fff;
 }
 
 </style>
