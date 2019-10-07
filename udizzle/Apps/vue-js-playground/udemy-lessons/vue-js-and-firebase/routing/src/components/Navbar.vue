@@ -78,4 +78,8 @@ li {
   margin: 5px;
 }
 
+a.router-link-exact-active {
+  color: purple;
+}
+
 </style>
