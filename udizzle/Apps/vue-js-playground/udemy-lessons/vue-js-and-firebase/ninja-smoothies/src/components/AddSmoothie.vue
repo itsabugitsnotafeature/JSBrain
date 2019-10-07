@@ -10,11 +10,12 @@
         <!-- Ingredeintes Section -->
         <div class="field add-ingredient">
           <label for="add-ingredient">Add an ingredient:</label>
-          <input type="text" name="add-ingredient">
+          <input type="text" name="add-ingredient" @keydown.tab.prevent="addIng" v-model="another" @keydown.tab.enter="addIng" >
         </div>
 
         <!-- Add Smoothie Button -->
         <div class="field center-align">
+          <p v-if="feedback" class="red-text">{{ feedback }}</p>  
           <button class="btn pink">Add Smoothie</button>
         </div>
       </div>
@@ -27,12 +28,24 @@ export default {
   name: 'AddSmoothie',
   data () {
     return {
-      title: null
+      title: null,
+      another: null,
+      ingredientes: [],
+      feedback: null
     }
   },
   methods : {
     AddSmoothie () {
-      console.log(this.title);
+      console.log(this.title, this.ingredientes);
+    },
+    addIng () {
+      if(this.another) {
+        this.ingredientes.push(this.another)
+        this.another = null
+        this.feedback = null
+      } else {
+        this.feedback = 'You must add a value to add to ingredients'
+      }
     }
   }
 };
