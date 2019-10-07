@@ -6,7 +6,7 @@
         <!-- Smoothie Title Section -->
         <label for="title">Smoothie Title:</label>
         <input type="text" name="title" v-model="title">
-        
+
         <!-- Added ingrediants -->
         <div v-for="(ing, index) in ingrediants" :key="index" class="field">
           <label for="ingredient">ingredient: </label>
@@ -22,7 +22,7 @@
 
         <!-- Add Smoothie Button -->
         <div class="field center-align">
-          <p v-if="feedback" class="red-text">{{ feedback }}</p>  
+          <p v-if="feedback" class="red-text">{{ feedback }}</p>
           <button class="btn pink">Add Smoothie</button>
         </div>
       </div>
@@ -45,11 +45,11 @@ export default {
       slug: null
     }
   },
-  methods : {
+  methods: {
     AddSmoothie () {
       // console.log(this.title, this.ingrediants);
-      if(this.title) {
-        this.feedback = null;
+      if (this.title) {
+        this.feedback = null
         this.slug = slugify(this.title, {
           replacement: '-',
           remove: /[$*_+~.()'"!\-:@]/g,
@@ -71,11 +71,12 @@ export default {
       }
     },
     addIng () {
-      if(this.another) {
+      if (this.another) {
         this.ingrediants.push(this.another)
         this.another = null
         this.feedback = null
-      } else {
+      }
+      else {
         this.feedback = 'You must add a value to add to ingrediants'
       }
     },
@@ -83,19 +84,19 @@ export default {
       this.ingrediants = this.ingrediants.filter(ingrediant => ingrediant !== ing)
     }
   }
-};
+}
 </script>
 
 <style scoped>
 .add-smoothie {
   margin-top: 60px;
   padding: 20px;
-  max-width: 500px  
+  max-width: 500px;
 }
 
 .add-smoothie h2 {
   font-size: 2em;
-  margin: 20px auto; 
+  margin: 20px auto;
 }
 
 .add-smoothie .field {

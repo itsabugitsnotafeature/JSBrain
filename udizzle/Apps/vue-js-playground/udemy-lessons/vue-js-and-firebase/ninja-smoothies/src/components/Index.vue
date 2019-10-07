@@ -1,6 +1,7 @@
 <template>
   <div class="index container">
     <div class="card" v-for="smoothie in smoothies" :key="smoothie.id">
+
       <div class="card-content">
         <i class="material-icons delete" @click="deleteSmoothie(smoothie.id)">delete</i>
         <h2 class="indigo-text">{{ smoothie.title }}</h2>
@@ -10,6 +11,16 @@
           </li>
         </ul>
       </div>
+
+      <!-- Edit Button -->
+      <span class="btn-floating btn-large halfway-fab pink">
+        <router-link
+          :to="{name: 'EditSmoothie',
+          params: {smoothie_slug: smoothie.slug}}">
+          <i class="material-icons edit">edit</i>
+        </router-link>
+      </span>
+
     </div>
   </div>
 </template>
@@ -25,10 +36,10 @@ export default {
     }
   },
   methods: {
-    deleteSmoothie(id) {
+    deleteSmoothie (id) {
       // Delete doc with given ID from firestore
       db.collection('smoothies').doc(id).delete()
-        .then(()=> {
+        .then(() => {
           this.smoothies = this.smoothies.filter(x => x.id !== id)
         })
     }
@@ -38,11 +49,11 @@ export default {
       .then(snapshot => {
         snapshot.forEach(doc => {
           // console.log(doc.data(), doc.id)
-          let smoothie = doc.data();
-          smoothie.id = doc.id;
+          let smoothie = doc.data()
+          smoothie.id = doc.id
           this.smoothies.push(smoothie)
         })
-      });
+      })
   }
 }
 </script>
