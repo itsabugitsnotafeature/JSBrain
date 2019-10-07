@@ -63,11 +63,11 @@ export default {
           ingrediants: this.ingrediants,
           slug: this.slug
         }).then(() => {
-          this.$router.push({name: 'Idex'})
+          this.$router.push({name: 'Index'})
         }).catch(e => console.log(e))
 
       } else {
-        this.feedback = 'You musht enter a smoothie title !'
+        this.feedback = 'You must enter a smoothie title !'
       }
     },
     addIng () {
