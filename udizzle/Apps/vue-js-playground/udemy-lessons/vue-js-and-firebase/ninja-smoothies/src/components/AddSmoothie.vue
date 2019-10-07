@@ -16,7 +16,7 @@
         <!-- Ingredeintes Section -->
         <div class="field add-ingredient">
           <label for="add-ingredient">Add an ingredient:</label>
-          <input type="text" name="add-ingredient" @keydown.tab.prevent="addIng" v-model="another" @keydown.tab.enter="addIng" >
+          <input type="text" name="add-ingredient" @keydown.tab.prevent="addIng" v-model="another" >
         </div>
 
         <!-- Add Smoothie Button -->
@@ -30,6 +30,9 @@
 </template>
 
 <script>
+import db from '@/firebase/init'
+import slugify from 'slugify'
+
 export default {
   name: 'AddSmoothie',
   data () {
@@ -37,12 +40,34 @@ export default {
       title: null,
       another: null,
       ingrediants: [],
-      feedback: null
+      feedback: null,
+      slug: null
     }
   },
   methods : {
     AddSmoothie () {
-      console.log(this.title, this.ingrediants);
+      // console.log(this.title, this.ingrediants);
+      if(this.title) {
+        this.feedback = null;
+        this.slug = slugify(this.title, {
+          replacement: '-',
+          remove: /[$*_+~.()'"!\-:@]/g,
+          lower: true
+        })
+
+        // console.log(this.slug)
+
+        db.collection('smoothies').add({
+          title: this.title,
+          ingrediants: this.ingrediants,
+          slug: this.slug
+        }).then(() => {
+          this.$router.push({name: 'Idex'})
+        }).catch(e => console.log(e))
+
+      } else {
+        this.feedback = 'You musht enter a smoothie title !'
+      }
     },
     addIng () {
       if(this.another) {
