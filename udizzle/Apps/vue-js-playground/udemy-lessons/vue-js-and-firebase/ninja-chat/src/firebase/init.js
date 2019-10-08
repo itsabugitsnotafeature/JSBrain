@@ -3,16 +3,17 @@ import firestore from 'firebase/firestore'
 
 // Initialization Config
 const firebaseConfig = {
-  apiKey: 'AIzaSyBuvbw99js5OK1bdyDqjwk9egIQerdVHys',
-  authDomain: 'udemy-ninja-chat-ce59d.firebaseapp.com',
-  databaseURL: 'https://udemy-ninja-chat-ce59d.firebaseio.com',
-  projectId: 'udemy-ninja-chat-ce59d',
-  storageBucket: 'udemy-ninja-chat-ce59d.appspot.com',
-  messagingSenderId: '1081015383459',
-  appId: '1:1081015383459:web:820bc048321e3c44bad616',
-  measurementId: 'G-3XVVP5J229'
+  apiKey: 'AIzaSyD-KQmBUNc_k9xYGtsY1oOW3T9Hxk-8_gM',
+  authDomain: 'udemy-ninja-chat-b353e.firebaseapp.com',
+  databaseURL: 'https://udemy-ninja-chat-b353e.firebaseio.com',
+  projectId: 'udemy-ninja-chat-b353e',
+  storageBucket: 'udemy-ninja-chat-b353e.appspot.com',
+  messagingSenderId: '334503521924',
+  appId: '1:334503521924:web:20339eec4d1f40076fdcd1',
+  measurementId: 'G-WJZ35LMS1L'
 }
 
 const firebaseApp = firebase.initializeApp(firebaseConfig)
+firebaseApp.firestore().settings({ timestampsInSnapshots: true })
 
 export default firebaseApp.firestore()
