@@ -2,15 +2,15 @@ import firebase from 'firebase'
 import firestore from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAGQ1OMpamnRRFmx8iH6KbfCmqauznm3tI',
-  authDomain: 'udemy-geo-ninjas-3ee20.firebaseapp.com',
-  databaseURL: 'https://udemy-geo-ninjas-3ee20.firebaseio.com',
-  projectId: 'udemy-geo-ninjas-3ee20',
+  apiKey: 'AIzaSyBwMfneE1oATGEEU6YbX3ajessoufGKszk',
+  authDomain: 'udemy-geo-ninjas-449f9.firebaseapp.com',
+  databaseURL: 'https://udemy-geo-ninjas-449f9.firebaseio.com',
+  projectId: 'udemy-geo-ninjas-449f9',
   storageBucket: '',
-  messagingSenderId: '221106351820',
-  appId: '1:221106351820:web:8e51babcd41f38020c5c69'
+  messagingSenderId: '994707541263',
+  appId: '1:994707541263:web:40266d6972217eb82b027a'
 }
 
-const firebaseApp = firebase.initializeApp(firebaseConfig)
+const  firebaseApp = firebase.initializeApp(firebaseConfig)
 
 export default firebaseApp.firestore()
