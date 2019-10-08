@@ -1,10 +1,10 @@
 <template>
-    <div class="chat">
-        <h2 class="center teal-text"> Ninja Chat </h2>
+    <div class="chat container">
+        <h2 class="center teal-text">Ninja Chat</h2>
         <div class="card">
             <div class="card-content">
                 <ul class="messages">
-                    <li class=" ">
+                    <li>
                         <span class="teal-text">Name</span>
                         <span class="grey-text text-darken-3">message</span>
                         <span class="grey-text time">time</span>
@@ -13,8 +13,7 @@
             </div>
 
             <div class="card-action">
-                <input type="text">
-                <NewMessage :name="name"/>
+                <NewMessage :name="name" />
             </div>
         </div>
 

@@ -23,7 +23,7 @@ export default new Router({
           next()
         } else {
           // if name exists, continue
-          next({ name: 'Welcome'})
+          next({name: 'Welcome'})
         }
       }
     }
