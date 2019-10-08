@@ -11,7 +11,9 @@
 </template>
 
 <script>
-import db from "@/firebase/init";
+import db from "@/firebase/init"
+
+const DB_TOPIC_NAME =  'messages'
 
 export default {
   name: "NewMessage",
@@ -26,11 +28,11 @@ export default {
       if (this.newMessage) {
         // console.log(this.newMessage + this.name + Date.now() )
 
-        db.collection("messages")
+        db.collection(DB_TOPIC_NAME)
           .add({
             content: this.newMessage,
             name: this.name,
-            timeStamp: Date.now()
+            timestamp: Date.now()
           })
           .catch(e => console.error(e));
         this.newMessage = null;
