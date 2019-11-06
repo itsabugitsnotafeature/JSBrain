@@ -24,8 +24,9 @@
 </template>
 
 <script>
-import slugify from 'slugify';
+import slugify from 'slugify'
 import db from '@/firebase/init'
+import firebase from 'firebase'
 
 export default {
   name: "Signup",
@@ -40,24 +41,53 @@ export default {
   },
   methods: {
     signup() {
-      if(this.alias) {
+      if(this.alias && this.email && this.password) {
         this.feedback = null;
         this.slug = slugify(this.alias, {
           replacement: '-',
           remove: /[$*_+~.()'"!\-:@]/g,
           lower: true
         })
+
+debugger
         let ref = db.collection('users').doc(this.slug)
+        /* First check if slug for this alias already exists */
         ref.get().then(doc => {
           if(doc.exists) {
+
+            /* Give feedback if alias already exists */
             this.feedback = "This alias already exists"
           } else {
-            this.feedback = "This alias is free to use";
+
+            /* Create a new user in the firebase AUTH DB */
+            firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+            .then(cred => {
+              debugger
+              console.log(cred.user)
+
+              /* If user creation successful, add user alias + ID + geolocation to our `users` DB */
+              ref.set({
+                alias: this.alias,
+                geoLocation: null,
+                user_id: cred.user.uid,
+              }).then(() => {
+                /* Everything Cool, Redirect to home page => Gmap Page */
+                this.$router.push({name:'GMap'})
+              })
+            })
+            .catch(e => {
+              /* If user already exists, give feedback */
+              console.log(e)
+              this.feedback = e.message;
+            })
+            this.feedback = "This alias ready to use"
           }
         })
         // console.log(this.slug)
       } else {
-        this.feedback = 'You must enter an alias';
+
+        /* User must enter all fields to sign up successfully */
+        this.feedback = 'You must enter ALL alias';
       }
     }
   }
