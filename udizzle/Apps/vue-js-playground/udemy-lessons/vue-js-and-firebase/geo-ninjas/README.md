@@ -1,3 +1,6 @@
+UD ::
+npm run dev
+
 # geo-ninjas
 
 > A Vue.js project
