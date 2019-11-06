@@ -4,7 +4,7 @@ import GMap from '@/components/home/GMap'
 import Signup from '@/components/auth/Signup'
 
 Vue.use(Router)
-
+/* eslint-disable */
 export default new Router({
   routes: [
     {

@@ -24,12 +24,13 @@
 </template>
 
 <script>
+/* eslint-disable */
 import slugify from 'slugify'
 import db from '@/firebase/init'
 import firebase from 'firebase'
 
 export default {
-  name: "Signup",
+  name: 'Signup',
   data() {
     return {
       email: null,
@@ -49,7 +50,6 @@ export default {
           lower: true
         })
 
-debugger
         let ref = db.collection('users').doc(this.slug)
         /* First check if slug for this alias already exists */
         ref.get().then(doc => {
@@ -62,8 +62,7 @@ debugger
             /* Create a new user in the firebase AUTH DB */
             firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
             .then(cred => {
-              debugger
-              console.log(cred.user)
+              // console.log(cred.user)
 
               /* If user creation successful, add user alias + ID + geolocation to our `users` DB */
               ref.set({
