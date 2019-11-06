@@ -5,10 +5,13 @@
         <a href class="brand-logo left">GeoNinjas!</a>
         <ul class="right">
           <li>
-            <a href>Sign Up</a>
+            <router-link :to="{ name: 'Signup' }">Sign Up</router-link>
           </li>
           <li>
             <a href>Login</a>
+          </li>
+          <li>
+            <a @click="logout">Logout</a>
           </li>
         </ul>
       </div>
@@ -18,10 +21,23 @@
 
 <script>
 /* eslint-disable */
+import firebase from 'firebase'
+
 export default {
   name: "Navbar",
   data() {
     return {};
+  },
+  methods: {
+    logout() {
+      firebase.auth().signOut()
+      .then(()=>{
+        console.log('Logout complete')
+        this.$router.push({
+          name: 'Signup'
+        })
+      })
+    }
   }
 };
 </script>
