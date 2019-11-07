@@ -28,8 +28,22 @@ export default {
     }
   },
   mounted(){
+    // Get user Geo Location
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(pos => {
+        this.lat = pos.coords.latitude
+        this.lng = pos.coords.longitude
+        this.renderMap(this.lat, this.lng)
+      }, (err) => {
+        console.error('Unable to read user\'s Geo-Location')
+        this.renderMap()
+      }, {
+        maximumAge: 60000,  // Means if there is a past cached geo-location available from the past 60000ms(1h), then use that one
+        timeout: 30000  // Means if we are unable to fetch geo location in under 30000ms(30s), Quit!
+      })
+    }
+    // Use default values
     this.renderMap()
-    console.log(firebase.auth().currentUser)
   }
 }
 </script>
