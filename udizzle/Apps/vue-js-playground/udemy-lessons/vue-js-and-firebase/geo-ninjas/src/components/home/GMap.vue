@@ -7,6 +7,7 @@
 <script>
 /* eslint-disable */
 import firebase from 'firebase'
+import db from '@/firebase/init'
 
 export default {
   name: 'GMap',
@@ -28,12 +29,32 @@ export default {
     }
   },
   mounted(){
+    // Get current user
+    let user = firebase.auth().currentUser
+
     // Get user Geo Location
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(pos => {
         this.lat = pos.coords.latitude
         this.lng = pos.coords.longitude
-        this.renderMap(this.lat, this.lng)
+
+        // find the user record
+        db.collection('users').where('user_id', '==', user.uid).get()
+        .then(snapshot=> {
+          snapshot.forEach(doc => {
+
+            // Once user found, update geo cordinates in our DB
+            db.collection('users').doc(doc.id).update({
+              geolocation: {
+                lat: pos.coords.latitude,
+                lng: pos.coords.longitude
+              }
+            })
+          });
+        }).then(()=> {
+          this.renderMap()
+        })
+
       }, (err) => {
         console.error('Unable to read user\'s Geo-Location')
         this.renderMap()

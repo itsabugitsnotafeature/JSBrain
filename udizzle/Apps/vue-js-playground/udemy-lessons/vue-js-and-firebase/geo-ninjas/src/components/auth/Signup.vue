@@ -62,7 +62,6 @@ export default {
             /* Create a new user in the firebase AUTH DB */
             firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
             .then(cred => {
-              // console.log(cred.user)
 
               /* If user creation successful, add user alias + ID + geolocation to our `users` DB */
               ref.set({
