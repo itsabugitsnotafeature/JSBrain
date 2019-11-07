@@ -79,7 +79,6 @@ export default {
               console.log(e)
               this.feedback = e.message;
             })
-            this.feedback = "This alias ready to use"
           }
         })
         // console.log(this.slug)

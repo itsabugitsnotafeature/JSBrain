@@ -4,11 +4,11 @@
       <h2 class="center deep-purple-text">Login</h2>
       <div class="field">
         <label for="email">Email:</label>
-        <input type="email" name="email" v-model="email" />
+        <input placeholder="t@t.com" type="email" name="email" v-model="email" />
       </div>
       <div class="field">
         <label for="password">Password:</label>
-        <input type="password" name="password" v-model="password" />
+        <input type="password" placeholder="test123" name="password" v-model="password" />
       </div>
       <p v-if="feedback" class="red-text center">{{ feedback }}</p>
       <div class="field">
@@ -33,7 +33,27 @@ export default {
   },
   methods: {
     login() {
-      console.log(this.email + ' <- email and pass -> ' + this.password)
+      // console.log(this.email + ' <- email and pass -> ' + this.password)
+      if(this.email && this.password) {
+        this.feedback = null;
+        firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+        .then((cred)=>{
+          // cred.user for Firebase 5
+          console.log('Hooray!! Logged in as => ' + cred.user)
+          this.feedback = 'Welcome back ' + cred.user.email + '!'
+          setTimeout(() => {
+            this.$router.push({
+              name: 'GMap'
+            })  
+          }, 1000);
+        })
+        .catch(()=>{
+          this.feedback = 'Incorrect username or password!'
+        })
+
+      } else {
+        this.feedback = 'Please fill in both fields!'
+      }
     }
   }
 };
@@ -52,4 +72,4 @@ export default {
 .login .field {
   margin-bottom: 16px;
 }
-</style>
+</style> 
