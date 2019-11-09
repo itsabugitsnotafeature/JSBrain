@@ -10,6 +10,7 @@ Vue.use(Router)
 /* eslint-disable */
 
 const router = new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
