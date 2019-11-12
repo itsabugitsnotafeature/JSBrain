@@ -28,6 +28,7 @@
 import slugify from 'slugify'
 import db from '@/firebase/init'
 import firebase from 'firebase'
+import functions from 'firebase/functions'
 
 export default {
   name: 'Signup',
@@ -50,10 +51,13 @@ export default {
           lower: true
         })
 
-        let ref = db.collection('users').doc(this.slug)
-        /* First check if slug for this alias already exists */
-        ref.get().then(doc => {
-          if(doc.exists) {
+        
+        let checkAlias = firebase.functions().httpsCallable('checkAlias')
+        checkAlias({ slug: this.slug }).then(result => {
+          console.log("Firebase cloud function call => " + result)
+  
+          /* First check if slug for this alias already exists */
+          if(!result.data.unique) {
 
             /* Give feedback if alias already exists */
             this.feedback = "This alias already exists"
@@ -64,7 +68,7 @@ export default {
             .then(cred => {
 
               /* If user creation successful, add user alias + ID + geolocation to our `users` DB */
-              ref.set({
+              db.collection('users').doc(this.slug).set({
                 alias: this.alias,
                 geoLocation: null,
                 user_id: cred.user.uid,
@@ -80,7 +84,6 @@ export default {
             })
           }
         })
-        // console.log(this.slug)
       } else {
 
         /* User must enter all fields to sign up successfully */
