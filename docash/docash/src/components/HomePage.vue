@@ -1,6 +1,8 @@
 <template>
   <div class="doacash-homepage">
-    <h1>Hello Home Page</h1>
+    <img :src="getRandomPic()" />
+
+    <img src="@/../images/2.jpeg" />
   </div>
 </template>
 
@@ -8,6 +10,19 @@
 export default {
   name: "HomePage",
   props: {},
+  data() {
+    return {
+      picLow: 1,
+      picHigh: 39,
+      picPathPrefix: 39,
+    };
+  },
+  methods: {
+    getRandomPic() {
+      // return "img/2.264f1406.jpeg";
+      return "@/../images/2.jpeg";
+    },
+  },
 };
 </script>
 

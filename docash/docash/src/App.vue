@@ -1,12 +1,13 @@
 <template>
   <div id="app">
-    <NavBar />
+    <!-- <NavBar /> -->
     <router-view />
-    <Footer />
+    <!-- <Footer /> -->
   </div>
 </template>
 
 <script>
+/* eslint-disable vue/no-unused-components */
 import "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
 
