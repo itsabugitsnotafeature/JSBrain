@@ -77,22 +77,9 @@ export default {
   height: 98vh !important;
   object-fit: cover;
 }
-/* .doacash-homepage__carousel-slide-1 {
-  position: relative;
-  bottom: 355px;
-}
-
-.doacash-homepage__carousel-slide-2 {
-  position: relative;
-  top: 2px;
-}
-
-.doacash-homepage__carousel-slide-3 {
-  position: relative;
-  bottom: 400px;
-} */
 
 .doacash-homepage__carousel {
   height: 98vh !important;
+  position: absolute;
 }
 </style>
