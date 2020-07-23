@@ -37,6 +37,12 @@ export default {
     };
   },
   methods: {
+    scrollToTop() {
+      setTimeout(function() {
+        window.scrollTo(0, 0);
+      }, 50);
+    },
+
     getRandomPic() {
       return `static/${this.randomImageNumber()}.jpeg`;
     },
@@ -49,6 +55,8 @@ export default {
     }
   },
   mounted() {
+    // BUG BUG BUG => When coming from home page, does not scroll to top;
+
     this.HomePageCarouselElement = document.querySelectorAll(".carousel")[0];
 
     // eslint-disable-next-line no-undef
@@ -67,6 +75,9 @@ export default {
     this.carouselSliderTimerId = setInterval(() => {
       self.HomePageCarouselInstance.next();
     }, this.sliderInterval);
+
+    // Scroll to top at the very end
+    this.scrollToTop();
   }
 };
 </script>
