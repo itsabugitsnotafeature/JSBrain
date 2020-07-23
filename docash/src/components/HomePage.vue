@@ -1,18 +1,26 @@
 <template>
   <div class="doacash-homepage">
     <!-- Landing Carousel -->
-    <div class="carousel carousel-slider center ladytin-homepage__carousel">
+    <div class="carousel carousel-slider center doacash-homepage__carousel">
       <!-- Slides -->
       <div class="carousel-item">
-        <img class="ladytin-homepage__carousel-slide-1" :src="getRandomPic()" />
+        <img class="doacash-homepage__carousel-slide" :src="getRandomPic()" />
       </div>
       <div class="carousel-item">
-        <img class="ladytin-homepage__carousel-slide-2" :src="getRandomPic()" />
+        <img class="doacash-homepage__carousel-slide" :src="getRandomPic()" />
       </div>
       <div class="carousel-item">
-        <img class="ladytin-homepage__carousel-slide-3" :src="getRandomPic()" />
+        <img class="doacash-homepage__carousel-slide" :src="getRandomPic()" />
+      </div>
+      <div class="carousel-item">
+        <img class="doacash-homepage__carousel-slide" :src="getRandomPic()" />
+      </div>
+      <div class="carousel-item">
+        <img class="doacash-homepage__carousel-slide" :src="getRandomPic()" />
       </div>
     </div>
+
+    <!-- Media 1 -->
   </div>
 </template>
 
@@ -65,22 +73,26 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.ladytin-homepage__carousel-slide-1 {
+.doacash-homepage__carousel-slide {
+  height: 98vh !important;
+  object-fit: cover;
+}
+/* .doacash-homepage__carousel-slide-1 {
   position: relative;
   bottom: 355px;
 }
 
-.ladytin-homepage__carousel-slide-2 {
+.doacash-homepage__carousel-slide-2 {
   position: relative;
   top: 2px;
 }
 
-.ladytin-homepage__carousel-slide-3 {
+.doacash-homepage__carousel-slide-3 {
   position: relative;
   bottom: 400px;
-}
+} */
 
-.ladytin-homepage__carousel {
+.doacash-homepage__carousel {
   height: 98vh !important;
 }
 </style>
