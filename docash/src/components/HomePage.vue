@@ -1,29 +1,35 @@
 <template>
   <div class="doacash-homepage">
-    <img :src="getRandomPic()" />
-
-    <img src="static/2.jpeg" />
+    <div class="doacash-homepage__background">
+      <img :src="getRandomPic()" />
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HomePage',
+  name: "HomePage",
   props: {},
-  data () {
+  data() {
     return {
       picLow: 1,
       picHigh: 39,
       picPathPrefix: 39
-    }
+    };
   },
   methods: {
-    getRandomPic () {
-      // return "img/2.264f1406.jpeg";
-      return 'static/2.jpeg'
+    getRandomPic() {
+      return `static/${this.randomImageNumber()}.jpeg`;
+    },
+
+    // Function to generate random number
+    randomImageNumber() {
+      return Math.floor(
+        Math.random() * (this.picHigh - this.picLow + 1) + this.picLow
+      );
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

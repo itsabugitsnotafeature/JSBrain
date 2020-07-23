@@ -12,9 +12,9 @@
 
 <script>
 export default {
-  name: 'NavBar',
+  name: "NavBar",
   props: {}
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

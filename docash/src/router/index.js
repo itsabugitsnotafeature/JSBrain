@@ -1,22 +1,22 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import HomePage from '@/components/HomePage'
-import About from '@/components/About.vue'
+import Vue from "vue";
+import Router from "vue-router";
+import HomePage from "@/components/HomePage";
+import About from "@/components/About.vue";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  mode: "history",
   routes: [
     {
-      path: '/',
-      name: 'HomePage',
+      path: "/",
+      name: "HomePage",
       component: HomePage
     },
     {
-      path: '/about',
-      name: 'About',
+      path: "/about",
+      name: "About",
       component: About
     }
   ]
-})
+});
