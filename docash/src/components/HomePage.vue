@@ -95,6 +95,13 @@ export default {
         imageBlocks.push(eachBlock);
         i += 2;
       }
+
+      // Create Vid Object 1
+      // Create Vid Object 2
+
+      // Insert Vid Object 1
+      // Insert Vid Object 2
+
       return imageBlocks;
     }
   },

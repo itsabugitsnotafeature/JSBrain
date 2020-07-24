@@ -1,9 +1,17 @@
 <template>
   <div class="docash-fotoblock">
     <div class="docash-fotoblock__module row">
-      <div class="col s12 m6 l6">
+      <!-- Render Video -->
+      <div v-if="isVideo" class="col s12 m6 l6">
+        {{ videoItem }}
+      </div>
+
+      <!-- Render Photo1  -->
+      <div v-if="photo1" class="col s12 m6 l6">
         <img class="docash-fotoblock__module-img materialboxed" :src="photo1" />
       </div>
+
+      <!-- Render Photo2  -->
       <div v-if="photo2" class="col s12 m6 l6">
         <img class="docash-fotoblock__module-img materialboxed" :src="photo2" />
       </div>
@@ -16,7 +24,9 @@ export default {
   name: "FotoBlock",
   props: {
     photo1: null,
-    photo2: null
+    photo2: null,
+    isVideo: false,
+    videoItem: null
   },
   mounted() {
     this.mediaElement = document.querySelectorAll(".materialboxed");
