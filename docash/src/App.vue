@@ -6,15 +6,16 @@
         <p class="doacash-app__container--margin-auto">
           Hey Doc!<br />
           Here's Wishing you<br />
-          Many<br />
-          Many<br />
         </p>
       </div>
 
       <div class="doacash-app__msg-many-container">
         <p
           class="doacash-app__msg-many-text valing-wrapper"
-          data-aos="fade-down-right"
+          data-aos="fade-up-right"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+          data-aos-duration="1000"
         >
           Many
         </p>
@@ -23,9 +24,113 @@
       <div class="doacash-app__msg-many-container">
         <p
           class="doacash-app__msg-many-text valing-wrapper"
-          data-aos="fade-down-right"
+          data-aos="fade-up-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
         >
           Many
+        </p>
+      </div>
+
+      <div class="doacash-app__msg-many-container">
+        <p
+          class="doacash-app__msg-many-text valing-wrapper"
+          data-aos="zoom-out-right"
+        >
+          Many
+        </p>
+      </div>
+
+      <div class="doacash-app__msg-many-container">
+        <p
+          class="doacash-app__msg-many-text valing-wrapper"
+          data-aos="fade-up-right"
+          data-aos-easing="ease-in-back"
+          data-aos-delay="300"
+          data-aos-offset="0"
+          data-aos-duration="1000"
+        >
+          Many
+        </p>
+      </div>
+
+      <div class="doacash-app__msg-many-container">
+        <p
+          class="doacash-app__msg-many-text valing-wrapper"
+          data-aos-easing="ease-in-back"
+          data-aos-delay="300"
+          data-aos-offset="0"
+          data-aos-duration="1000"
+        >
+          Many
+        </p>
+      </div>
+
+      <div class="doacash-app__msg-many-container">
+        <p
+          class="doacash-app__msg-many-text valing-wrapper"
+          data-aos="flip-left"
+          data-aos-duration="1000"
+        >
+          Many
+        </p>
+      </div>
+
+      <div class="doacash-app__msg-many-container">
+        <p
+          class="doacash-app__msg-many-text valing-wrapper"
+          data-aos="flip-right"
+          data-aos-duration="1000"
+        >
+          Many
+        </p>
+      </div>
+
+      <div class="doacash-app__msg-many-container">
+        <p
+          class="doacash-app__msg-many-text valing-wrapper"
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in-back"
+          data-aos-delay="300"
+          data-aos-offset="0"
+          data-aos-duration="1000"
+        >
+          Many
+        </p>
+      </div>
+
+      <div class="doacash-app__msg-many-container">
+        <p
+          class="doacash-app__msg-many-text valing-wrapper"
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000"
+        >
+          Many
+        </p>
+      </div>
+
+      <div class="doacash-app__msg-many-container">
+        <p
+          class="doacash-app__msg-many-text valing-wrapper"
+          data-aos="fade-up-left"
+          data-aos-easing="ease-in-back"
+          data-aos-duration="1000"
+          data-aos-delay="300"
+          data-aos-offset="0"
+        >
+          Many
+        </p>
+      </div>
+
+      <div class="doacash-app__msg-many-container">
+        <p
+          class="doacash-app__msg-many-text valing-wrapper"
+          data-aos="fade-up-left"
+          data-aos-easing="ease-in-back"
+          data-aos-duration="1000"
+        >
+          Happy Returns Of The Day !
         </p>
       </div>
 
@@ -37,8 +142,7 @@
           data-aos="fade-down-right"
           v-on:click="renderMainContainer"
         >
-          Click here <br />
-          to unwrap your present
+          Click Here <br />
         </button>
       </div>
     </div>
@@ -83,6 +187,7 @@ export default {
 
     // Function to generate random number
     renderMainContainer() {
+      // Activate Homepage
       const domToShow = document.querySelectorAll(
         ".doacash-app__main-container"
       )[0];
@@ -90,11 +195,15 @@ export default {
         ".doacash-app__first-landing-container"
       )[0];
 
+      domToHide.classList.remove("visible");
+      domToHide.classList.add("hidden");
+
       domToShow.classList.remove("hidden");
       domToShow.classList.add("visible");
 
-      domToHide.classList.remove("visible");
-      domToHide.classList.add("hidden");
+      setTimeout(function() {
+        window.scrollTo(0, 0);
+      }, 50);
     },
 
     // Function to generate random number
@@ -106,19 +215,19 @@ export default {
   },
   mounted() {
     AOS.init();
-
-    const self = this;
-    // setTimeout(() => {
-    //   self.renderMainContainer();
-    // }, 2000);
-
-    // Scroll to top at the very end
     this.scrollToTop();
   }
 };
 </script>
 
 <style>
+.doacash-app__msg-many-text {
+  font-family: "HelveticaNowDisplay-Thin";
+  font-size: 44pt;
+  margin-bottom: 50px;
+  color: #036a8c;
+}
+
 .ladytin-homepage__btn:hover,
 .ladytin-homepage__btn:focus {
   background-color: #036a8c;
@@ -140,7 +249,7 @@ export default {
 }
 
 .doacash-app__msg-many-container {
-  height: 20vh;
+  height: 45vh;
 }
 
 .doacash-app__first-landing-container-msg-1 {
@@ -214,5 +323,9 @@ export default {
 @font-face {
   font-family: "HelveticaNowDisplay-ThinIta";
   src: url("./assets/fonts/Helvetica_Now/Helvetica_Now_Display/HelveticaNowDisplay-ThinIta.otf");
+}
+
+html {
+  scroll-behavior: smooth;
 }
 </style>
