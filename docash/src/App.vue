@@ -177,6 +177,10 @@ export default {
       picHigh: 59
     };
   },
+  components: {
+    Footer,
+    NavBar
+  },
   methods: {
     scrollToTop() {
       setTimeout(function() {

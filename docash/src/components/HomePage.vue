@@ -18,23 +18,75 @@
       <div class="carousel-item">
         <img class="doacash-homepage__carousel-slide" :src="getRandomPic()" />
       </div>
+      <div class="carousel-item">
+        <img class="doacash-homepage__carousel-slide" :src="getRandomPic()" />
+      </div>
+      <div class="carousel-item">
+        <img class="doacash-homepage__carousel-slide" :src="getRandomPic()" />
+      </div>
+      <div class="carousel-item">
+        <img class="doacash-homepage__carousel-slide" :src="getRandomPic()" />
+      </div>
+      <div class="carousel-item">
+        <img class="doacash-homepage__carousel-slide" :src="getRandomPic()" />
+      </div>
     </div>
 
-    <!-- Media 1 -->
+    <!-- FotoBlock -->
+    <!-- <FotoBlock photo1="static/26.jpeg" photo2="static/27.jpeg" /> -->
+    <FotoBlock
+      v-for="item in imageBlocks"
+      v-bind:photo1="item.firstPic"
+      v-bind:photo2="item.secondPic"
+      v-bind:key="item.imgKey"
+    />
   </div>
 </template>
 
 <script>
+import FotoBlock from "./FotoBlock.vue";
+
 export default {
   name: "HomePage",
   props: {},
+  components: {
+    FotoBlock
+  },
   data() {
     return {
       carouselSlideTransitionDuration: 250,
       picLow: 1,
-      picHigh: 39,
-      sliderInterval: 5000
+      picHigh: 59,
+      sliderInterval: 5000,
+      images: []
     };
+  },
+  computed: {
+    imageBlocks() {
+      const imageBlocks = [];
+      let i = this.picLow;
+      for (; i <= this.picHigh; ) {
+        let eachBlock = {};
+
+        if (i === this.picHigh) {
+          eachBlock = {
+            firstPic: `static/${i}.jpeg`,
+            secondPic: null,
+            imgKey: i
+          };
+        } else {
+          eachBlock = {
+            firstPic: `static/${i}.jpeg`,
+            secondPic: `static/${i + 1}.jpeg`,
+            imgKey: i
+          };
+        }
+
+        imageBlocks.push(eachBlock);
+        i += 2;
+      }
+      return imageBlocks;
+    }
   },
   methods: {
     scrollToTop() {
@@ -84,6 +136,18 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.doacash-homepage__module-img {
+  object-fit: cover;
+  width: 100%;
+  padding: 6%;
+  max-height: 55vh;
+}
+
+.doacash-homepage__module {
+  height: 60vh;
+  margin: 40px 0;
+}
+
 .doacash-homepage__carousel-slide {
   height: 98vh !important;
   object-fit: cover;
@@ -91,6 +155,5 @@ export default {
 
 .doacash-homepage__carousel {
   height: 98vh !important;
-  position: absolute;
 }
 </style>
