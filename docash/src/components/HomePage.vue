@@ -117,8 +117,6 @@ export default {
     }
   },
   mounted() {
-    // BUG BUG BUG => When coming from home page, does not scroll to top;
-
     this.HomePageCarouselElement = document.querySelectorAll(".carousel")[0];
 
     // eslint-disable-next-line no-undef

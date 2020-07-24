@@ -2,10 +2,10 @@
   <div class="docash-fotoblock">
     <div class="docash-fotoblock__module row">
       <div class="col s12 m6 l6">
-        <img class="docash-fotoblock__module-img" :src="photo1" />
+        <img class="docash-fotoblock__module-img materialboxed" :src="photo1" />
       </div>
       <div v-if="photo2" class="col s12 m6 l6">
-        <img class="docash-fotoblock__module-img" :src="photo2" />
+        <img class="docash-fotoblock__module-img materialboxed" :src="photo2" />
       </div>
     </div>
   </div>
@@ -17,6 +17,15 @@ export default {
   props: {
     photo1: null,
     photo2: null
+  },
+  mounted() {
+    this.mediaElement = document.querySelectorAll(".materialboxed");
+
+    // eslint-disable-next-line no-undef
+    this.mediaElement.forEach(element => {
+      // eslint-disable-next-line no-undef
+      M.Materialbox.init(element, {});
+    });
   }
 };
 </script>
