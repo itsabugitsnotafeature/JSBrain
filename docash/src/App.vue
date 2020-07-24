@@ -1,5 +1,9 @@
 <template>
   <div class="doacash-app" id="app">
+    <img
+      class="doacash-app__background hide-on-small-only"
+      :src="getRandomPic()"
+    />
     <!-- Welcome Message Container -->
     <div class="doacash-app__first-landing-container visible">
       <div class="doacash-app__first-landing-container-msg-1 valign-wrapper">
@@ -138,7 +142,7 @@
       <div class="doacash-app__msg-many-container">
         <!-- Button to toggle view to homepage  -->
         <button
-          class="ladytin-homepage__btn btn"
+          class="doacash-app__btn btn"
           data-aos="fade-down-right"
           v-on:click="renderMainContainer"
         >
@@ -149,7 +153,6 @@
 
     <!-- Main Homepage Container -->
     <div class="doacash-app__main-container hidden">
-      <img class="doacash-app__background" :src="getRandomPic()" />
       <!-- <NavBar /> -->
       <router-view />
       <!-- <Footer /> -->
@@ -171,7 +174,7 @@ export default {
   data() {
     return {
       picLow: 1,
-      picHigh: 39
+      picHigh: 59
     };
   },
   methods: {
@@ -197,6 +200,7 @@ export default {
 
       domToHide.classList.remove("visible");
       domToHide.classList.add("hidden");
+      domToHide.classList.add("removed");
 
       domToShow.classList.remove("hidden");
       domToShow.classList.add("visible");
@@ -228,12 +232,12 @@ export default {
   color: #036a8c;
 }
 
-.ladytin-homepage__btn:hover,
-.ladytin-homepage__btn:focus {
+.doacash-app__btn:hover,
+.doacash-app__btn:focus {
   background-color: #036a8c;
 }
 
-.ladytin-homepage__btn {
+.doacash-app__btn {
   width: auto;
   height: auto;
   font-size: 24pt;
@@ -275,9 +279,13 @@ export default {
 
 .hidden {
   visibility: hidden;
-  /* display: none; */
   opacity: 0;
   transition: visibility 0s 2s, opacity 2s ease-out;
+  position: fixed;
+}
+
+.removed {
+  display: none;
 }
 
 .doacash-app__background {
