@@ -64,20 +64,30 @@ export default {
   computed: {
     imageBlocks() {
       const imageBlocks = [];
+      const sortedImageIndexArray = [...Array(this.picHigh + 1).keys()];
+
+      // Remove the 0th Index
+      sortedImageIndexArray.shift();
+
+      // Shuffle the sorted array
+      const shuffledImageIndexArray = sortedImageIndexArray.sort(
+        () => Math.random() - 0.5
+      );
+
       let i = this.picLow;
       for (; i <= this.picHigh; ) {
         let eachBlock = {};
 
         if (i === this.picHigh) {
           eachBlock = {
-            firstPic: `static/${i}.jpeg`,
+            firstPic: `static/${shuffledImageIndexArray.shift()}.jpeg`,
             secondPic: null,
             imgKey: i
           };
         } else {
           eachBlock = {
-            firstPic: `static/${i}.jpeg`,
-            secondPic: `static/${i + 1}.jpeg`,
+            firstPic: `static/${shuffledImageIndexArray.shift()}.jpeg`,
+            secondPic: `static/${shuffledImageIndexArray.shift()}.jpeg`,
             imgKey: i
           };
         }
