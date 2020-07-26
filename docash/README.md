@@ -1,5 +1,13 @@
 # docash
 
+#TODO
+  - [DONE] Change all fonts to "font-family: 'Roboto', sans-serif;"
+  - When clicking "Click Here", first slide should seen
+  - [DONE] Click Here" CSS not working on mobile and sometimes on desktop
+  - [DONE] Replace image 22
+  - [DONE] Remove duplicate images
+
+
 > A Vue.js project
 
 ## Build Setup

@@ -32,6 +32,12 @@
       </div>
     </div>
 
+    <!-- Vid1 -->
+    <video class="doacash-homepage__video" controls>
+      <source src="static/vid2.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
     <!-- FotoBlock -->
     <!-- <FotoBlock photo1="static/26.jpeg" photo2="static/27.jpeg" /> -->
     <FotoBlock
@@ -40,6 +46,12 @@
       v-bind:photo2="item.secondPic"
       v-bind:key="item.imgKey"
     />
+
+    <!-- Vid2 -->
+    <video class="doacash-homepage__video" controls>
+      <source src="static/vid1.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
   </div>
 </template>
 
@@ -151,6 +163,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.doacash-homepage__video {
+  width: 55vw;
+  height: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 .doacash-homepage__module-img {
   object-fit: cover;
   width: 100%;

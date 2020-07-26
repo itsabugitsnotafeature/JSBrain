@@ -2,7 +2,7 @@
   <div class="doacash-app" id="app">
     <img
       class="doacash-app__background hide-on-small-only"
-      :src="getRandomPic()"
+      src="static/5.jpeg"
     />
     <!-- Welcome Message Container -->
     <div class="doacash-app__first-landing-container visible">
@@ -230,7 +230,7 @@ export default {
 
 <style>
 .doacash-app__msg-many-text {
-  font-family: "HelveticaNowDisplay-Thin";
+  font-family: "Roboto", sans-serif;
   font-size: 44pt;
   margin-bottom: 50px;
   color: #036a8c;
@@ -238,18 +238,18 @@ export default {
 
 .doacash-app__btn:hover,
 .doacash-app__btn:focus {
-  background-color: #036a8c;
+  background-color: #036a8c !important;
 }
 
 .doacash-app__btn {
-  width: auto;
-  height: auto;
-  font-size: 24pt;
-  font-family: "HelveticaNowDisplay-Light";
-  text-transform: none;
-  background-color: #036a8c;
-  padding: 20px 48px;
-  border-radius: 70px;
+  width: auto !important;
+  height: auto !important;
+  font-size: 24pt !important;
+  font-family: "Roboto", sans-serif !important;
+  text-transform: none !important;
+  background-color: #036a8c !important;
+  padding: 20px 48px !important;
+  border-radius: 70px !important;
 }
 
 .doacash-app__container--margin-auto {
@@ -263,7 +263,7 @@ export default {
 .doacash-app__first-landing-container-msg-1 {
   height: 100vh;
   width: 100vw;
-  font-family: "HelveticaNowDisplay-Thin";
+  font-family: "Roboto", sans-serif;
   font-size: 44pt;
   margin-bottom: 50px;
   color: #036a8c;
@@ -304,7 +304,7 @@ export default {
 }
 
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
