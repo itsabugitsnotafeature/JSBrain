@@ -51,22 +51,14 @@
     </video>
 
     <!-- Vid7 - Manu Bhiya and Fam -->
+    <video class="doacash-homepage__video" controls>
+      <source src="static/vid7.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
 
     <!-- Vid5 - Tina UD -->
     <video class="doacash-homepage__video" controls>
       <source src="static/vid5.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-
-    <!-- Vid2 - Family at waterpark -->
-    <video class="doacash-homepage__video" controls>
-      <source src="static/vid2.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-
-    <!-- Vid1:  -->
-    <video class="doacash-homepage__video" controls>
-      <source src="static/vid1.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
 
