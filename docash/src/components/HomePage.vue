@@ -38,6 +38,12 @@
       Your browser does not support the video tag.
     </video>
 
+    <!-- Vid - Bhaab -->
+    <video class="doacash-homepage__video" controls>
+      <source src="static/vid4.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
     <!-- Vid1 - Family at waterpark -->
     <video class="doacash-homepage__video" controls>
       <source src="static/vid2.mp4" type="video/mp4" />
