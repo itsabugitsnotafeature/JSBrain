@@ -32,7 +32,13 @@
       </div>
     </div>
 
-    <!-- Vid1 -->
+    <!-- Vid - Ishu Irra -->
+    <video class="doacash-homepage__video" controls>
+      <source src="static/vid3.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Vid1 - Family at waterpark -->
     <video class="doacash-homepage__video" controls>
       <source src="static/vid2.mp4" type="video/mp4" />
       Your browser does not support the video tag.
