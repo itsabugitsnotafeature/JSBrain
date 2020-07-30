@@ -32,21 +32,41 @@
       </div>
     </div>
 
-    <!-- Vid - Ishu Irra -->
+    <!-- Vid3 - Ishu Irra -->
     <video class="doacash-homepage__video" controls>
       <source src="static/vid3.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
 
-    <!-- Vid - Bhaab -->
+    <!-- Vid4 - Bhaab -->
     <video class="doacash-homepage__video" controls>
       <source src="static/vid4.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
 
-    <!-- Vid1 - Family at waterpark -->
+    <!-- Vid6 - Mom Dad -->
+    <video class="doacash-homepage__video" controls>
+      <source src="static/vid6.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Vid7 - Manu Bhiya and Fam -->
+
+    <!-- Vid5 - Tina UD -->
+    <video class="doacash-homepage__video" controls>
+      <source src="static/vid5.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Vid2 - Family at waterpark -->
     <video class="doacash-homepage__video" controls>
       <source src="static/vid2.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Vid1:  -->
+    <video class="doacash-homepage__video" controls>
+      <source src="static/vid1.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
 
@@ -58,12 +78,6 @@
       v-bind:photo2="item.secondPic"
       v-bind:key="item.imgKey"
     />
-
-    <!-- Vid2 -->
-    <video class="doacash-homepage__video" controls>
-      <source src="static/vid1.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
   </div>
 </template>
 
