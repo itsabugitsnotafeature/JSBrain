@@ -27,7 +27,7 @@
     "eslint-config-airbnb-base": "^11.3.2",
     "eslint-plugin-import": "^2.7.0",
     "mocha": "^3.5.3",
-    "shelljs": "^0.7.8",
+    "shelljs": "^0.8.5",
     "supertest": "^3.0.0"
   },
   "author": "Carmine DiMascio <cdimascio@gmail.com> (https://github.com/cdimascio)"
