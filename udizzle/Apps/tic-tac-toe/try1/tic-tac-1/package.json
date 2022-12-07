@@ -13,7 +13,7 @@
     "body-parser": "^1.17.2",
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
-    "express": "^4.15.3",
+    "express": "^4.17.3",
     "pino": "^4.7.1",
     "source-map-support": "^0.4.15",
     "swagger-express-middleware": "^1.0.0-alpha.12"
